@@ -17,13 +17,11 @@ namespace Version1.Controllers
     [ApiController]
     public class OmrProcessingController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private readonly OmrProcessingService _omrService;
         private readonly IWebHostEnvironment _env;
 
-        public OmrProcessingController(ApplicationDbContext context, OmrProcessingService omrService, IWebHostEnvironment env)
+        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env)
         {
-            _context = context;
             _omrService = omrService;
             _env = env;
         }
@@ -54,17 +52,12 @@ namespace Version1.Controllers
             {
                 // Create Uploads folder path on root
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "Uploads");
-
                 // Make unique file name with scanFile_ prefix
                 string fileExtension = imagePath;
-
                 // Make new destination image path in Uploads
                 string newImagePath = Path.Combine(uploadsFolder, fileExtension);
-
                 var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath);
-
                 results.Add(res);
-
             }
 
             return Ok(results);

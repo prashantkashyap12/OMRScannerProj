@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Images\\Version1\\Version1\\SQCScanner.csproj": {}
+    "D:\\Prashant_Devloper\\Web_Api\\New folder\\OMRScannerProj\\Version1\\SQCScanner.csproj": {}
   },
   "projects": {
-    "D:\\Images\\Version1\\Version1\\SQCScanner.csproj": {
+    "D:\\Prashant_Devloper\\Web_Api\\New folder\\OMRScannerProj\\Version1\\SQCScanner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Images\\Version1\\Version1\\SQCScanner.csproj",
+        "projectUniqueName": "D:\\Prashant_Devloper\\Web_Api\\New folder\\OMRScannerProj\\Version1\\SQCScanner.csproj",
         "projectName": "SQCScanner",
-        "projectPath": "D:\\Images\\Version1\\Version1\\SQCScanner.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "D:\\Images\\Version1\\Version1\\obj\\",
+        "projectPath": "D:\\Prashant_Devloper\\Web_Api\\New folder\\OMRScannerProj\\Version1\\SQCScanner.csproj",
+        "packagesPath": "C:\\Users\\IBALL\\.nuget\\packages\\",
+        "outputPath": "D:\\Prashant_Devloper\\Web_Api\\New folder\\OMRScannerProj\\Version1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\IBALL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -53,6 +54,10 @@
             "LeptonicaSharp": {
               "target": "Package",
               "version": "[1.77.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -106,6 +111,10 @@
               "target": "Package",
               "version": "[9.0.4, )"
             },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
             "Tesseract": {
               "target": "Package",
               "version": "[5.2.0, )"
@@ -146,7 +155,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
