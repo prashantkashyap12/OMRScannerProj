@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "Version1.Controllers.OmrProcessingController",
+    "Method": "ProcessOmrSheet",
+    "RelativePath": "api/OmrProcessing/process-omr",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "template",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
