@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|d:\\prashant_devloper\\web_api\\scannerproj\\omrscannerproj\\version1\\controllers\\templatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|solutionrelative:version1\\controllers\\templatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|d:\\prashant_devloper\\web_api\\scannerproj\\omrscannerproj\\version1\\controllers\\omrprocessingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|solutionrelative:version1\\controllers\\omrprocessingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|d:\\prashant_devloper\\web_api\\scannerproj\\omrscannerproj\\version1\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|solutionrelative:version1\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|d:\\prashant_devloper\\web_api\\scannerproj\\omrscannerproj\\version1\\services\\imgtemp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|solutionrelative:version1\\services\\imgtemp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|d:\\prashant_devloper\\web_api\\scannerproj\\omrscannerproj\\version1\\modal\\tempmodelrev.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|solutionrelative:version1\\modal\\tempmodelrev.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|d:\\prashant_devloper\\web_api\\scannerproj\\omrscannerproj\\version1\\wwwroot\\template1.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3B41FC0F-90F0-4AF0-A686-70FDA23680B7}|Version1\\SQCScanner.csproj|solutionrelative:version1\\wwwroot\\template1.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ImgTemp.cs",
+              "DocumentMoniker": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Services\\ImgTemp.cs",
+              "RelativeDocumentMoniker": "Version1\\Services\\ImgTemp.cs",
+              "ToolTip": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Services\\ImgTemp.cs",
+              "RelativeToolTip": "Version1\\Services\\ImgTemp.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T11:56:39.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TempModelRev.cs",
+              "DocumentMoniker": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Modal\\TempModelRev.cs",
+              "RelativeDocumentMoniker": "Version1\\Modal\\TempModelRev.cs",
+              "ToolTip": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Modal\\TempModelRev.cs",
+              "RelativeToolTip": "Version1\\Modal\\TempModelRev.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T09:58:05.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Version1\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Version1\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAUwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T09:54:06.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TemplateController.cs",
+              "DocumentMoniker": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Controllers\\TemplateController.cs",
+              "RelativeDocumentMoniker": "Version1\\Controllers\\TemplateController.cs",
+              "ToolTip": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Controllers\\TemplateController.cs",
+              "RelativeToolTip": "Version1\\Controllers\\TemplateController.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAkwMkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T09:51:36.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "template1.json",
+              "DocumentMoniker": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+              "RelativeDocumentMoniker": "Version1\\wwwroot\\template1.json",
+              "ToolTip": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+              "RelativeToolTip": "Version1\\wwwroot\\template1.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOwBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-06T09:04:54.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OmrProcessingController.cs",
+              "DocumentMoniker": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Controllers\\OmrProcessingController.cs",
+              "RelativeDocumentMoniker": "Version1\\Controllers\\OmrProcessingController.cs",
+              "ToolTip": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\Controllers\\OmrProcessingController.cs",
+              "RelativeToolTip": "Version1\\Controllers\\OmrProcessingController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwDkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T04:23:10.807Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

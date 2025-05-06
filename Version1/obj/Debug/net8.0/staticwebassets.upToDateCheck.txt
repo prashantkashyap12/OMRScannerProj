@@ -1,0 +1,4 @@
+wwwroot\HighlightedImages\highlighted_100036_Front.jpg
+wwwroot\HighlightedImages\highlighted_highlighted_100036_Front.jpg
+wwwroot\HighlightedImages\highlighted_highlighted_highlighted_100036_Front.jpg
+wwwroot\template1.json

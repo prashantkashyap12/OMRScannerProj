@@ -5,6 +5,7 @@ using SQCScanner.Modal;
 using SQCScanner.Services;
 using Version1.Data;
 
+
 namespace SQCScanner.Controllers
 {
     [Route("api/[controller]")]

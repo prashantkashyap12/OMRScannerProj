@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SQCScanner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bffa33ca5e042f481043a303162e0a898fd6f656")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+549ea70f13b970b4fa52654b64c24d45a1403caa")]
 [assembly: System.Reflection.AssemblyProductAttribute("SQCScanner")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SQCScanner")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SQCScanner.Modal;
+using SQCScanner.Services;
 using Version1.Modal;
 
 namespace Version1.Data
@@ -11,10 +12,15 @@ namespace Version1.Data
         
         //public DbSet<OmrResult> OmrResultstable { get; set; }
         public DbSet<EmpModel> empModels { get; set; }
+        public DbSet<TempRecord> TemplateRec { get; set; }
+
+        public DbSet<ImgTemp> ImgTemplate { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<OmrResult>().HasKey(e => e.Id);
+            modelBuilder.Entity<ImgTemp>().HasKey(e => e.Id);
             modelBuilder.Entity<EmpModel>().HasKey(e => e.EmpId);
         }
     }

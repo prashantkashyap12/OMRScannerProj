@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HMhXd7B5hzoQDYCkyGOCqjzPpwh0gd2KzoirVZWZJq4=",
+  "Hash": "8dX4F2ZAqVeJ6/e7tvyD6S1NPxD9tRT1qYHj8mP8pNA=",
   "Source": "SQCScanner",
   "BasePath": "_content/SQCScanner",
   "Mode": "Default",
@@ -10,11 +10,425 @@
     {
       "Name": "SQCScanner\\wwwroot",
       "Source": "SQCScanner",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\New folder\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "Pattern": "**"
     }
   ],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": [
+    {
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_100036_Front.jpg",
+      "SourceId": "SQCScanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "BasePath": "_content/SQCScanner",
+      "RelativePath": "HighlightedImages/highlighted_100036_Front#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hglozyp3uz",
+      "Integrity": "X2LmrwLQRUnP9b+QkjfvGGYZD9eYruqjoj8FWYds8AU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\HighlightedImages\\highlighted_100036_Front.jpg"
+    },
+    {
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_100036_Front.jpg",
+      "SourceId": "SQCScanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "BasePath": "_content/SQCScanner",
+      "RelativePath": "HighlightedImages/highlighted_highlighted_100036_Front#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vydjv7f7uq",
+      "Integrity": "d3iejTcR6lVEV5nBYskf0dTOHRcL9dRwkuawV5jr1fY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\HighlightedImages\\highlighted_highlighted_100036_Front.jpg"
+    },
+    {
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg",
+      "SourceId": "SQCScanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "BasePath": "_content/SQCScanner",
+      "RelativePath": "HighlightedImages/highlighted_highlighted_highlighted_100036_Front#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "yu68bad4q6",
+      "Integrity": "Rgi3fo5I2iaX8wPNTsTg302QtfxnOLHh+1Xf/Kn+R8s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg"
+    },
+    {
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+      "SourceId": "SQCScanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "BasePath": "_content/SQCScanner",
+      "RelativePath": "template1#[.{fingerprint}]?.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lkfbh0eigy",
+      "Integrity": "lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\template1.json"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "HighlightedImages/highlighted_100036_Front.hglozyp3uz.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_100036_Front.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2007430"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"X2LmrwLQRUnP9b+QkjfvGGYZD9eYruqjoj8FWYds8AU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 06:21:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hglozyp3uz"
+        },
+        {
+          "Name": "label",
+          "Value": "HighlightedImages/highlighted_100036_Front.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-X2LmrwLQRUnP9b+QkjfvGGYZD9eYruqjoj8FWYds8AU="
+        }
+      ]
+    },
+    {
+      "Route": "HighlightedImages/highlighted_100036_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_100036_Front.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2007430"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"X2LmrwLQRUnP9b+QkjfvGGYZD9eYruqjoj8FWYds8AU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 06:21:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-X2LmrwLQRUnP9b+QkjfvGGYZD9eYruqjoj8FWYds8AU="
+        }
+      ]
+    },
+    {
+      "Route": "HighlightedImages/highlighted_highlighted_100036_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_100036_Front.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2008898"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"d3iejTcR6lVEV5nBYskf0dTOHRcL9dRwkuawV5jr1fY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 09:41:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-d3iejTcR6lVEV5nBYskf0dTOHRcL9dRwkuawV5jr1fY="
+        }
+      ]
+    },
+    {
+      "Route": "HighlightedImages/highlighted_highlighted_100036_Front.vydjv7f7uq.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_100036_Front.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2008898"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"d3iejTcR6lVEV5nBYskf0dTOHRcL9dRwkuawV5jr1fY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 09:41:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vydjv7f7uq"
+        },
+        {
+          "Name": "label",
+          "Value": "HighlightedImages/highlighted_highlighted_100036_Front.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-d3iejTcR6lVEV5nBYskf0dTOHRcL9dRwkuawV5jr1fY="
+        }
+      ]
+    },
+    {
+      "Route": "HighlightedImages/highlighted_highlighted_highlighted_100036_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2008655"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Rgi3fo5I2iaX8wPNTsTg302QtfxnOLHh+1Xf/Kn+R8s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 09:41:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Rgi3fo5I2iaX8wPNTsTg302QtfxnOLHh+1Xf/Kn+R8s="
+        }
+      ]
+    },
+    {
+      "Route": "HighlightedImages/highlighted_highlighted_highlighted_100036_Front.yu68bad4q6.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2008655"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Rgi3fo5I2iaX8wPNTsTg302QtfxnOLHh+1Xf/Kn+R8s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 09:41:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yu68bad4q6"
+        },
+        {
+          "Name": "label",
+          "Value": "HighlightedImages/highlighted_highlighted_highlighted_100036_Front.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Rgi3fo5I2iaX8wPNTsTg302QtfxnOLHh+1Xf/Kn+R8s="
+        }
+      ]
+    },
+    {
+      "Route": "template1.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14256"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 11:23:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA="
+        }
+      ]
+    },
+    {
+      "Route": "template1.lkfbh0eigy.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14256"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 06 May 2025 11:23:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lkfbh0eigy"
+        },
+        {
+          "Name": "label",
+          "Value": "template1.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA="
+        }
+      ]
+    }
+  ]
 }

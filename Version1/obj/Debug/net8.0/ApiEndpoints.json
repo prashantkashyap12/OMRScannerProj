@@ -16,6 +16,79 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SQCScanner.Controllers.TemplateController",
+    "Method": "deleteTemp",
+    "RelativePath": "api/Template/DeleteTemp",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.TemplateController",
+    "Method": "getImgTemp",
+    "RelativePath": "api/Template/GetImgTemp",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.TemplateController",
+    "Method": "imgRec",
+    "RelativePath": "api/Template/ImgTemplate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ImgTemp",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "TempName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.TemplateController",
+    "Method": "processTemp",
+    "RelativePath": "api/Template/UploadTemp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TemplateSet",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.TemplateController",
+    "Method": "viewTemp",
+    "RelativePath": "api/Template/ViewTemplate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SQCScanner.Controllers.userAuth",
     "Method": "delete",
     "RelativePath": "api/userAuth/DeleteEmp",

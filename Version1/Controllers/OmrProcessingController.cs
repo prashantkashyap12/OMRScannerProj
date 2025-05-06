@@ -10,6 +10,7 @@ using Version1.Modal;
 using Version1.Services;
 using Microsoft.AspNetCore;
 using Vintasoft.Imaging.Codecs.ImageFiles;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Version1.Controllers
 {
@@ -19,25 +20,23 @@ namespace Version1.Controllers
     {
         private readonly OmrProcessingService _omrService;
         private readonly IWebHostEnvironment _env;
-
         public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env)
         {
             _omrService = omrService;
             _env = env;
         }
 
+        // Process OMR Sheet -
+        [Authorize(Roles="User")]
         [HttpPost("process-omr")]
         public async Task<IActionResult> ProcessOmrSheet(IFormFile template)
         {
-
-            string folderPath = $@"D:\Images\Uttarakhand";
+            string folderPath = $@"D:\Prashant_Devloper\Web_Api\ScannerProj\OMRScannerProj\Version1\wwwroot\HighlightedImages";
             if (!Directory.Exists(folderPath))
             {
                 return BadRequest("Folder path is invalid.");
             }
-            var imageFiles = Directory.GetFiles(folderPath, "*.*")
-             .Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg"))
-             .ToList();
+            var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")) .ToList();
 
             // Save template once
             string templatePath = Path.Combine(_env.WebRootPath, template.FileName);
@@ -46,7 +45,6 @@ namespace Version1.Controllers
             {
                 await template.CopyToAsync(stream);
             }
-
             var results = new List<OmrResult>();
             foreach (var imagePath in imageFiles)
             {
@@ -59,7 +57,6 @@ namespace Version1.Controllers
                 var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath);
                 results.Add(res);
             }
-
             return Ok(results);
         }
     }
