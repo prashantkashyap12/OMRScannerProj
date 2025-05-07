@@ -1388,3 +1388,4 @@ D:\Prashant_Devloper\Web_Api\ScannerProj\OMRScannerProj\Version1\obj\Debug\net8.
 D:\Prashant_Devloper\Web_Api\ScannerProj\OMRScannerProj\Version1\obj\Debug\net8.0\SQCScanner.genruntimeconfig.cache
 D:\Prashant_Devloper\Web_Api\ScannerProj\OMRScannerProj\Version1\obj\Debug\net8.0\ref\SQCScanner.dll
 D:\Prashant_Devloper\Web_Api\ScannerProj\OMRScannerProj\Version1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Prashant_Devloper\Web_Api\ScannerProj\OMRScannerProj\Version1\bin\Debug\net8.0\template.json

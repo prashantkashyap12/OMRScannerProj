@@ -1,13 +1,17 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Linq;
+using OpenCvSharp;
 using SQCScanner.Modal;
 using SQCScanner.Services;
 using Version1.Data;
 using Version1.Modal;
+using static OpenCvSharp.XImgProc.CvXImgProc;
 
 namespace SQCScanner.Controllers
 {
@@ -23,101 +27,9 @@ namespace SQCScanner.Controllers
             _env = env;
             _dbContext = dbContext;
         }
-        // uploadData
+        // DONE - -
         [HttpPost]
-        [Route("UploadTemp")]
-        public async Task<IActionResult> processTemp(IFormFile TemplateSet)
-        {
-            //var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
-
-            if (TemplateSet != null && Path.GetExtension(TemplateSet.FileName).ToLower() == ".json")
-            {
-                // FolderPath, FilePath, RenameFile save file
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "TempMaster");
-                var fileName = Path.GetFileName(TemplateSet.FileName);
-                string filePath = Path.Combine(uploadsFolder, fileName);
-                //string fileNames = Path.GetFileName(filePath);
-
-                DateTime currentTimes = DateTime.Now;
-                string DateTimeFormat = currentTimes.ToString("yyyy-MM-dd HH:mm:ss");
-
-                // does fileName is Exist in DB
-                var exists = await _dbContext.TemplateRec.
-                    AnyAsync(t => t.FileName == fileName);
-
-                // NOT EXIST
-                if (!exists)
-                {
-                    // Save into Folder
-                    using (var TempSet = new FileStream(filePath, FileMode.Create))
-                    {
-                        await TemplateSet.CopyToAsync(TempSet);
-                    }
-                    // Find From FolderLoc, get JsonHead for save into table name.
-                    string templateJson = await System.IO.File.ReadAllTextAsync(filePath);
-                    var template = JObject.Parse(templateJson);
-                    string tempNames = template["name"]?.ToString();
-
-                    _dbContext.Add(new TempRecord
-                    {
-                        TemplateName = tempNames,
-                        FileName = fileName,
-                        FileUrl = filePath,
-
-                        Time = DateTimeFormat
-                    });
-                    await _dbContext.SaveChangesAsync();
-                    return Ok("File Save into Table and Folder");
-                }
-                else
-                {
-                    return BadRequest("File Already Exist");
-                }
-            }
-            else
-            {
-                return BadRequest("Please use JSON File");
-            }
-        }
-
-        // getData
-        [HttpGet]
-        [Route("ViewTemplate")]
-        public async Task<IActionResult> viewTemp()
-        {
-            string uploadsFolder = Path.Combine(_env.WebRootPath, "TempMaster");
-            if (!Directory.Exists(uploadsFolder))
-            {
-                return BadRequest("Folder path is invalid.");
-            }
-            var JSonFileFiles = Directory.GetFiles(uploadsFolder, "*.*")
-            .Where(f => f.EndsWith(".json"))
-             .ToList();
-            var results = new List<TempModelRev>();
-            foreach (var TempPath in JSonFileFiles)
-            {
-                string fileNames = Path.GetFileName(TempPath);  // Get the file name
-                string filePath = Path.Combine(uploadsFolder, fileNames); // File ka full path
-                string templateJson = await System.IO.File.ReadAllTextAsync(TempPath);  // TempPath is your file path
-                var template = JObject.Parse(templateJson);   // json parse
-                string tempNames = template["name"]?.ToString();  // Using indexing to access 'name'
-                // save TemplateFile into Table
-                _dbContext.Add(new TempRecord
-                {
-                    TemplateName = tempNames,
-                    FileName = fileNames,
-                    FileUrl = filePath
-                });
-                await _dbContext.SaveChangesAsync();
-                // save TemplateFile into Table
-            }
-            return Ok(results);
-        }
-
-
-        // GetRecord
-        [HttpPost]
-        [Route("ImgTemplate")]
+        [Route("Create_ImeTemp")]
         public async Task<IActionResult> imgRec(IFormFile ImgTemp, string TempName)
         {
             dynamic res;
@@ -132,19 +44,47 @@ namespace SQCScanner.Controllers
             }
             try
             {
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "TempMaster");
-                var fileName = Path.GetFileName(ImgTemp.FileName);
-                string filePath = Path.Combine(uploadsFolder, fileName);
 
-                var exists = await _dbContext.ImgTemplate.
-                    AnyAsync(t => t.FileName == fileName);
+                //// DONE Unique ImgType
+                string fileName = Path.GetFileName(ImgTemp.FileName);
+                var imgPaths = _dbContext.ImgTemplate.Select(x => x.imgPath).ToList();
+                foreach (var imgPath in imgPaths)
+                {
+                    Uri uri = new Uri(imgPath);
+                    string ImgFileName = Path.GetFileName(uri.AbsolutePath);
+                    if (ImgFileName == fileName)
+                    {
+                        return BadRequest("ImageFile is Already Exist");
+                    }
+                }
+
+                // Done Unique FileName
+                var TempNameUnq = _dbContext.ImgTemplate.Select(x => x.FileName).ToList();
+                foreach (var tempUnq in TempNameUnq)
+                {
+                    if (tempUnq == TempName)
+                    {
+                        return BadRequest("FileName is Already Exist");
+                    }
+                }
+
+                string uploadsFolder = Path.Combine(_env.WebRootPath, "ImageManager");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+                var ImgfileName = Path.GetFileName(ImgTemp.FileName);   
+                string filePath = Path.Combine(uploadsFolder, ImgfileName);
+                var exists = await _dbContext.ImgTemplate.AnyAsync(t => t.FileName == fileName);
                 var results = new List<ImgTemp>();
                 if (!exists)
                 {
+                    // Save into Root
                     using (var TempSet = new FileStream(filePath, FileMode.Create))
                     {
                         await ImgTemp.CopyToAsync(TempSet);
                     }
+                    // Save into DB
                     var resp = _dbContext.Add(new ImgTemp
                     {
                         FileName = TempName,
@@ -172,30 +112,172 @@ namespace SQCScanner.Controllers
             return Ok(res);
         }
 
+        // DONE - -
         [HttpGet]
-        [Route("GetImgTemp")]
+        [Route("List_ImeTemp")]
         public async Task<IActionResult> getImgTemp()
         {
-            var results = await _dbContext.ImgTemplate.ToListAsync();
-            if (results == null)
+            dynamic res;
+            try
             {
-                return NotFound("No data found.");
+                var results = await _dbContext.ImgTemplate.ToListAsync();
+                if (results.Count == null || results.Count == 0)
+                {
+                    res = new
+                    {
+                        state = false,
+                        Massage = "Record Not Found"
+                    };
+                }
+                else
+                {
+                    res = new
+                    {
+                        state = true,
+                        Massage = "Record Found",
+                        body = results
+                    };
+                }
+            }catch(Exception ex)
+            {
+                res = new
+                {
+                    state = false,
+                    Massage = ex.Message,
+                };
             }
-            return Ok(results);
+            return Ok(res);
         }
 
+        // file will be deleted from DB and File Manager too
         [HttpDelete]
-        [Route("DeleteTemp")]
+        [Route("Del_ImeTemp")]
         public async Task<IActionResult> deleteTemp(int id)
         {
-            var tempRecord = await _dbContext.TemplateRec.FindAsync(id);
-            if (tempRecord == null)
+            dynamic res;
+            try
             {
-                return NotFound("Template not found.");
+                // Remove perticular id from DB
+                var tempRecord = await _dbContext.ImgTemplate.FindAsync(id);
+                if (tempRecord == null)
+                {
+                    return NotFound("Template not found.");
+                }
+                _dbContext.ImgTemplate.Remove(tempRecord);
+                await _dbContext.SaveChangesAsync();
+
+                // Img Del  -- Root
+                string ImgFold = Path.Combine(_env.WebRootPath, "ImageManager");
+                var imgTemp = tempRecord.imgPath;
+                Uri uri = new Uri(imgTemp);
+                string ImgFileName = Path.GetFileName(uri.AbsolutePath);
+                string ImgFilePath = Path.Combine(ImgFold, ImgFileName);
+                if (System.IO.File.Exists(ImgFilePath))
+                {
+                    System.IO.File.Delete(ImgFilePath);
+                }
+             
+                if (!string.IsNullOrEmpty(tempRecord?.JsonPath))
+                {
+                    try
+                    {
+                        Uri urin = new Uri(tempRecord.JsonPath);
+                        string TempFileName = Path.GetFileName(urin.AbsolutePath);
+                        string JsonFilePath = Path.Combine(ImgFold, TempFileName);
+
+                        if (System.IO.File.Exists(JsonFilePath))
+                        {
+                            System.IO.File.Delete(JsonFilePath);
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        res = new
+                        {
+                            message = ex.Message
+                        };
+                    }
+                }
+                res = new
+                {
+                    message = "Template delete from database and fileManager.",
+                    state = true
+                };
             }
-            _dbContext.TemplateRec.Remove(tempRecord);
-            await _dbContext.SaveChangesAsync();
-            return Ok("Template deleted successfully.");
+            catch(Exception ex)
+            {
+                res = new
+                {
+                    message = ex.Message,
+                    state = false
+                };
+            }
+            return Ok(res);
+        }
+
+        // As per File Name temp Url will be set into db along with save into fileManager
+        [HttpPut]
+        [Route("Update_ImeTemp")]
+        public async Task<IActionResult> Update(string FileName, IFormFile tempName) 
+        {
+            dynamic res;
+            try
+            {
+                if (tempName != null && Path.GetExtension(tempName.FileName).ToLower() == ".json")
+                {
+
+                    // save new JSON file into Folder
+                    string uploadsFolder = Path.Combine(_env.WebRootPath, "TempManager");
+                    var fileName = Path.GetFileName(tempName.FileName);
+                    string filePath = Path.Combine(uploadsFolder, fileName);
+                    var exists = await _dbContext.ImgTemplate.AnyAsync(t => t.FileName == FileName);
+                    if (exists)
+                    {
+                        // DB table is update -- DONE
+                        var ReturnDetails = _dbContext.ImgTemplate.FirstOrDefault(x => x.FileName == FileName);
+                        ReturnDetails.JsonPath = filePath;
+                        await _dbContext.SaveChangesAsync();
+
+                        // delete old File 
+                        var delOld = ReturnDetails.JsonPath;
+                        if (System.IO.File.Exists(delOld))
+                        {
+                            System.IO.File.Delete(delOld);
+                        }
+
+
+                        res = new
+                        {
+                            message = "JSON Template JSON SAVE",
+                            state = true
+                        };
+                    }
+                    else
+                    {
+                        res = new
+                        {
+                            message = "Template not found in database.",
+                            state = false
+                        };
+                    }
+                }
+                else
+                {
+                    res = new
+                    {
+                        message = "Template not JSON.",
+                        state = false
+                    };
+                }
+            }catch(Exception ex)
+            {
+                res = new
+                {
+                    message = ex.Message,
+                    state = false,
+                };
+            }
+            return Ok(res);
         }
     }
 }

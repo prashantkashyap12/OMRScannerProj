@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8dX4F2ZAqVeJ6/e7tvyD6S1NPxD9tRT1qYHj8mP8pNA=",
+  "Hash": "ADygr8cPS5EMYSZpywwIAaeh/acXxvAx5RVQCniPzRM=",
   "Source": "SQCScanner",
   "BasePath": "_content/SQCScanner",
   "Mode": "Default",
@@ -59,12 +59,12 @@
       "OriginalItemSpec": "wwwroot\\HighlightedImages\\highlighted_highlighted_100036_Front.jpg"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\ssc_2024.jpg",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
-      "RelativePath": "HighlightedImages/highlighted_highlighted_highlighted_100036_Front#[.{fingerprint}]?.jpg",
+      "RelativePath": "HighlightedImages/ssc_2024#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -77,15 +77,15 @@
       "Integrity": "Rgi3fo5I2iaX8wPNTsTg302QtfxnOLHh+1Xf/Kn+R8s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg"
+      "OriginalItemSpec": "wwwroot\\HighlightedImages\\ssc_2024.jpg"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
-      "RelativePath": "template1#[.{fingerprint}]?.json",
+      "RelativePath": "ImageManager/100036_Front#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -94,11 +94,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "lkfbh0eigy",
-      "Integrity": "lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA=",
+      "Fingerprint": "b9s09o2rxo",
+      "Integrity": "8Yf5cNQj1Uj4I/5m73dzERpRlAq4e5x9ctMYn5RxuUg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\template1.json"
+      "OriginalItemSpec": "wwwroot\\ImageManager\\100036_Front.jpg"
+    },
+    {
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg",
+      "SourceId": "SQCScanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "BasePath": "_content/SQCScanner",
+      "RelativePath": "ImageManager/d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "x3o5mgbf2k",
+      "Integrity": "TY+vefgnnr4rUvEBui40EZOxnMWGO70ZiecpEhO/isk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ImageManager\\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg"
     }
   ],
   "Endpoints": [
@@ -267,8 +288,8 @@
       ]
     },
     {
-      "Route": "HighlightedImages/highlighted_highlighted_highlighted_100036_Front.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg",
+      "Route": "HighlightedImages/ssc_2024.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\ssc_2024.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -304,8 +325,8 @@
       ]
     },
     {
-      "Route": "HighlightedImages/highlighted_highlighted_highlighted_100036_Front.yu68bad4q6.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg",
+      "Route": "HighlightedImages/ssc_2024.yu68bad4q6.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\ssc_2024.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -340,7 +361,7 @@
         },
         {
           "Name": "label",
-          "Value": "HighlightedImages/highlighted_highlighted_highlighted_100036_Front.jpg"
+          "Value": "HighlightedImages/ssc_2024.jpg"
         },
         {
           "Name": "integrity",
@@ -349,8 +370,8 @@
       ]
     },
     {
-      "Route": "template1.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+      "Route": "ImageManager/100036_Front.b9s09o2rxo.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -359,56 +380,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14256"
+          "Value": "1310456"
         },
         {
           "Name": "Content-Type",
-          "Value": "application/json"
+          "Value": "image/jpeg"
         },
         {
           "Name": "ETag",
-          "Value": "\"lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA=\""
+          "Value": "\"8Yf5cNQj1Uj4I/5m73dzERpRlAq4e5x9ctMYn5RxuUg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 11:23:32 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA="
-        }
-      ]
-    },
-    {
-      "Route": "template1.lkfbh0eigy.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "14256"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/json"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 11:23:32 GMT"
+          "Value": "Wed, 07 May 2025 11:02:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -418,15 +402,134 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lkfbh0eigy"
+          "Value": "b9s09o2rxo"
         },
         {
           "Name": "label",
-          "Value": "template1.json"
+          "Value": "ImageManager/100036_Front.jpg"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA="
+          "Value": "sha256-8Yf5cNQj1Uj4I/5m73dzERpRlAq4e5x9ctMYn5RxuUg="
+        }
+      ]
+    },
+    {
+      "Route": "ImageManager/100036_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1310456"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Yf5cNQj1Uj4I/5m73dzERpRlAq4e5x9ctMYn5RxuUg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 11:02:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8Yf5cNQj1Uj4I/5m73dzERpRlAq4e5x9ctMYn5RxuUg="
+        }
+      ]
+    },
+    {
+      "Route": "ImageManager/d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2487597"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TY+vefgnnr4rUvEBui40EZOxnMWGO70ZiecpEhO/isk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 11:53:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TY+vefgnnr4rUvEBui40EZOxnMWGO70ZiecpEhO/isk="
+        }
+      ]
+    },
+    {
+      "Route": "ImageManager/d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.x3o5mgbf2k.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2487597"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TY+vefgnnr4rUvEBui40EZOxnMWGO70ZiecpEhO/isk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 11:53:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "x3o5mgbf2k"
+        },
+        {
+          "Name": "label",
+          "Value": "ImageManager/d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TY+vefgnnr4rUvEBui40EZOxnMWGO70ZiecpEhO/isk="
         }
       ]
     }

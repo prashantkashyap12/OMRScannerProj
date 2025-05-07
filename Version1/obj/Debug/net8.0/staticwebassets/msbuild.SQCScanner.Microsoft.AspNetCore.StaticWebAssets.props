@@ -36,12 +36,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_highlighted_100036_Front.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_highlighted_highlighted_100036_Front.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\ssc_2024.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>HighlightedImages/highlighted_highlighted_highlighted_100036_Front.jpg</RelativePath>
+      <RelativePath>HighlightedImages/ssc_2024.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -52,25 +52,43 @@
       <Integrity>Rgi3fo5I2iaX8wPNTsTg302QtfxnOLHh+1Xf/Kn+R8s=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_highlighted_highlighted_100036_Front.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\ssc_2024.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\template1.json'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100036_Front.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>template1.json</RelativePath>
+      <RelativePath>ImageManager/100036_Front.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lkfbh0eigy</Fingerprint>
-      <Integrity>lTS3xVcao2VK9EJnS+1u/Q9fF8TEKGpZ+WTUCSoXXPA=</Integrity>
+      <Fingerprint>b9s09o2rxo</Fingerprint>
+      <Integrity>8Yf5cNQj1Uj4I/5m73dzERpRlAq4e5x9ctMYn5RxuUg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\template1.json'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100036_Front.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>ImageManager/d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>x3o5mgbf2k</Fingerprint>
+      <Integrity>TY+vefgnnr4rUvEBui40EZOxnMWGO70ZiecpEhO/isk=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

@@ -9,12 +9,16 @@
       "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_highlighted_100036_Front.jpg"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg",
-      "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_highlighted_highlighted_100036_Front.jpg"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\ssc_2024.jpg",
+      "PackagePath": "staticwebassets\\HighlightedImages\\ssc_2024.jpg"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
-      "PackagePath": "staticwebassets\\template1.json"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
+      "PackagePath": "staticwebassets\\ImageManager\\100036_Front.jpg"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg",
+      "PackagePath": "staticwebassets\\ImageManager\\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SQCScanner.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

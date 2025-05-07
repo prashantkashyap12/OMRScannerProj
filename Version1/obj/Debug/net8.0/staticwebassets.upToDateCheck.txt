@@ -1,4 +1,5 @@
 wwwroot\HighlightedImages\highlighted_100036_Front.jpg
 wwwroot\HighlightedImages\highlighted_highlighted_100036_Front.jpg
-wwwroot\HighlightedImages\highlighted_highlighted_highlighted_100036_Front.jpg
-wwwroot\template1.json
+wwwroot\HighlightedImages\ssc_2024.jpg
+wwwroot\ImageManager\100036_Front.jpg
+wwwroot\ImageManager\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg

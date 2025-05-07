@@ -60,7 +60,6 @@ namespace SQCScanner.Controllers
                 };
             }
             return Ok(res);
-
         }
 
         // Retireve API --  All Record
@@ -68,7 +67,6 @@ namespace SQCScanner.Controllers
         [Route("GetList")]
         public IActionResult GetList()
         {
-            // Get all data from EmpClass
             var empList = _DbContext.empModels.ToList();
             if (empList == null)
             {
@@ -76,7 +74,6 @@ namespace SQCScanner.Controllers
             }
             else if (empList.Any())
             {
-                //var fs = empList.First();
                 var fs = empList;
                 return Ok(fs);
             }
