@@ -13,12 +13,12 @@
       "PackagePath": "staticwebassets\\HighlightedImages\\ssc_2024.jpg"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
-      "PackagePath": "staticwebassets\\ImageManager\\100036_Front.jpg"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg",
+      "PackagePath": "staticwebassets\\ImageManager\\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg",
-      "PackagePath": "staticwebassets\\ImageManager\\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template.json",
+      "PackagePath": "staticwebassets\\TempManager\\template.json"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SQCScanner.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

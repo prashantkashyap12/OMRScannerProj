@@ -27,7 +27,6 @@ namespace Version1.Controllers
         }
 
         // Process OMR Sheet -
-        [Authorize(Roles="User")]
         [HttpPost("process-omr")]
         public async Task<IActionResult> ProcessOmrSheet(IFormFile template)
         {
@@ -58,6 +57,6 @@ namespace Version1.Controllers
                 results.Add(res);
             }
             return Ok(results);
-        }
+        } //trigers, storage procesger, 
     }
 }

@@ -1,5 +1,5 @@
 wwwroot\HighlightedImages\highlighted_100036_Front.jpg
 wwwroot\HighlightedImages\highlighted_highlighted_100036_Front.jpg
 wwwroot\HighlightedImages\ssc_2024.jpg
-wwwroot\ImageManager\100036_Front.jpg
-wwwroot\ImageManager\d4e85f14-3ba4-4ee1-8200-be2aa8cc0796_highlighted.jpg
+wwwroot\ImageManager\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg
+wwwroot\TempManager\template.json

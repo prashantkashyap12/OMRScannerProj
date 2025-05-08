@@ -64,6 +64,22 @@
   },
   {
     "ContainingType": "SQCScanner.Controllers.TemplateController",
+    "Method": "getImgTemp",
+    "RelativePath": "api/Template/Single_ImeTem",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.TemplateController",
     "Method": "Update",
     "RelativePath": "api/Template/Update_ImeTemp",
     "HttpMethod": "PUT",

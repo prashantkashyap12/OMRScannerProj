@@ -13,6 +13,10 @@ builder.Services.AddScoped<OmrProcessingService>();
 builder.Services.AddScoped<JwtAuth>();
 builder.Services.AddScoped<EncptDcript>();
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 
 // Cross Policy
 builder.Services.AddCors(options =>
@@ -52,6 +56,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles();
 app.UseCors("AllowFrontend");
 app.UseHttpsRedirection();
 app.UseAuthentication();
