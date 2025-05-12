@@ -139,6 +139,7 @@ wwwroot\ImageManager\100.jpg
 wwwroot\ImageManager\100036_Front (1).jpg
 wwwroot\ImageManager\100036_Front.jpg
 wwwroot\ImageManager\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg
+wwwroot\SQC2023-24.json
 wwwroot\template.json
 wwwroot\template1.json
 wwwroot\TempManager\dsfgdsf.json

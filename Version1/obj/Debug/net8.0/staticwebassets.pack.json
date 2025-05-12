@@ -565,6 +565,10 @@
       "PackagePath": "staticwebassets\\ImageManager\\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg"
     },
     {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24.json",
+      "PackagePath": "staticwebassets\\SQC2023-24.json"
+    },
+    {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\dsfgdsf.json",
       "PackagePath": "staticwebassets\\TempManager\\dsfgdsf.json"
     },

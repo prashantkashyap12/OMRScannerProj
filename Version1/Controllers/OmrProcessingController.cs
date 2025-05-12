@@ -24,44 +24,13 @@ namespace Version1.Controllers
     {
         private readonly OmrProcessingService _omrService;
         private readonly IWebHostEnvironment _env;
-        private readonly WebSoketHandler _socketHandler;
-
-        private readonly WebSocketConnectionManager _connectionManager;
-
-
-        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env, WebSocketConnectionManager connectionManager, WebSoketHandler socketHandler)
+        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env)
         {
             _omrService = omrService;
             _env = env;
-            _connectionManager = connectionManager;
-            _socketHandler = socketHandler;
         }
 
-        [HttpGet("/ws")]
-        public async Task Get()
-        {
-            if (HttpContext.WebSockets.IsWebSocketRequest)
-            {
-                var socket = await HttpContext.WebSockets.AcceptWebSocketAsync();
-                _connectionManager.AddSocket(socket);
-
-                var buffer = new byte[1024 * 4];
-                while (socket.State == WebSocketState.Open)
-                {
-                    var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-
-                    if (result.MessageType == WebSocketMessageType.Close)
-                        await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closed", CancellationToken.None);
-                }
-            }
-            else
-            {
-                HttpContext.Response.StatusCode = 400;
-            }
-        }
-
-
-        //  OMR Processing + WebSocket notification
+        // Process OMR Sheet -
         [HttpPost("process-omr")]
         public async Task<IActionResult> ProcessOmrSheet(IFormFile template, string folderPath)
         {
@@ -69,8 +38,7 @@ namespace Version1.Controllers
             {
                 return BadRequest("Folder path is invalid.");
             }
-
-            var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")) .ToList();
+            var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
 
             // Save template once
             string templatePath = Path.Combine(_env.WebRootPath, template.FileName);
@@ -80,25 +48,19 @@ namespace Version1.Controllers
                 await template.CopyToAsync(stream);
             }
             var results = new List<OmrResult>();
-            int count = 1;
-
             foreach (var imagePath in imageFiles)
             {
                 // Create Uploads folder path on root
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "Uploads");
-
-                // Make unique file name with scanFile_ prefix.
-                // String fileExtension = imagePath.
-                // Make new destination image path in Uploads.
-                
-                string newImagePath = Path.Combine(uploadsFolder, Path.GetFileName(imagePath));
+                // Make unique file name with scanFile_ prefix
+                string fileExtension = imagePath;
+                // Make new destination image path in Uploads
+                string newImagePath = Path.Combine(uploadsFolder, fileExtension);
                 var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath);
                 results.Add(res);
-                await _socketHandler.BroadcastMessageAsync($"Image processed");
-                count++;
             }
-            await _socketHandler.BroadcastMessageAsync("OMR Processing Complete");
             return Ok(results);
-        } // Trigers, storage procesger, 
+        }
+
     }
 }

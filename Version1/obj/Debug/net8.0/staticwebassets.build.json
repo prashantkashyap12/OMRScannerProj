@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lwD1ZxaE1u6lkmXfby9YsaXr5cFsTvLNaIM0H2BlFQQ=",
+  "Hash": "PB5OsOop3Jev5vym3oHczq7AAJqfVRSgPPcharPa3YQ=",
   "Source": "SQCScanner",
   "BasePath": "_content/SQCScanner",
   "Mode": "Default",
@@ -2978,6 +2978,27 @@
       "OriginalItemSpec": "wwwroot\\ImageManager\\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg"
     },
     {
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24.json",
+      "SourceId": "SQCScanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "BasePath": "_content/SQCScanner",
+      "RelativePath": "SQC2023-24#[.{fingerprint}]?.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "z3xgpj6f6b",
+      "Integrity": "Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\SQC2023-24.json"
+    },
+    {
       "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
@@ -3170,7 +3191,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3215,7 +3236,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3252,7 +3273,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3297,7 +3318,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3334,7 +3355,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3379,7 +3400,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3416,7 +3437,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3453,7 +3474,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3498,7 +3519,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3543,7 +3564,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3580,7 +3601,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3617,7 +3638,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3662,7 +3683,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3699,7 +3720,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 09:21:12 GMT"
+          "Value": "Mon, 12 May 2025 11:58:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14706,6 +14727,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-DWEXIP/FgZiDNlXfTw31vGegawk2y0HVOPAWIHfLm/I="
+        }
+      ]
+    },
+    {
+      "Route": "SQC2023-24.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54120"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 11:45:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk="
+        }
+      ]
+    },
+    {
+      "Route": "SQC2023-24.z3xgpj6f6b.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24.json",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54120"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/json"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 11:45:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "z3xgpj6f6b"
+        },
+        {
+          "Name": "label",
+          "Value": "SQC2023-24.json"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk="
         }
       ]
     },

@@ -227,21 +227,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Version1.Controllers.OmrProcessingController",
-    "Method": "Get",
-    "RelativePath": "ws",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 200
-      }
-    ]
   }
 ]

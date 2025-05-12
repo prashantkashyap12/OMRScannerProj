@@ -8,7 +8,8 @@ namespace Version1.Modal
         [Key]
         public int Id { get; set; }
         public string FileName { get; set; } = string.Empty;
-        //public string Answers {  get; set; } = string.Empty;
+
+          //   public string Answers {  get; set; } = string.Empty;
         public Dictionary<string, string> FieldResults { get; set; } = new();
         public DateTime ProcessedAt {get; set; } = DateTime.UtcNow;
        

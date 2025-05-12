@@ -12,8 +12,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddScoped<OmrProcessingService>();
 builder.Services.AddScoped<JwtAuth>();
 builder.Services.AddScoped<EncptDcript>();
-builder.Services.AddSingleton<WebSocketConnectionManager>();
-builder.Services.AddSingleton<WebSoketHandler>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

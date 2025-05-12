@@ -82,7 +82,6 @@ namespace Version1.Services
 
                         result.FieldResults[fieldname] = combined;
                     }
-
                     else if (fieldType == "Alphabet")
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
@@ -98,13 +97,10 @@ namespace Version1.Services
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
                         result.FieldResults[fieldname] = JsonConvert.SerializeObject(answers);
-
                     }
-
                 }
             }
             result.ProcessedAt = DateTime.UtcNow;
-           
             return result;
         }
         private List<string> GenerateOptionsFromFieldType(string fieldType, List<BubbleInfo> bubbles)
@@ -116,14 +112,12 @@ namespace Version1.Services
 
                 return Enumerable.Range(0, RowCount).Select(i => i.ToString()).ToList(); 
             }
-
             if (fieldType.Equals("Alphabet", StringComparison.OrdinalIgnoreCase) || fieldType.Equals("Abc", StringComparison.OrdinalIgnoreCase))
             {
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
                 return Enumerable.Range(0, colCount).Select(i => ((char)('A' + i)).ToString()).ToList();
             }
-
             return new List<string>(); 
         }
 
@@ -136,7 +130,7 @@ namespace Version1.Services
         {
             // Step 1: Validate reading direction
             if (string.IsNullOrWhiteSpace(readdirection))
-                throw new ArgumentException("You must provide 'ReadingDirection' in the template. Allowed values: 'Horizontal' or 'Vertical'.");
+                throw new ArgumentException("You must provide   2'ReadingDirection' in the template. Allowed values: 'Horizontal' or 'Vertical'.");
 
             readdirection = readdirection.Trim();
 
@@ -155,10 +149,7 @@ namespace Version1.Services
                 int questionIndex = group.Key;
                 var filledOptions = new List<string>();
 
-
-                var sortedGroup = (readdirection == "Horizontal")
-                    ? group.OrderBy(b => b.Col)
-                    : group.OrderBy(b => b.Row);
+                var sortedGroup = (readdirection == "Horizontal") ? group.OrderBy(b => b.Col) : group.OrderBy(b => b.Row);
 
                 foreach (var bubble in sortedGroup)
                 {
@@ -170,15 +161,13 @@ namespace Version1.Services
 
                     if (IsBubbleFilled(cell, bubbleIntensity))
                     {
-                       
                         int optionIndex = (readdirection == "Horizontal") ? bubble.Col : bubble.Row;
-
                         if (optionIndex >= 0 && optionIndex < options.Count)
                             filledOptions.Add(options[optionIndex]);
                     }
                 }
+                string output;
 
-               string output;
 
         if (filledOptions.Count == 0)
         {
@@ -190,14 +179,10 @@ namespace Version1.Services
         }
         else
         {
-            output = allowMultiple
-                ? string.Join("", filledOptions)  // Multiple allowed, join
-                : "*";                             // Multiple not allowed
+            output = allowMultiple ? string.Join("", filledOptions) : "*";       // Multiple not allowed
         }
-
-        result[$"Q{questionIndex + 1}"] = output;
-            }
-
+         result[$"Q{questionIndex + 1}"] = output;
+        }
             return result;
         }
 
