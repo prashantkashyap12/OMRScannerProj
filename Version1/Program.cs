@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -12,23 +12,31 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddScoped<OmrProcessingService>();
 builder.Services.AddScoped<JwtAuth>();
 builder.Services.AddScoped<EncptDcript>();
+builder.Services.AddSingleton<WebSocketConnectionManager>();
+builder.Services.AddSingleton<WebSoketHandler>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//builder.WebHost.ConfigureKestrel(options =>
+//{
+//    // ✅ Bind to all network interfaces on HTTPS port
+//    options.ListenAnyIP(7257, listenOptions =>
+//    {
+//        listenOptions.UseHttps(); // Required if using https
+//    });
+//});
 
 // Cross Policy
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", builder =>
+    options.AddPolicy("AllowAnyOrigin", policy =>
     {
-        builder.WithOrigins("http://localhost:3000") // Replace with your frontend URL
-               .AllowAnyHeader()
-               .AllowAnyMethod()
-               .AllowCredentials(); // Needed if sending Authorization header
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
+
 
 // Add Authentication with JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -56,8 +64,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAnyOrigin");
 app.UseStaticFiles();
-app.UseCors("AllowFrontend");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

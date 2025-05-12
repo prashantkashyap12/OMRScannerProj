@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SQCScanner.Modal;
@@ -10,6 +11,7 @@ namespace SQCScanner.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAnyOrigin")]
     public class userAuth : ControllerBase
     {
         private readonly ApplicationDbContext _DbContext;

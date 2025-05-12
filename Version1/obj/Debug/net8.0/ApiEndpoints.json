@@ -11,6 +11,11 @@
         "Name": "template",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      },
+      {
+        "Name": "folderPath",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -222,5 +227,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Version1.Controllers.OmrProcessingController",
+    "Method": "Get",
+    "RelativePath": "ws",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

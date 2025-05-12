@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -17,12 +18,12 @@ namespace SQCScanner.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAnyOrigin")]
     public class TemplateController : ControllerBase
     {
         private readonly IWebHostEnvironment _env;
         private readonly ApplicationDbContext _dbContext;
         private readonly TempModelRev _TempModelRev;
-
         public TemplateController(IWebHostEnvironment env, ApplicationDbContext dbContext)
         {
             _env = env;
@@ -45,23 +46,8 @@ namespace SQCScanner.Controllers
             }
             try
             {
-
                 //// DONE Unique ImgType
                 string fileName = Path.GetFileName(ImgTemp.FileName);
-                //var imgPaths = _dbContext.ImgTemplate.Select(x => x.imgPath).ToList();
-                //foreach (var imgPath in imgPaths)
-                //{
-                //    Console.WriteLine("TEST");
-                //    Uri uri = new Uri(imgPath);
-                //    string ImgFileName = Path.GetFileName(uri.AbsolutePath);
-                //    if (ImgFileName == fileName)
-                //    {
-                //        return BadRequest("ImageFile is Already Exist");
-                //    }
-                //}
-                //    string BaseUrl = $"{Request.Scheme}://{Request.Host}/{relativePath}";
-                //    Done _ Unique _ FileName
-
                 var TempNameUnq = _dbContext.ImgTemplate.Select(x => x.FileName).ToList();
                 foreach (var tempUnq in TempNameUnq)
                 {
@@ -209,7 +195,7 @@ namespace SQCScanner.Controllers
             return Ok(res);
         }
 
-        // file will be deleted from DB and File Manager too
+        // File will be deleted from DB and File Manager too
         [HttpDelete]
         [Route("Del_ImeTemp")]
         public async Task<IActionResult> deleteTemp(int id)

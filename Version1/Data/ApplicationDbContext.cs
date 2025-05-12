@@ -10,7 +10,6 @@ namespace Version1.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options) :base(options) { 
         }   
         
-        //public DbSet<OmrResult> OmrResultstable { get; set; }
         public DbSet<EmpModel> empModels { get; set; }
         public DbSet<TempRecord> TemplateRec { get; set; }
         public DbSet<ImgTemp> ImgTemplate { get; set; }

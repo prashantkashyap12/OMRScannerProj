@@ -5,10 +5,31 @@
     "version": "1.0"
   },
   "paths": {
+    "/ws": {
+      "get": {
+        "tags": [
+          "OmrProcessing"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/OmrProcessing/process-omr": {
       "post": {
         "tags": [
           "OmrProcessing"
+        ],
+        "parameters": [
+          {
+            "name": "folderPath",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "content": {
