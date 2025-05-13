@@ -20,8 +20,10 @@ wwwroot\HighlightedImages\highlighted_10_02-05-2025_05-56-16-125_Image_Front.png
 wwwroot\HighlightedImages\highlighted_100.jpg
 wwwroot\HighlightedImages\highlighted_1000.jpg
 wwwroot\HighlightedImages\highlighted_100036_Front.jpg
+wwwroot\HighlightedImages\highlighted_100071_Front.jpg
 wwwroot\HighlightedImages\highlighted_100079_Front.jpg
 wwwroot\HighlightedImages\highlighted_1001.jpg
+wwwroot\HighlightedImages\highlighted_100108_Front.jpg
 wwwroot\HighlightedImages\highlighted_100111_Front.jpg
 wwwroot\HighlightedImages\highlighted_1002.jpg
 wwwroot\HighlightedImages\highlighted_1003.jpg
@@ -134,6 +136,7 @@ wwwroot\HighlightedImages\highlighted_91_02-05-2025_05-57-17-591_Image_Front.png
 wwwroot\HighlightedImages\highlighted_92_02-05-2025_05-57-18-009_Image_Front.png
 wwwroot\HighlightedImages\highlighted_93_02-05-2025_05-57-18-456_Image_Front.png
 wwwroot\HighlightedImages\highlighted_highlighted_100036_Front.jpg
+wwwroot\HighlightedImages\highlighted_OMR_Empty_Template.jpg
 wwwroot\HighlightedImages\ssc_2024.jpg
 wwwroot\ImageManager\100.jpg
 wwwroot\ImageManager\100036_Front (1).jpg

@@ -59,6 +59,7 @@ namespace Version1.Controllers
                 var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath);
                 results.Add(res);
             }
+
             return Ok(results);
         }
 

@@ -34,14 +34,14 @@ namespace Version1.Services
         public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath)
         {
             // Grayshade, shapDetact, Green rectangle
-            var highlightedImagePath = HighlightAndSaveBubbles(imagePath);
-            
+            //var highlightedImagePath = HighlightAndSaveBubbles(imagePath);
+
             // RGBA converstion
-            using var image = Image.Load<Rgba32>(highlightedImagePath);
+            using var image = Image.Load<Rgba32>(imagePath);
 
             // String JSON TEXT
             var templateJson = File.ReadAllText(templatePath);
-            
+
             // return to parsal from jsonTemp.
             var template = JObject.Parse(templateJson);
 
@@ -82,6 +82,7 @@ namespace Version1.Services
 
                         result.FieldResults[fieldname] = combined;
                     }
+
                     else if (fieldType == "Alphabet")
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
@@ -97,10 +98,13 @@ namespace Version1.Services
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
                         result.FieldResults[fieldname] = JsonConvert.SerializeObject(answers);
+
                     }
+
                 }
             }
             result.ProcessedAt = DateTime.UtcNow;
+
             return result;
         }
         private List<string> GenerateOptionsFromFieldType(string fieldType, List<BubbleInfo> bubbles)
@@ -110,15 +114,17 @@ namespace Version1.Services
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
 
-                return Enumerable.Range(0, RowCount).Select(i => i.ToString()).ToList(); 
+                return Enumerable.Range(0, RowCount).Select(i => i.ToString()).ToList();
             }
+
             if (fieldType.Equals("Alphabet", StringComparison.OrdinalIgnoreCase) || fieldType.Equals("Abc", StringComparison.OrdinalIgnoreCase))
             {
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
                 return Enumerable.Range(0, colCount).Select(i => ((char)('A' + i)).ToString()).ToList();
             }
-            return new List<string>(); 
+
+            return new List<string>();
         }
 
         private Dictionary<string, string> ExtractAnswersFromBubbles(
@@ -126,11 +132,10 @@ namespace Version1.Services
           List<Rectangle> bubbleRects,
           List<BubbleInfo> bubbleInfos,
           List<string> options,
-          string? readdirection, double bubbleIntensity, bool allowMultiple)  
+          string? readdirection, double bubbleIntensity, bool allowMultiple)
         {
-            // Step 1: Validate reading direction
             if (string.IsNullOrWhiteSpace(readdirection))
-                throw new ArgumentException("You must provide   2'ReadingDirection' in the template. Allowed values: 'Horizontal' or 'Vertical'.");
+                throw new ArgumentException("You must provide 'ReadingDirection' in the template. Allowed values: 'Horizontal' or 'Vertical'.");
 
             readdirection = readdirection.Trim();
 
@@ -139,7 +144,6 @@ namespace Version1.Services
 
             var result = new Dictionary<string, string>();
 
-            
             var grouped = (readdirection == "Horizontal")
                 ? bubbleInfos.GroupBy(b => b.Row).OrderBy(g => g.Key)
                 : bubbleInfos.GroupBy(b => b.Col).OrderBy(g => g.Key);
@@ -149,7 +153,11 @@ namespace Version1.Services
                 int questionIndex = group.Key;
                 var filledOptions = new List<string>();
 
-                var sortedGroup = (readdirection == "Horizontal") ? group.OrderBy(b => b.Col) : group.OrderBy(b => b.Row);
+                var sortedGroup = (readdirection == "Horizontal")
+                    ? group.OrderBy(b => b.Col)
+                    : group.OrderBy(b => b.Row);
+
+                int bubbleInGroupIndex = 0;
 
                 foreach (var bubble in sortedGroup)
                 {
@@ -161,121 +169,73 @@ namespace Version1.Services
 
                     if (IsBubbleFilled(cell, bubbleIntensity))
                     {
-                        int optionIndex = (readdirection == "Horizontal") ? bubble.Col : bubble.Row;
+                        int optionIndex = bubbleInGroupIndex;
+
                         if (optionIndex >= 0 && optionIndex < options.Count)
+                        {
                             filledOptions.Add(options[optionIndex]);
+                        }
                     }
+
+                    bubbleInGroupIndex++;
                 }
-                string output;
 
+                string output = "";
 
-        if (filledOptions.Count == 0)
-        {
-            output = "#"; // No bubble filled
-        }
-        else if (filledOptions.Count == 1)
-        {
-            output = filledOptions[0]; // Only one marked
-        }
-        else
-        {
-            output = allowMultiple ? string.Join("", filledOptions) : "*";       // Multiple not allowed
-        }
-         result[$"Q{questionIndex + 1}"] = output;
-        }
+                if (filledOptions.Count == 0)
+                {
+
+                    output = "#";
+                }
+                else if (filledOptions.Count == 1)
+                {
+                    output = filledOptions[0];
+                }
+                else if (filledOptions.Count > 1)
+                {
+                    output = allowMultiple
+                        ? string.Join("", filledOptions)
+                        : "*";
+                }
+
+                result[$"Q{questionIndex + 1}"] = output;
+            }
+
             return result;
         }
 
         private bool IsBubbleFilled(Image<Rgba32> bubble, double bubbleIntensity)
         {
             int blackPixels = 0;
-            int totalPixels = bubble.Width * bubble.Height;
-
-            // Calculate adaptive threshold using mean gray value
-            int totalGray = 0;
 
             for (int y = 0; y < bubble.Height; y++)
             {
                 for (int x = 0; x < bubble.Width; x++)
                 {
                     var pixel = bubble[x, y];
-                    int gray = (pixel.R + pixel.G + pixel.B) / 3;
-                    totalGray += gray;
-                }
-            }
 
-            int avgGray = totalGray / totalPixels;
-            int adaptiveThreshold = avgGray - 30; // dynamic offset, can tune
-
-            if (adaptiveThreshold < 50) adaptiveThreshold = 50; // prevent too low
-            if (adaptiveThreshold > 180) adaptiveThreshold = 180; // prevent too high
-
-            // Count dark pixels
-            for (int y = 0; y < bubble.Height; y++)
-            {
-                for (int x = 0; x < bubble.Width; x++)
-                {
-                    var pixel = bubble[x, y];
-                    int gray = (pixel.R + pixel.G + pixel.B) / 3;
-
-                    if (gray < adaptiveThreshold)
+                    if (pixel.R < 100 && pixel.G < 100 && pixel.B < 100)
+                    {
                         blackPixels++;
+                    }
                 }
             }
+
+            int totalPixels = bubble.Width * bubble.Height;
 
             double fillRatio = (double)blackPixels / totalPixels;
 
-            Console.WriteLine($"[DEBUG] FillRatio: {fillRatio:0.000}, Threshold: {adaptiveThreshold}, Sensitivity: {bubbleIntensity}");
-
             return fillRatio > bubbleIntensity;
-            //int blackPixels = 0;
 
-            //for (int y = 0; y < bubble.Height; y++)
-            //{
-            //    for (int x = 0; x < bubble.Width; x++)
-            //    {
-            //        var pixel = bubble[x, y];
-            //        int gray = (pixel.R + pixel.G + pixel.B) / 3;
-
-            //        if (gray < 100) // adjust if needed
-            //            blackPixels++;
-            //    }
-            //}
-
-            //int totalPixels = bubble.Width * bubble.Height;
-            //double fillRatio = (double)blackPixels / totalPixels;
-
-            //Console.WriteLine($"Bubble Fill Ratio: {fillRatio}");
-
-            //return fillRatio > bubbleIntensity;
         }
 
-        private string HighlightAndSaveBubbles(string imagePath)
-        {
-            var mat = Cv2.ImRead(imagePath, ImreadModes.Color);
-            var gray = new Mat();
-
-            Cv2.CvtColor(mat, gray, ColorConversionCodes.BGR2GRAY);
-            var binary = new Mat();
-
-            Cv2.AdaptiveThreshold(gray, binary, 255, AdaptiveThresholdTypes.MeanC, ThresholdTypes.BinaryInv, 11, 2);
-
-            var contours = Cv2.FindContoursAsArray(binary, RetrievalModes.External, ContourApproximationModes.ApproxSimple);
-            var saveDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "HighlightedImages");
-            Directory.CreateDirectory(saveDir); // Ensure the folder exists
-
-            var fileName = $"highlighted_{Path.GetFileName(imagePath)}";
-            var savePath = Path.Combine(saveDir, fileName);
-
-            Cv2.ImWrite(savePath, mat);
-
-            return savePath;
-        }
         private void SetProperty(OmrResult result, string propName, string value)
         {
             var prop = typeof(OmrResult).GetProperty(propName);
             if (prop != null && prop.CanWrite)
                 prop.SetValue(result, value);
         }
+
+
     }
 }

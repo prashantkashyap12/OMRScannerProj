@@ -81,12 +81,20 @@
       "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_100036_Front.jpg"
     },
     {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_100071_Front.jpg",
+      "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_100071_Front.jpg"
+    },
+    {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_100079_Front.jpg",
       "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_100079_Front.jpg"
     },
     {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_1001.jpg",
       "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_1001.jpg"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_100108_Front.jpg",
+      "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_100108_Front.jpg"
     },
     {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_100111_Front.jpg",
@@ -539,6 +547,10 @@
     {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_9_02-05-2025_05-56-15-709_Image_Front.png",
       "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_9_02-05-2025_05-56-15-709_Image_Front.png"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_OMR_Empty_Template.jpg",
+      "PackagePath": "staticwebassets\\HighlightedImages\\highlighted_OMR_Empty_Template.jpg"
     },
     {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\HighlightedImages\\highlighted_highlighted_100036_Front.jpg",

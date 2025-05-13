@@ -360,6 +360,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_100036_Front.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_100071_Front.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>HighlightedImages/highlighted_100071_Front.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>gvaoow2o6v</Fingerprint>
+      <Integrity>DAVDdq5dHpVSoAvqZZLBBUxFvI5AbWlgoHDRRP7Tmsk=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_100071_Front.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_100079_Front.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
@@ -395,6 +413,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_1001.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_100108_Front.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>HighlightedImages/highlighted_100108_Front.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>5ghjw8khsh</Fingerprint>
+      <Integrity>FZ/mAjlIb0gc6VsCoMFUyDE2yQT1R254VR3LXS0+BoQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_100108_Front.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_100111_Front.jpg'))">
       <SourceType>Package</SourceType>
@@ -2448,6 +2484,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_highlighted_100036_Front.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_OMR_Empty_Template.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>HighlightedImages/highlighted_OMR_Empty_Template.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>7cwjh1frem</Fingerprint>
+      <Integrity>idD6o6vZHh/pBAYq1hHDbzD2s84CGjEWFd+t2rxpBqw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\highlighted_OMR_Empty_Template.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\HighlightedImages\ssc_2024.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
@@ -2586,8 +2640,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>cc4cven9gt</Fingerprint>
-      <Integrity>/Mc2HJX4we4iU910AFsh0ovA2FcO5sA2ccClRfKyH2U=</Integrity>
+      <Fingerprint>fs26to4mj5</Fingerprint>
+      <Integrity>YU9IRLl2/rego2P/upK49Cxg483gV16E4Qkj8M/jcSs=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\template1.json'))</OriginalItemSpec>
