@@ -76,13 +76,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\template1.json'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"54120"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 14 May 2025 10:42:11 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"54120"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 14 May 2025 10:52:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/SQCScanner/template1.z3xgpj6f6b.json">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\template1.json'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"z3xgpj6f6b"},{"Name":"integrity","Value":"sha256-Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk="},{"Name":"label","Value":"_content/SQCScanner/template1.json"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"54120"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 14 May 2025 10:42:11 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"54120"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 14 May 2025 10:52:38 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/SQCScanner/template3.d46xr4aktg.json">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\template3.json'))</AssetFile>

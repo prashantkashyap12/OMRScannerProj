@@ -19,6 +19,7 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 using TesseractOCR.Renderers;
 using SQCScanner.Modal;
+using System.Text.RegularExpressions;
 
 namespace Version1.Services
 {
@@ -30,32 +31,23 @@ namespace Version1.Services
         {
             _context = context;
         }
-
         public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath)
         {
-            // Grayshade, shapDetact, Green rectangle
-            //var highlightedImagePath = HighlightAndSaveBubbles(imagePath);
-
-            // RGBA converstion
+            
             using var image = Image.Load<Rgba32>(imagePath);
 
-            // String JSON TEXT
             var templateJson = File.ReadAllText(templatePath);
-
-            // return to parsal from jsonTemp.
+            
             var template = JObject.Parse(templateJson);
 
-            // omrResult model k base par nre
             var result = new OmrResult
             {
                 FileName = Path.GetFileName(imagePath),
                 FieldResults = new Dictionary<string, string>()
             };
-
-            // Extract field Markup
             foreach (var field in template["fields"])
             {
-                double bubbleIntensity = field["bubbleIntensity"]?.Value<double>() ?? 0.3;
+               double bubbleIntensity = field["bubbleIntensity"]?.Value<double>() ?? 0.3;
                 string fieldType = field["fieldType"]!.ToString();
                 string fieldname = field["fieldName"]!.ToString();
                 var bubblesArray = field["bubbles"]?.ToObject<List<BubbleInfo>>();
@@ -65,11 +57,20 @@ namespace Version1.Services
                 {
                     var bubbleRects = bubblesArray.Select(b => new Rectangle(b.X, b.Y, b.Width, b.Height)).ToList();
 
-                    // Mark Reactange 
-                    var options = field["Options"]?.ToObject<List<string>>() ?? GenerateOptionsFromFieldType(fieldType, bubblesArray);
-                    
-                    // Direction of it (horizntal/vertical)
+                    var options = field["Options"]?.ToObject<List<string>>()?.Where(o => !string.IsNullOrWhiteSpace(o)).ToList();
+
+                    if (field["Options"] != null && (options == null || options.Count == 0))
+                    {
+                        throw new ArgumentException($"The field '{fieldname}' includes an 'Options' array but it is empty or invalid. Please provide valid options.");
+                    }
+
+                    if (options == null || options.Count == 0)
+                    {
+                        options = GenerateOptionsFromFieldType(fieldType, bubblesArray);
+                    }
+
                     string readdirection = field["ReadingDirection"]!.ToString();
+
 
                     if (fieldType == "Integer")
                     {
@@ -81,6 +82,7 @@ namespace Version1.Services
 
                         result.FieldResults[fieldname] = combined;
                     }
+
                     else if (fieldType == "Alphabet")
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
@@ -90,18 +92,48 @@ namespace Version1.Services
                                    .Where(val => val != "No bubble Mark" && val != "InvalidOption"));
 
                         result.FieldResults[fieldname] = combined;
+
                     }
                     else if (fieldType == "Abc")
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
-                        result.FieldResults[fieldname] = JsonConvert.SerializeObject(answers);
 
+                        // Check if fieldName is like "q6-q10"
+                        if (Regex.IsMatch(fieldname, @"q\d+-q\d+", RegexOptions.IgnoreCase))
+                        {
+                            var match = Regex.Match(fieldname, @"q(\d+)-q(\d+)", RegexOptions.IgnoreCase);
+                            int start = int.Parse(match.Groups[1].Value);
+                            int end = int.Parse(match.Groups[2].Value);
+
+                            int index = 0;
+                            for (int q = start; q <= end; q++)
+                            {
+                                string questionKey = $"Q{q}";
+                                if (answers.TryGetValue($"Q{index + 1}", out string? val))
+                                {
+                                    result.FieldResults[questionKey] = val;
+                                }
+                                index++;
+                            }
+                        }
+                        else
+                        {
+                            // Default behavior
+                            foreach (var kv in answers)
+                            {
+                                if (!string.IsNullOrWhiteSpace(kv.Value) && kv.Value != "No bubble Mark" && kv.Value != "InvalidOption")
+                                {
+                                    result.FieldResults[kv.Key] = kv.Value;
+                                }
+                            }
+                        }
                     }
+
 
                 }
             }
             result.ProcessedAt = DateTime.UtcNow;
-
+           
             return result;
         }
         private List<string> GenerateOptionsFromFieldType(string fieldType, List<BubbleInfo> bubbles)
@@ -123,13 +155,12 @@ namespace Version1.Services
 
             return new List<string>();
         }
-
         private Dictionary<string, string> ExtractAnswersFromBubbles(
-          Image<Rgba32> image,
-          List<Rectangle> bubbleRects,
-          List<BubbleInfo> bubbleInfos,
-          List<string> options,
-          string? readdirection, double bubbleIntensity, bool allowMultiple)
+     Image<Rgba32> image,
+     List<Rectangle> bubbleRects,
+     List<BubbleInfo> bubbleInfos,
+     List<string> options,
+     string? readdirection, double bubbleIntensity, bool allowMultiple)
         {
             if (string.IsNullOrWhiteSpace(readdirection))
                 throw new ArgumentException("You must provide 'ReadingDirection' in the template. Allowed values: 'Horizontal' or 'Vertical'.");
@@ -200,29 +231,54 @@ namespace Version1.Services
 
             return result;
         }
+        //private bool IsBubbleFilled(Image<Rgba32> bubble, double bubbleIntensity)
+        //{
+        //    int blackPixels = 0;
+
+        //    for (int y = 0; y < bubble.Height; y++)
+        //    {
+        //        for (int x = 0; x < bubble.Width; x++)
+        //        {
+        //            var pixel = bubble[x, y];
+
+        //            if (pixel.R < 100 && pixel.G < 100 && pixel.B < 100)
+        //            {
+        //                blackPixels++;
+        //            }
+        //        }
+        //    }
+
+        //    int totalPixels = bubble.Width * bubble.Height;
+
+        //    double fillRatio = (double)blackPixels / totalPixels;
+
+        //    return fillRatio > bubbleIntensity;
+
+        //}
 
         private bool IsBubbleFilled(Image<Rgba32> bubble, double bubbleIntensity)
         {
-            int blackPixels = 0;
+            using var ms = new MemoryStream();
+            bubble.SaveAsBmp(ms);
+            ms.Seek(0, SeekOrigin.Begin);
+            using var bitmap = new System.Drawing.Bitmap(ms);
+            using var mat = BitmapConverter.ToMat(bitmap);
 
-            for (int y = 0; y < bubble.Height; y++)
-            {
-                for (int x = 0; x < bubble.Width; x++)
-                {
-                    var pixel = bubble[x, y];
+            // Use OpenCvSharp.Rect explicitly to resolve ambiguity
+            var roi = new OpenCvSharp.Rect(0, 0, mat.Width, mat.Height);
+            using var cropped = new Mat(mat, roi);
 
-                    if (pixel.R < 100 && pixel.G < 100 && pixel.B < 100)
-                    {
-                        blackPixels++;
-                    }
-                }
-            }
+            using var gray = new Mat();
+            Cv2.CvtColor(cropped, gray, ColorConversionCodes.BGR2GRAY);
 
-            int totalPixels = bubble.Width * bubble.Height;
+            using var binary = new Mat();
+            Cv2.Threshold(gray, binary, 50, 255, ThresholdTypes.Binary);
 
-            double fillRatio = (double)blackPixels / totalPixels;
+            using var inverted = new Mat();
+            Cv2.BitwiseNot(binary, inverted);
 
-            return fillRatio > bubbleIntensity;
+            int blackPixels = Cv2.CountNonZero(inverted);
+            return blackPixels > bubbleIntensity;
 
         }
 
@@ -232,6 +288,5 @@ namespace Version1.Services
             if (prop != null && prop.CanWrite)
                 prop.SetValue(result, value);
         }
-
     }
 }
