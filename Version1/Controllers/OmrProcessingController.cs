@@ -14,6 +14,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using SQCScanner.Services;
 using System.Net.WebSockets;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Data.SqlClient;
+using Dapper;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.SignalR;
+using SQCScanner.websoketManager;
 
 namespace Version1.Controllers
 {
@@ -24,13 +30,21 @@ namespace Version1.Controllers
     {
         private readonly OmrProcessingService _omrService;
         private readonly IWebHostEnvironment _env;
-        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env)
+        private readonly ApplicationDbContext _dbContext;
+        private readonly RecordDBClass _recordTable;
+        private readonly WebSoketHandler _webSocketHandler;
+
+
+        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env, ApplicationDbContext dbContext,RecordDBClass recordTable, WebSoketHandler webSocketHandler)
         {
             _omrService = omrService;
             _env = env;
+            _dbContext = dbContext;
+            _recordTable = recordTable;
+            _webSocketHandler = webSocketHandler;
         }
 
-        // Process OMR Sheet -
+        //  Process OMR Sheet  
         [HttpPost("process-omr")]
         public async Task<IActionResult> ProcessOmrSheet(IFormFile template, string folderPath)
         {
@@ -48,6 +62,7 @@ namespace Version1.Controllers
                 await template.CopyToAsync(stream);
             }
             var results = new List<OmrResult>();
+            var crttb = 1;
             foreach (var imagePath in imageFiles)
             {
                 // Create Uploads folder path on root
@@ -56,12 +71,17 @@ namespace Version1.Controllers
                 string fileExtension = imagePath;
                 // Make new destination image path in Uploads
                 string newImagePath = Path.Combine(uploadsFolder, fileExtension);
+                if (crttb == 1)
+                {
+                    var tableCrt = await _recordTable.TableCreation(newImagePath, templatePath);
+                }
                 var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath);
                 results.Add(res);
+                string jsonResult = JsonSerializer.Serialize(res);
+                await _webSocketHandler.BroadcastMessageAsync(jsonResult);
+                crttb++;
             }
-
             return Ok(results);
         }
-
     }
 }

@@ -23,7 +23,6 @@ namespace SQCScanner.Controllers
     {
         private readonly IWebHostEnvironment _env;
         private readonly ApplicationDbContext _dbContext;
-        private readonly TempModelRev _TempModelRev;
         public TemplateController(IWebHostEnvironment env, ApplicationDbContext dbContext)
         {
             _env = env;

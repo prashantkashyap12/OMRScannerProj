@@ -67,10 +67,9 @@ namespace Version1.Services
 
                     // Mark Reactange 
                     var options = field["Options"]?.ToObject<List<string>>() ?? GenerateOptionsFromFieldType(fieldType, bubblesArray);
-
+                    
                     // Direction of it (horizntal/vertical)
                     string readdirection = field["ReadingDirection"]!.ToString();
-
 
                     if (fieldType == "Integer")
                     {
@@ -82,7 +81,6 @@ namespace Version1.Services
 
                         result.FieldResults[fieldname] = combined;
                     }
-
                     else if (fieldType == "Alphabet")
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
@@ -92,7 +90,6 @@ namespace Version1.Services
                                    .Where(val => val != "No bubble Mark" && val != "InvalidOption"));
 
                         result.FieldResults[fieldname] = combined;
-
                     }
                     else if (fieldType == "Abc")
                     {
@@ -235,7 +232,6 @@ namespace Version1.Services
             if (prop != null && prop.CanWrite)
                 prop.SetValue(result, value);
         }
-
 
     }
 }
