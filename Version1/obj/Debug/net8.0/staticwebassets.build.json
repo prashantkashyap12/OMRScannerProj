@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "El07OAXM8tZ+vtxOnS9jHbMSWMsh3q1/XpPM76+CSy8=",
+  "Hash": "2xK1ZHsijixQWTuQZDKAAU60g04/rmFL9I9ZIhcN7wU=",
   "Source": "SQCScanner",
   "BasePath": "_content/SQCScanner",
   "Mode": "Default",
@@ -10,38 +10,17 @@
     {
       "Name": "SQCScanner\\wwwroot",
       "Source": "SQCScanner",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\001ImageF.jpg",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
-      "BasePath": "_content/SQCScanner",
-      "RelativePath": "ImageManager/001ImageF#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "xxm0f14gfg",
-      "Integrity": "Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\ImageManager\\001ImageF.jpg"
-    },
-    {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
-      "SourceId": "SQCScanner",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "ImageManager/100036_Front#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -59,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\ImageManager\\100036_Front.jpg"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\123_Front.jpg",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\123_Front.jpg",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "ImageManager/123_Front#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -80,10 +59,10 @@
       "OriginalItemSpec": "wwwroot\\ImageManager\\123_Front.jpg"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\1244_Front.jpg",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\1244_Front.jpg",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "ImageManager/1244_Front#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -101,10 +80,10 @@
       "OriginalItemSpec": "wwwroot\\ImageManager\\1244_Front.jpg"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\86.jpg",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\86.jpg",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "ImageManager/86#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -122,10 +101,31 @@
       "OriginalItemSpec": "wwwroot\\ImageManager\\86.jpg"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24 (1).json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\Template\\001ImageF.jpg",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
+      "BasePath": "_content/SQCScanner",
+      "RelativePath": "ImageManager/Template/001ImageF#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xxm0f14gfg",
+      "Integrity": "Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ImageManager\\Template\\001ImageF.jpg"
+    },
+    {
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\SQC2023-24 (1).json",
+      "SourceId": "SQCScanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "SQC2023-24 (1)#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -143,10 +143,10 @@
       "OriginalItemSpec": "wwwroot\\SQC2023-24 (1).json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\SQC2023-24.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "SQC2023-24#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -164,10 +164,10 @@
       "OriginalItemSpec": "wwwroot\\SQC2023-24.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\template1.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "template1#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -185,10 +185,10 @@
       "OriginalItemSpec": "wwwroot\\template1.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template3.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\template3.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "template3#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -206,10 +206,10 @@
       "OriginalItemSpec": "wwwroot\\template3.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/Bhartiya Sankriti Gyan Parikcha, Haridwar#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -227,10 +227,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\SQC 2023-24.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\SQC 2023-24.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/SQC 2023-24#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -248,10 +248,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\SQC 2023-24.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template1.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template1.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/template1#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -269,10 +269,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\template1.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template2.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template2.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/template2#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -290,10 +290,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\template2.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template3.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template3.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/template3#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -311,10 +311,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\template3.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Template4.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Template4.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/Template4#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -332,10 +332,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\Template4.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Umar Ujala, Scholership.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Umar Ujala, Scholership.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/Umar Ujala, Scholership#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -353,10 +353,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\Umar Ujala, Scholership.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (1).json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (1).json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/Uttarakhand OMR Sheet (1)#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\Uttarakhand OMR Sheet (1).json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (2).json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (2).json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/Uttarakhand OMR Sheet (2)#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -395,10 +395,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\Uttarakhand OMR Sheet (2).json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/Uttarakhand OMR Sheet#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\TempManager\\Uttarakhand OMR Sheet.json"
     },
     {
-      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\छत्तीसगढ़ लोक सेवा आयोग.json",
+      "Identity": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\छत्तीसगढ़ लोक सेवा आयोग.json",
       "SourceId": "SQCScanner",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\",
+      "ContentRoot": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\",
       "BasePath": "_content/SQCScanner",
       "RelativePath": "TempManager/छत्तीसगढ़ लोक सेवा आयोग#[.{fingerprint}]?.json",
       "AssetKind": "All",
@@ -439,90 +439,8 @@
   ],
   "Endpoints": [
     {
-      "Route": "ImageManager/001ImageF.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\001ImageF.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "328339"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 12:29:01 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs="
-        }
-      ]
-    },
-    {
-      "Route": "ImageManager/001ImageF.xxm0f14gfg.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\001ImageF.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "328339"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 12:29:01 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "xxm0f14gfg"
-        },
-        {
-          "Name": "label",
-          "Value": "ImageManager/001ImageF.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs="
-        }
-      ]
-    },
-    {
       "Route": "ImageManager/100036_Front.b9s09o2rxo.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -567,7 +485,7 @@
     },
     {
       "Route": "ImageManager/100036_Front.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -604,7 +522,7 @@
     },
     {
       "Route": "ImageManager/123_Front.9q0bn0iwt5.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\123_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\123_Front.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -649,7 +567,7 @@
     },
     {
       "Route": "ImageManager/123_Front.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\123_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\123_Front.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -686,7 +604,7 @@
     },
     {
       "Route": "ImageManager/1244_Front.cmdhg7lc34.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\1244_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\1244_Front.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -731,7 +649,7 @@
     },
     {
       "Route": "ImageManager/1244_Front.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\1244_Front.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\1244_Front.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -768,7 +686,7 @@
     },
     {
       "Route": "ImageManager/86.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\86.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\86.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -805,7 +723,7 @@
     },
     {
       "Route": "ImageManager/86.om9fw8ngy6.jpg",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\86.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\86.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -849,8 +767,90 @@
       ]
     },
     {
+      "Route": "ImageManager/Template/001ImageF.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\Template\\001ImageF.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "328339"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 12:29:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs="
+        }
+      ]
+    },
+    {
+      "Route": "ImageManager/Template/001ImageF.xxm0f14gfg.jpg",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\ImageManager\\Template\\001ImageF.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "328339"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 12:29:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xxm0f14gfg"
+        },
+        {
+          "Name": "label",
+          "Value": "ImageManager/Template/001ImageF.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs="
+        }
+      ]
+    },
+    {
       "Route": "SQC2023-24 (1).json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24 (1).json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\SQC2023-24 (1).json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -887,7 +887,7 @@
     },
     {
       "Route": "SQC2023-24 (1).z3xgpj6f6b.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24 (1).json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\SQC2023-24 (1).json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -932,7 +932,7 @@
     },
     {
       "Route": "SQC2023-24.4li75uuzy8.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\SQC2023-24.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -977,7 +977,7 @@
     },
     {
       "Route": "SQC2023-24.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\SQC2023-24.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1014,7 +1014,7 @@
     },
     {
       "Route": "template1.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\template1.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1051,7 +1051,7 @@
     },
     {
       "Route": "template1.z3xgpj6f6b.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\template1.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1096,7 +1096,7 @@
     },
     {
       "Route": "template3.d46xr4aktg.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template3.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\template3.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1141,7 +1141,7 @@
     },
     {
       "Route": "template3.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template3.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\template3.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1178,7 +1178,7 @@
     },
     {
       "Route": "TempManager/Bhartiya Sankriti Gyan Parikcha, Haridwar.d46xr4aktg.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1223,7 +1223,7 @@
     },
     {
       "Route": "TempManager/Bhartiya Sankriti Gyan Parikcha, Haridwar.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1260,7 +1260,7 @@
     },
     {
       "Route": "TempManager/SQC 2023-24.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\SQC 2023-24.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\SQC 2023-24.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1297,7 +1297,7 @@
     },
     {
       "Route": "TempManager/SQC 2023-24.z3xgpj6f6b.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\SQC 2023-24.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\SQC 2023-24.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1342,7 +1342,7 @@
     },
     {
       "Route": "TempManager/template1.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template1.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template1.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1379,7 +1379,7 @@
     },
     {
       "Route": "TempManager/template1.z3xgpj6f6b.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template1.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template1.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1424,7 +1424,7 @@
     },
     {
       "Route": "TempManager/template2.3g5p5tgy66.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template2.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template2.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1469,7 +1469,7 @@
     },
     {
       "Route": "TempManager/template2.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template2.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template2.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1506,7 +1506,7 @@
     },
     {
       "Route": "TempManager/template3.d46xr4aktg.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template3.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template3.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1551,7 +1551,7 @@
     },
     {
       "Route": "TempManager/template3.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template3.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\template3.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1588,7 +1588,7 @@
     },
     {
       "Route": "TempManager/Template4.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Template4.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Template4.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1625,7 +1625,7 @@
     },
     {
       "Route": "TempManager/Template4.y68sjpsxd8.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Template4.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Template4.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1670,7 +1670,7 @@
     },
     {
       "Route": "TempManager/Umar Ujala, Scholership.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Umar Ujala, Scholership.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Umar Ujala, Scholership.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1707,7 +1707,7 @@
     },
     {
       "Route": "TempManager/Umar Ujala, Scholership.y68sjpsxd8.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Umar Ujala, Scholership.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Umar Ujala, Scholership.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1752,7 +1752,7 @@
     },
     {
       "Route": "TempManager/Uttarakhand OMR Sheet (1).json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (1).json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (1).json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1789,7 +1789,7 @@
     },
     {
       "Route": "TempManager/Uttarakhand OMR Sheet (1).w0ed9puhxj.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (1).json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (1).json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1834,7 +1834,7 @@
     },
     {
       "Route": "TempManager/Uttarakhand OMR Sheet (2).json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (2).json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (2).json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1871,7 +1871,7 @@
     },
     {
       "Route": "TempManager/Uttarakhand OMR Sheet (2).w0ed9puhxj.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (2).json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (2).json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1916,7 +1916,7 @@
     },
     {
       "Route": "TempManager/Uttarakhand OMR Sheet.ebepce2pdh.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1961,7 +1961,7 @@
     },
     {
       "Route": "TempManager/Uttarakhand OMR Sheet.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1998,7 +1998,7 @@
     },
     {
       "Route": "TempManager/छत्तीसगढ़ लोक सेवा आयोग.3g5p5tgy66.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\छत्तीसगढ़ लोक सेवा आयोग.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\छत्तीसगढ़ लोक सेवा आयोग.json",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2043,7 +2043,7 @@
     },
     {
       "Route": "TempManager/छत्तीसगढ़ लोक सेवा आयोग.json",
-      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\छत्तीसगढ़ लोक सेवा आयोग.json",
+      "AssetFile": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\wwwroot\\TempManager\\छत्तीसगढ़ लोक सेवा आयोग.json",
       "Selectors": [],
       "ResponseHeaders": [
         {

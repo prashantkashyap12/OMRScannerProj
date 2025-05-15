@@ -73,8 +73,7 @@ namespace Version1.Controllers
             {
                 BadRequest("Id is invalid please add Template first");
             }
-                string templatePath = Path.Combine(_env.WebRootPath, Targetjson);
-
+            string templatePath = Path.Combine(_env.WebRootPath, Targetjson);
            
             var results = new List<OmrResult>();
             var crttb = 1;
@@ -90,6 +89,7 @@ namespace Version1.Controllers
                 {
                     var tableCrt = await _recordTable.TableCreation(newImagePath, templatePath);
                 }
+                
                 var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath);
                 results.Add(res);
                 string jsonResult = JsonSerializer.Serialize(res);

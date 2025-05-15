@@ -1462,6 +1462,32 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Syncfusion.EJ2.AspNet.Core/29.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2",
+          "Syncfusion.Licensing": "29.2.4"
+        },
+        "compile": {
+          "lib/net8.0/Syncfusion.EJ2.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Syncfusion.EJ2.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Licensing/29.2.4": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Syncfusion.Licensing.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5787,6 +5813,50 @@
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
+    "Syncfusion.EJ2.AspNet.Core/29.2.4": {
+      "sha512": "TL/xXGSs5kBCfuBY97D4xcvT1lx+r44h6XDh2r59fUPM6+jogJa2er08JcxchDTeR6H35GKj9gWInWjUCn06OA==",
+      "type": "package",
+      "path": "syncfusion.ej2.aspnet.core/29.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net8.0/Syncfusion.EJ2.dll",
+        "lib/net8.0/Syncfusion.EJ2.xml",
+        "lib/net9.0/Syncfusion.EJ2.dll",
+        "lib/net9.0/Syncfusion.EJ2.xml",
+        "lib/netstandard2.0/Syncfusion.EJ2.dll",
+        "lib/netstandard2.0/Syncfusion.EJ2.xml",
+        "lib/netstandard2.1/Syncfusion.EJ2.dll",
+        "lib/netstandard2.1/Syncfusion.EJ2.xml",
+        "syncfusion.ej2.aspnet.core.29.2.4.nupkg.sha512",
+        "syncfusion.ej2.aspnet.core.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Licensing/29.2.4": {
+      "sha512": "k45wuxaWsBJ2egpvZk3MZCufZGq3Q1GKijvevae4RdyJ8gOK0tyi78XzwVfRCRul8sK7UjK9fvZ2pWIIyIR/Tw==",
+      "type": "package",
+      "path": "syncfusion.licensing/29.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/MonoAndroid90/Syncfusion.Licensing.dll",
+        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
+        "lib/net462/Syncfusion.Licensing.dll",
+        "lib/net8.0/Syncfusion.Licensing.dll",
+        "lib/net9.0/Syncfusion.Licensing.dll",
+        "lib/netstandard2.0/Syncfusion.Licensing.dll",
+        "lib/uap10.0/Syncfusion.Licensing.dll",
+        "syncfusion.licensing.29.2.4.nupkg.sha512",
+        "syncfusion.licensing.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
     "System.AppContext/4.3.0": {
       "sha512": "fKC+rmaLfeIzUhagxY17Q9siv/sPrjjKcfNg1Ic8IlQkZLipo8ljcaZQu4VtI4Jqbzjc2VTjzGLF6WmsRXAEgA==",
       "type": "package",
@@ -9886,6 +9956,7 @@
       "OpenCvSharp4.runtime.win >= 4.10.0.20241108",
       "SixLabors.ImageSharp >= 3.1.7",
       "Swashbuckle.AspNetCore >= 6.6.2",
+      "Syncfusion.EJ2.AspNet.Core >= 29.2.4",
       "System.Drawing.Common >= 9.0.4",
       "System.IdentityModel.Tokens.Jwt >= 7.1.2",
       "Tesseract >= 5.2.0",
@@ -9902,11 +9973,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\SQCScanner.csproj",
+      "projectUniqueName": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\SQCScanner.csproj",
       "projectName": "SQCScanner",
-      "projectPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\SQCScanner.csproj",
+      "projectPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\SQCScanner.csproj",
       "packagesPath": "C:\\Users\\IBALL\\.nuget\\packages\\",
-      "outputPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\obj\\",
+      "outputPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -10005,6 +10076,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.6.2, )"
+          },
+          "Syncfusion.EJ2.AspNet.Core": {
+            "target": "Package",
+            "version": "[29.2.4, )"
           },
           "System.Drawing.Common": {
             "target": "Package",

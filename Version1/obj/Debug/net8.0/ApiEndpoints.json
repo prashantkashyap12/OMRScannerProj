@@ -1,5 +1,121 @@
 [
   {
+    "ContainingType": "SQCScanner.Controllers.FileManagerController",
+    "Method": "Download",
+    "RelativePath": "api/FileManager/Download",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "downloadInput",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.FileManagerController",
+    "Method": "FileOperations",
+    "RelativePath": "api/FileManager/FileOperations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "args",
+        "Type": "Syncfusion.EJ2.FileManager.Base.FileManagerDirectoryContent",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.FileManagerController",
+    "Method": "GetFolders",
+    "RelativePath": "api/FileManager/folders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "path",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.FileManagerController",
+    "Method": "CreateFolder",
+    "RelativePath": "api/FileManager/folders",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "path",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "folderName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.FileManagerController",
+    "Method": "GetImage",
+    "RelativePath": "api/FileManager/GetImage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "path",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SQCScanner.Controllers.FileManagerController",
+    "Method": "Upload",
+    "RelativePath": "api/FileManager/Upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "path",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "uploadFiles",
+        "Type": "System.Collections.Generic.IList\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "action",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Version1.Controllers.OmrProcessingController",
     "Method": "ProcessOmrSheet",
     "RelativePath": "api/OmrProcessing/process-omr",

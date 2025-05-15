@@ -1,17 +1,5 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/SQCScanner/ImageManager/001ImageF.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\001ImageF.jpg'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx\u002By7\u002BlelajPR7hOMs="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"328339"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Jcdqj3pwN/8JmOkbMtJ0vXAZLqx\u002By7\u002BlelajPR7hOMs=\u0022"},{"Name":"Last-Modified","Value":"Wed, 14 May 2025 12:29:01 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/SQCScanner/ImageManager/001ImageF.xxm0f14gfg.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\001ImageF.jpg'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xxm0f14gfg"},{"Name":"integrity","Value":"sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx\u002By7\u002BlelajPR7hOMs="},{"Name":"label","Value":"_content/SQCScanner/ImageManager/001ImageF.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"328339"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Jcdqj3pwN/8JmOkbMtJ0vXAZLqx\u002By7\u002BlelajPR7hOMs=\u0022"},{"Name":"Last-Modified","Value":"Wed, 14 May 2025 12:29:01 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/SQCScanner/ImageManager/100036_Front.b9s09o2rxo.jpg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100036_Front.jpg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -59,6 +47,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"om9fw8ngy6"},{"Name":"integrity","Value":"sha256-gHGjDgZShSif/sMuxNj6P0vqH0zkYZKg85kDTt25y9w="},{"Name":"label","Value":"_content/SQCScanner/ImageManager/86.jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"647148"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022gHGjDgZShSif/sMuxNj6P0vqH0zkYZKg85kDTt25y9w=\u0022"},{"Name":"Last-Modified","Value":"Thu, 15 May 2025 04:31:09 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/SQCScanner/ImageManager/Template/001ImageF.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\Template\001ImageF.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx\u002By7\u002BlelajPR7hOMs="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"328339"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Jcdqj3pwN/8JmOkbMtJ0vXAZLqx\u002By7\u002BlelajPR7hOMs=\u0022"},{"Name":"Last-Modified","Value":"Wed, 14 May 2025 12:29:01 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/SQCScanner/ImageManager/Template/001ImageF.xxm0f14gfg.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\Template\001ImageF.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"xxm0f14gfg"},{"Name":"integrity","Value":"sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx\u002By7\u002BlelajPR7hOMs="},{"Name":"label","Value":"_content/SQCScanner/ImageManager/Template/001ImageF.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"328339"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Jcdqj3pwN/8JmOkbMtJ0vXAZLqx\u002By7\u002BlelajPR7hOMs=\u0022"},{"Name":"Last-Modified","Value":"Wed, 14 May 2025 12:29:01 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/SQCScanner/SQC2023-24 (1).json">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SQC2023-24 (1).json'))</AssetFile>

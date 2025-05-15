@@ -10,8 +10,6 @@ namespace SQCScanner.websoketManager
         {
             _sockets.Add(socket);
         }
-
         public List<WebSocket> GetAllSockets() => _sockets;
-
     }
 }

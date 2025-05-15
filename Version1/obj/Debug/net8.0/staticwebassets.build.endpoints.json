@@ -3,88 +3,6 @@
   "ManifestType": "Build",
   "Endpoints": [
     {
-      "Route": "ImageManager/001ImageF.jpg",
-      "AssetFile": "ImageManager/001ImageF.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "328339"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 12:29:01 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs="
-        }
-      ]
-    },
-    {
-      "Route": "ImageManager/001ImageF.xxm0f14gfg.jpg",
-      "AssetFile": "ImageManager/001ImageF.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "328339"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 12:29:01 GMT"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "xxm0f14gfg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs="
-        },
-        {
-          "Name": "label",
-          "Value": "ImageManager/001ImageF.jpg"
-        }
-      ]
-    },
-    {
       "Route": "ImageManager/100036_Front.b9s09o2rxo.jpg",
       "AssetFile": "ImageManager/100036_Front.jpg",
       "Selectors": [],
@@ -409,6 +327,88 @@
         {
           "Name": "label",
           "Value": "ImageManager/86.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "ImageManager/Template/001ImageF.jpg",
+      "AssetFile": "ImageManager/Template/001ImageF.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "328339"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 12:29:01 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs="
+        }
+      ]
+    },
+    {
+      "Route": "ImageManager/Template/001ImageF.xxm0f14gfg.jpg",
+      "AssetFile": "ImageManager/Template/001ImageF.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "328339"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 14 May 2025 12:29:01 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xxm0f14gfg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs="
+        },
+        {
+          "Name": "label",
+          "Value": "ImageManager/Template/001ImageF.jpg"
         }
       ]
     },
