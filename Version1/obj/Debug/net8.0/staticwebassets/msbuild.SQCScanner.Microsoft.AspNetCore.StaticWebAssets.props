@@ -1,40 +1,22 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\001ImageF.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>ImageManager/100.jpg</RelativePath>
+      <RelativePath>ImageManager/001ImageF.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>fvaiwq6cs8</Fingerprint>
-      <Integrity>ddDoIEqtnx7sastEBxKFjkKqZDG2gBRYtVvTyLMz8kA=</Integrity>
+      <Fingerprint>xxm0f14gfg</Fingerprint>
+      <Integrity>Jcdqj3pwN/8JmOkbMtJ0vXAZLqx+y7+lelajPR7hOMs=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100.jpg'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100036_Front (1).jpg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>SQCScanner</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>ImageManager/100036_Front (1).jpg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>cehm5v5zes</Fingerprint>
-      <Integrity>bO1p8dKb+ZqrUAqiJXSQvzt7JLIheO81BEI71BPuvJE=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100036_Front (1).jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\001ImageF.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100036_Front.jpg'))">
       <SourceType>Package</SourceType>
@@ -48,47 +30,65 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>cehm5v5zes</Fingerprint>
-      <Integrity>bO1p8dKb+ZqrUAqiJXSQvzt7JLIheO81BEI71BPuvJE=</Integrity>
+      <Fingerprint>b9s09o2rxo</Fingerprint>
+      <Integrity>8Yf5cNQj1Uj4I/5m73dzERpRlAq4e5x9ctMYn5RxuUg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100036_Front.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100108_Front.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\123_Front.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>ImageManager/100108_Front.jpg</RelativePath>
+      <RelativePath>ImageManager/123_Front.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>qgw4hufy7w</Fingerprint>
-      <Integrity>WtZjJn+RI+MvQUoRvz9QUB9OkmGf70l6EwU0iPToRAs=</Integrity>
+      <Fingerprint>9q0bn0iwt5</Fingerprint>
+      <Integrity>j5BShyzBCcKJayKBsCM/JJB1zNhmuNvbJYzVnSdHluI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\100108_Front.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\123_Front.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\1244_Front.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>ImageManager/highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg</RelativePath>
+      <RelativePath>ImageManager/1244_Front.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>7nn9zng8p0</Fingerprint>
-      <Integrity>DWEXIP/FgZiDNlXfTw31vGegawk2y0HVOPAWIHfLm/I=</Integrity>
+      <Fingerprint>cmdhg7lc34</Fingerprint>
+      <Integrity>zMQEbTlE6YGTvV/JWNs9+FT5d8s86Ty21uk9pSN8AVg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\1244_Front.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\86.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>ImageManager/86.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>om9fw8ngy6</Fingerprint>
+      <Integrity>gHGjDgZShSif/sMuxNj6P0vqH0zkYZKg85kDTt25y9w=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\ImageManager\86.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SQC2023-24 (1).json'))">
       <SourceType>Package</SourceType>
@@ -107,6 +107,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SQC2023-24 (1).json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SQC2023-24.json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>SQC2023-24.json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>4li75uuzy8</Fingerprint>
+      <Integrity>2FZNxm5pkKgxrN4Hdq+0lIZhFKTcrWogQIzTFqGrqGQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SQC2023-24.json'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\template1.json'))">
       <SourceType>Package</SourceType>
@@ -144,59 +162,41 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\template3.json'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\dsfgdsf.json'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Bhartiya Sankriti Gyan Parikcha, Haridwar.json'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>TempManager/dsfgdsf.json</RelativePath>
+      <RelativePath>TempManager/Bhartiya Sankriti Gyan Parikcha, Haridwar.json</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vcpt277d4l</Fingerprint>
-      <Integrity>n5M9yLsMo70Itvh+Awb/ZwyAVu7TqVgt25/LcymH584=</Integrity>
+      <Fingerprint>d46xr4aktg</Fingerprint>
+      <Integrity>PcgWqLoqExlGo+Y+mGunmr4GjkZF0d6KgfBo/QXTyIc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\dsfgdsf.json'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Bhartiya Sankriti Gyan Parikcha, Haridwar.json'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\gfhgfd.json'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\SQC 2023-24.json'))">
       <SourceType>Package</SourceType>
       <SourceId>SQCScanner</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>TempManager/gfhgfd.json</RelativePath>
+      <RelativePath>TempManager/SQC 2023-24.json</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>288whkip8k</Fingerprint>
-      <Integrity>Xi3VFMnz9yLnEDLmSM5GoOD2cQLmTypMAz9RkyKPv5k=</Integrity>
+      <Fingerprint>z3xgpj6f6b</Fingerprint>
+      <Integrity>Ye8GUncCCmjDlP7UiFxLfy8omzkD53Weo2avuFOYUmk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\gfhgfd.json'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\template.json'))">
-      <SourceType>Package</SourceType>
-      <SourceId>SQCScanner</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/SQCScanner</BasePath>
-      <RelativePath>TempManager/template.json</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>opw98cwje5</Fingerprint>
-      <Integrity>JHppZaKNhoO/ub0L8LgZ4AiZLZOgYf5CAuTxVTpJxsY=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\template.json'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\SQC 2023-24.json'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\template1.json'))">
       <SourceType>Package</SourceType>
@@ -215,6 +215,150 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\template1.json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\template2.json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>TempManager/template2.json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>3g5p5tgy66</Fingerprint>
+      <Integrity>Ld8lrnqyJKiP2R1ZO46AmJI6F0tHQcfy0dOuk4eA+7I=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\template2.json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\template3.json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>TempManager/template3.json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>d46xr4aktg</Fingerprint>
+      <Integrity>PcgWqLoqExlGo+Y+mGunmr4GjkZF0d6KgfBo/QXTyIc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\template3.json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Template4.json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>TempManager/Template4.json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>y68sjpsxd8</Fingerprint>
+      <Integrity>hvDRL69oDHGRaSPkV2wiJr8xy5w623GhBUFWv/sH5SY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Template4.json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Umar Ujala, Scholership.json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>TempManager/Umar Ujala, Scholership.json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>y68sjpsxd8</Fingerprint>
+      <Integrity>hvDRL69oDHGRaSPkV2wiJr8xy5w623GhBUFWv/sH5SY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Umar Ujala, Scholership.json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Uttarakhand OMR Sheet (1).json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>TempManager/Uttarakhand OMR Sheet (1).json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>w0ed9puhxj</Fingerprint>
+      <Integrity>QFXNCFjaEjcavxtJJxS0ATPQXgJ0vTTwOeKfHBKWxXU=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Uttarakhand OMR Sheet (1).json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Uttarakhand OMR Sheet (2).json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>TempManager/Uttarakhand OMR Sheet (2).json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>w0ed9puhxj</Fingerprint>
+      <Integrity>QFXNCFjaEjcavxtJJxS0ATPQXgJ0vTTwOeKfHBKWxXU=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Uttarakhand OMR Sheet (2).json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Uttarakhand OMR Sheet.json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>TempManager/Uttarakhand OMR Sheet.json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ebepce2pdh</Fingerprint>
+      <Integrity>uvjtcgs22w1OzOhUrf3DjguFSjCFwDIvg+Y+42RQeYM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\Uttarakhand OMR Sheet.json'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\छत्तीसगढ़ लोक सेवा आयोग.json'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SQCScanner</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SQCScanner</BasePath>
+      <RelativePath>TempManager/छत्तीसगढ़ लोक सेवा आयोग.json</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>3g5p5tgy66</Fingerprint>
+      <Integrity>Ld8lrnqyJKiP2R1ZO46AmJI6F0tHQcfy0dOuk4eA+7I=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\TempManager\छत्तीसगढ़ लोक सेवा आयोग.json'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

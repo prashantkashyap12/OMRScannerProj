@@ -1,12 +1,20 @@
-wwwroot\ImageManager\100.jpg
-wwwroot\ImageManager\100036_Front (1).jpg
+wwwroot\ImageManager\001ImageF.jpg
 wwwroot\ImageManager\100036_Front.jpg
-wwwroot\ImageManager\100108_Front.jpg
-wwwroot\ImageManager\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg
+wwwroot\ImageManager\123_Front.jpg
+wwwroot\ImageManager\1244_Front.jpg
+wwwroot\ImageManager\86.jpg
 wwwroot\SQC2023-24 (1).json
+wwwroot\SQC2023-24.json
 wwwroot\template1.json
 wwwroot\template3.json
-wwwroot\TempManager\dsfgdsf.json
-wwwroot\TempManager\gfhgfd.json
-wwwroot\TempManager\template.json
+wwwroot\TempManager\Bhartiya Sankriti Gyan Parikcha, Haridwar.json
+wwwroot\TempManager\SQC 2023-24.json
 wwwroot\TempManager\template1.json
+wwwroot\TempManager\template2.json
+wwwroot\TempManager\template3.json
+wwwroot\TempManager\Template4.json
+wwwroot\TempManager\Umar Ujala, Scholership.json
+wwwroot\TempManager\Uttarakhand OMR Sheet (1).json
+wwwroot\TempManager\Uttarakhand OMR Sheet (2).json
+wwwroot\TempManager\Uttarakhand OMR Sheet.json
+wwwroot\TempManager\छत्तीसगढ़ लोक सेवा आयोग.json

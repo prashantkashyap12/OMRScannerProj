@@ -8,13 +8,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "template",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "Name": "folderPath",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "folderPath",
-        "Type": "System.String",
+        "Name": "idTemp",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

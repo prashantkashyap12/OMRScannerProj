@@ -1,44 +1,76 @@
 {
   "Files": [
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100.jpg",
-      "PackagePath": "staticwebassets\\ImageManager\\100.jpg"
-    },
-    {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front (1).jpg",
-      "PackagePath": "staticwebassets\\ImageManager\\100036_Front (1).jpg"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\001ImageF.jpg",
+      "PackagePath": "staticwebassets\\ImageManager\\001ImageF.jpg"
     },
     {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100036_Front.jpg",
       "PackagePath": "staticwebassets\\ImageManager\\100036_Front.jpg"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\100108_Front.jpg",
-      "PackagePath": "staticwebassets\\ImageManager\\100108_Front.jpg"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\123_Front.jpg",
+      "PackagePath": "staticwebassets\\ImageManager\\123_Front.jpg"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg",
-      "PackagePath": "staticwebassets\\ImageManager\\highlighted_f975c8b7-7fde-44ea-a5e9-f2534879d9bc.jpg"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\1244_Front.jpg",
+      "PackagePath": "staticwebassets\\ImageManager\\1244_Front.jpg"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\ImageManager\\86.jpg",
+      "PackagePath": "staticwebassets\\ImageManager\\86.jpg"
     },
     {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24 (1).json",
       "PackagePath": "staticwebassets\\SQC2023-24 (1).json"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\dsfgdsf.json",
-      "PackagePath": "staticwebassets\\TempManager\\dsfgdsf.json"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\SQC2023-24.json",
+      "PackagePath": "staticwebassets\\SQC2023-24.json"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\gfhgfd.json",
-      "PackagePath": "staticwebassets\\TempManager\\gfhgfd.json"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json",
+      "PackagePath": "staticwebassets\\TempManager\\Bhartiya Sankriti Gyan Parikcha, Haridwar.json"
     },
     {
-      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template.json",
-      "PackagePath": "staticwebassets\\TempManager\\template.json"
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\SQC 2023-24.json",
+      "PackagePath": "staticwebassets\\TempManager\\SQC 2023-24.json"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Template4.json",
+      "PackagePath": "staticwebassets\\TempManager\\Template4.json"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Umar Ujala, Scholership.json",
+      "PackagePath": "staticwebassets\\TempManager\\Umar Ujala, Scholership.json"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (1).json",
+      "PackagePath": "staticwebassets\\TempManager\\Uttarakhand OMR Sheet (1).json"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet (2).json",
+      "PackagePath": "staticwebassets\\TempManager\\Uttarakhand OMR Sheet (2).json"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\Uttarakhand OMR Sheet.json",
+      "PackagePath": "staticwebassets\\TempManager\\Uttarakhand OMR Sheet.json"
     },
     {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template1.json",
       "PackagePath": "staticwebassets\\TempManager\\template1.json"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template2.json",
+      "PackagePath": "staticwebassets\\TempManager\\template2.json"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\template3.json",
+      "PackagePath": "staticwebassets\\TempManager\\template3.json"
+    },
+    {
+      "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\TempManager\\छत्तीसगढ़ लोक सेवा आयोग.json",
+      "PackagePath": "staticwebassets\\TempManager\\छत्तीसगढ़ लोक सेवा आयोग.json"
     },
     {
       "Id": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj\\Version1\\wwwroot\\template1.json",

@@ -20,6 +20,7 @@ using Dapper;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.SignalR;
 using SQCScanner.websoketManager;
+using NLog.Targets;
 
 namespace Version1.Controllers
 {
@@ -46,7 +47,7 @@ namespace Version1.Controllers
 
         //  Process OMR Sheet  
         [HttpPost("process-omr")]
-        public async Task<IActionResult> ProcessOmrSheet(IFormFile template, string folderPath)
+        public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp)
         {
             if (!Directory.Exists(folderPath))
             {
@@ -55,12 +56,26 @@ namespace Version1.Controllers
             var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
 
             // Save template once
-            string templatePath = Path.Combine(_env.WebRootPath, template.FileName);
-            Directory.CreateDirectory(Path.GetDirectoryName(templatePath)!);
-            using (var stream = new FileStream(templatePath, FileMode.Create))
+            var Targetjson = string.Empty;
+            var ReturnDetails = _dbContext.ImgTemplate.FirstOrDefault(x => x.Id == idTemp);
+            if (ReturnDetails != null)
             {
-                await template.CopyToAsync(stream);
+                if (!string.IsNullOrEmpty(ReturnDetails.JsonPath))
+                {
+                    Targetjson = ReturnDetails.JsonPath.Replace("\\", "/");
+                }
+                else
+                {
+                    BadRequest("Template not found");
+                }
             }
+            else
+            {
+                BadRequest("Id is invalid please add Template first");
+            }
+                string templatePath = Path.Combine(_env.WebRootPath, Targetjson);
+
+           
             var results = new List<OmrResult>();
             var crttb = 1;
             foreach (var imagePath in imageFiles)
