@@ -21,10 +21,12 @@ namespace SQCScanner.Services
         public async Task<List<string>> TableCreation(string imagePath, string templatePath)
         {
 
-            var fieldNames = new List<string>(); // Move it outside the using block so it's accessible at the end
+            // Move it outside the using block so it's accessible at the end
+            var fieldNames = new List<string>(); 
 
             // String JSON TEXT
             var templateJson = File.ReadAllText(templatePath);
+            
             // return to parsal from jsonTemp.
             var template = JObject.Parse(templateJson);
 
@@ -46,7 +48,6 @@ namespace SQCScanner.Services
                         // Get the list of existing columns in the table
                         var existingColumns = await connection.QueryAsync<string>(@"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @TableName", new { TableName = tableName });
                         var existingColumnNames = existingColumns.ToList();
-
                         
                         foreach (var field in template["fields"]!)
                         {

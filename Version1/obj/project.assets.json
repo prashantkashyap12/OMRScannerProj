@@ -9973,11 +9973,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\SQCScanner.csproj",
+      "projectUniqueName": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - syncFusion\\Version1\\SQCScanner.csproj",
       "projectName": "SQCScanner",
-      "projectPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\SQCScanner.csproj",
+      "projectPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - syncFusion\\Version1\\SQCScanner.csproj",
       "packagesPath": "C:\\Users\\IBALL\\.nuget\\packages\\",
-      "outputPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\obj\\",
+      "outputPath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - syncFusion\\Version1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

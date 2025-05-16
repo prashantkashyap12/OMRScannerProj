@@ -7,16 +7,13 @@ using Syncfusion.EJ2.FileManager.PhysicalFileProvider;
 
 namespace SQCScanner.Controllers
 {
-
-
-
     [Route("api/[controller]")]
     [EnableCors("AllowAnyOrigin")]
     public class FileManagerController : Controller
     {
 
         private readonly Syncfusion.EJ2.FileManager.PhysicalFileProvider.PhysicalFileProvider _operation;
-        private readonly string _root = Environment.CurrentDirectory + "\\wwwroot";
+        private readonly string _root = Environment.CurrentDirectory + "\\wFileManager";
 
         public FileManagerController(IWebHostEnvironment hostingEnvironment)
         {
@@ -105,11 +102,6 @@ namespace SQCScanner.Controllers
                     return BadRequest("Invalid action.");
             }
         }
-
-
-
-
-
 
 
         [Route("Upload")]

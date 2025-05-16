@@ -49,6 +49,8 @@ namespace Version1.Controllers
         [HttpPost("process-omr")]
         public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp)
         {
+            // exist path
+            folderPath = Path.Combine(_env.WebRootPath, folderPath);
             if (!Directory.Exists(folderPath))
             {
                 return BadRequest("Folder path is invalid.");
@@ -93,6 +95,7 @@ namespace Version1.Controllers
                 var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath);
                 results.Add(res);
                 string jsonResult = JsonSerializer.Serialize(res);
+                // 0.11ms - 0.20ms-mx
                 await _webSocketHandler.BroadcastMessageAsync(jsonResult);
                 crttb++;
             }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CqdiC3qjPN0=",
+  "dgSpecHash": "TMXzvQ6u+QQ=",
   "success": true,
-  "projectFilePath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - Copy\\Version1\\SQCScanner.csproj",
+  "projectFilePath": "D:\\Prashant_Devloper\\Web_Api\\ScannerProj\\OMRScannerProj-- - syncFusion\\Version1\\SQCScanner.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IBALL\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\IBALL\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

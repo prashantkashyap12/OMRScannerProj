@@ -272,11 +272,12 @@ namespace SQCScanner.Controllers
                     {
                         // DB table is update -- DONE
                         var ReturnDetails = _dbContext.ImgTemplate.FirstOrDefault(x => x.FileName == FileName);
+                        var fileNameDel = ReturnDetails.JsonPath;    // update
                         ReturnDetails.JsonPath = relativePath;
                         await _dbContext.SaveChangesAsync();
 
                         // delete old File 
-                        var delOldRelative = ReturnDetails.JsonPath;
+                        var delOldRelative = fileNameDel;
                         var delOldFullPath = Path.Combine(_env.WebRootPath, delOldRelative.TrimStart('/').Replace("/", Path.DirectorySeparatorChar.ToString()));
                         if (System.IO.File.Exists(delOldFullPath))
                         {
