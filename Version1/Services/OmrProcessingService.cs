@@ -20,6 +20,9 @@ using Microsoft.Extensions.Options;
 using TesseractOCR.Renderers;
 using SQCScanner.Modal;
 using System.Text.RegularExpressions;
+//using SixLabors.ImageSharp.Drawing;
+using System.Drawing.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace Version1.Services
 {
@@ -31,13 +34,15 @@ namespace Version1.Services
         {
             _context = context;
         }
-        public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath)
+        public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath, string sharePath)
         {
-            
+            // 
+
             using var image = Image.Load<Rgba32>(imagePath);
+            var debugImage = image.Clone();
 
             var templateJson = File.ReadAllText(templatePath);
-            
+
             var template = JObject.Parse(templateJson);
 
             var result = new OmrResult
@@ -45,10 +50,27 @@ namespace Version1.Services
                 FileName = Path.GetFileName(imagePath),
                 FieldResults = new Dictionary<string, string>()
             };
+
+            // Add File Name
+            var imgServ = Path.GetFileName(imagePath);
+            templatePath = Path.Combine(sharePath, imgServ);
+            var fileNames = templatePath.Replace("\\", "/");
+            result.FieldResults["FileName"] = fileNames;
+
             foreach (var field in template["fields"])
             {
-               double bubbleIntensity = field["bubbleIntensity"]?.Value<double>() ?? 0.3;
+                double bubbleIntensity = field["bubbleIntensity"]?.Value<double>() ?? 0.3;
                 string fieldType = field["fieldType"]!.ToString();
+                if (string.IsNullOrWhiteSpace(fieldType))
+                {
+                    throw new ArgumentException($"Missing 'fieldType' in field: must be \"formfield\" or \"questionfield\"");
+                }
+                string fieldValue = field["fieldValue"]!.ToString();
+                if (string.IsNullOrWhiteSpace(fieldValue))
+                {
+                    throw new ArgumentException($"Missing 'fieldValue' in field: must be \"Integer\", \"Alphabet\", or \"Custom\"");
+                }
+
                 string fieldname = field["fieldName"]!.ToString();
                 var bubblesArray = field["bubbles"]?.ToObject<List<BubbleInfo>>();
                 bool allowMultiple = field["allowMultiple"]?.Value<bool>() ?? true;
@@ -57,22 +79,22 @@ namespace Version1.Services
                 {
                     var bubbleRects = bubblesArray.Select(b => new Rectangle(b.X, b.Y, b.Width, b.Height)).ToList();
 
-                    var options = field["Options"]?.ToObject<List<string>>()?.Where(o => !string.IsNullOrWhiteSpace(o)).ToList();
+                    var options = field["Custom"]?.ToObject<List<string>>()?.Where(o => !string.IsNullOrWhiteSpace(o)).ToList();
 
-                    if (field["Options"] != null && (options == null || options.Count == 0))
+                    if (field["Custom"] != null && (options == null || options.Count == 0))
                     {
-                        throw new ArgumentException($"The field '{fieldname}' includes an 'Options' array but it is empty or invalid. Please provide valid options.");
+                        throw new ArgumentException($"The field '{fieldname}' includes an 'Custom' array but it is empty or invalid. Please provide valid Custom.");
                     }
 
                     if (options == null || options.Count == 0)
                     {
-                        options = GenerateOptionsFromFieldType(fieldType, bubblesArray);
+                        options = GenerateOptionsFromFieldType(fieldValue, bubblesArray);
                     }
 
                     string readdirection = field["ReadingDirection"]!.ToString();
 
 
-                    if (fieldType == "Integer")
+                    if (fieldType == "formfield")
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
                         var combined = string.Join("",
@@ -83,18 +105,7 @@ namespace Version1.Services
                         result.FieldResults[fieldname] = combined;
                     }
 
-                    else if (fieldType == "Alphabet")
-                    {
-                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
-                        var combined = string.Join("",
-                            answers.OrderBy(kv => int.Parse(kv.Key.Replace("Q", "")))
-                                   .Select(kv => kv.Value)
-                                   .Where(val => val != "No bubble Mark" && val != "InvalidOption"));
-
-                        result.FieldResults[fieldname] = combined;
-
-                    }
-                    else if (fieldType == "Abc")
+                    else if (fieldType == "questionfield")
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
 
@@ -133,12 +144,12 @@ namespace Version1.Services
                 }
             }
             result.ProcessedAt = DateTime.UtcNow;
-           
+
             return result;
         }
-        private List<string> GenerateOptionsFromFieldType(string fieldType, List<BubbleInfo> bubbles)
+        private List<string> GenerateOptionsFromFieldType(string fieldValue, List<BubbleInfo> bubbles)
         {
-            if (fieldType == "Integer")
+            if (fieldValue == "Integer")
             {
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
@@ -146,7 +157,7 @@ namespace Version1.Services
                 return Enumerable.Range(0, RowCount).Select(i => i.ToString()).ToList();
             }
 
-            if (fieldType.Equals("Alphabet", StringComparison.OrdinalIgnoreCase) || fieldType.Equals("Abc", StringComparison.OrdinalIgnoreCase))
+            if (fieldValue.Equals("Alphabet", StringComparison.OrdinalIgnoreCase))
             {
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
@@ -231,31 +242,6 @@ namespace Version1.Services
 
             return result;
         }
-        //private bool IsBubbleFilled(Image<Rgba32> bubble, double bubbleIntensity)
-        //{
-        //    int blackPixels = 0;
-
-        //    for (int y = 0; y < bubble.Height; y++)
-        //    {
-        //        for (int x = 0; x < bubble.Width; x++)
-        //        {
-        //            var pixel = bubble[x, y];
-
-        //            if (pixel.R < 100 && pixel.G < 100 && pixel.B < 100)
-        //            {
-        //                blackPixels++;
-        //            }
-        //        }
-        //    }
-
-        //    int totalPixels = bubble.Width * bubble.Height;
-
-        //    double fillRatio = (double)blackPixels / totalPixels;
-
-        //    return fillRatio > bubbleIntensity;
-
-        //}
-
         private bool IsBubbleFilled(Image<Rgba32> bubble, double bubbleIntensity)
         {
             using var ms = new MemoryStream();
@@ -281,7 +267,6 @@ namespace Version1.Services
             return blackPixels > bubbleIntensity;
 
         }
-
         private void SetProperty(OmrResult result, string propName, string value)
         {
             var prop = typeof(OmrResult).GetProperty(propName);

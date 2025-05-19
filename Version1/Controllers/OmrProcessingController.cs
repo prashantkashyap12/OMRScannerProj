@@ -36,7 +36,7 @@ namespace Version1.Controllers
         private readonly WebSoketHandler _webSocketHandler;
 
 
-        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env, ApplicationDbContext dbContext,RecordDBClass recordTable, WebSoketHandler webSocketHandler)
+        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env, ApplicationDbContext dbContext, RecordDBClass recordTable, WebSoketHandler webSocketHandler)
         {
             _omrService = omrService;
             _env = env;
@@ -49,8 +49,10 @@ namespace Version1.Controllers
         [HttpPost("process-omr")]
         public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp)
         {
+
+            var sharefolder = Path.Combine("wFileManager/" + folderPath);
             // exist path
-            folderPath = Path.Combine(_env.WebRootPath, folderPath);
+            folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wFileManager/" + folderPath);
             if (!Directory.Exists(folderPath))
             {
                 return BadRequest("Folder path is invalid.");
@@ -76,23 +78,25 @@ namespace Version1.Controllers
                 BadRequest("Id is invalid please add Template first");
             }
             string templatePath = Path.Combine(_env.WebRootPath, Targetjson);
-           
+
             var results = new List<OmrResult>();
             var crttb = 1;
             foreach (var imagePath in imageFiles)
             {
                 // Create Uploads folder path on root
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "Uploads");
+
                 // Make unique file name with scanFile_ prefix
                 string fileExtension = imagePath;
+
                 // Make new destination image path in Uploads
                 string newImagePath = Path.Combine(uploadsFolder, fileExtension);
+                // 
                 if (crttb == 1)
                 {
                     var tableCrt = await _recordTable.TableCreation(newImagePath, templatePath);
                 }
-                
-                var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath);
+                var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath, sharefolder);
                 results.Add(res);
                 string jsonResult = JsonSerializer.Serialize(res);
                 // 0.11ms - 0.20ms-mx
