@@ -34,15 +34,21 @@ namespace Version1.Controllers
         private readonly ApplicationDbContext _dbContext;
         private readonly RecordDBClass _recordTable;
         private readonly WebSoketHandler _webSocketHandler;
+        private readonly OmrProcessingControlService _controlService;
 
 
-        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env, ApplicationDbContext dbContext, RecordDBClass recordTable, WebSoketHandler webSocketHandler)
+        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env, ApplicationDbContext dbContext, RecordDBClass recordTable, WebSoketHandler webSocketHandler,  OmrProcessingControlService controlService)
         {
             _omrService = omrService;
             _env = env;
             _dbContext = dbContext;
             _recordTable = recordTable;
             _webSocketHandler = webSocketHandler;
+            if (controlService == null)
+            {
+                throw new ArgumentNullException(nameof(controlService), "OmrProcessingControlService is not injected properly.");
+            }
+            _controlService = controlService;
         }
 
         //  Process OMR Sheet  
@@ -83,6 +89,10 @@ namespace Version1.Controllers
             var crttb = 1;
             foreach (var imagePath in imageFiles)
             {
+            
+                 // Globle State Api Interfairing.
+                 _controlService.WaitIfPaused();
+
                 // Create Uploads folder path on root
                 string uploadsFolder = Path.Combine(_env.WebRootPath, "Uploads");
 
