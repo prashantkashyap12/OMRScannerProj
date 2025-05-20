@@ -115,5 +115,24 @@ namespace Version1.Controllers
             }
             return Ok(results);
         }
+
+
+        // Data Push push
+        [HttpPost("pause-processing")]
+        public IActionResult PauseProcessing()
+        {
+            _controlService.PauseProcessing();
+            return Ok("Processing paused.");
+        }
+        // Data Push resume
+        [HttpPost("resume-processing")]
+        public IActionResult ResumeProcessing()
+        {
+            _controlService.ResumeProcessing();
+            return Ok("Processing resumed.");
+        }
+
+
+        
     }
 }
