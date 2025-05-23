@@ -37,7 +37,13 @@ namespace Version1.Controllers
         private readonly OmrProcessingControlService _controlService;
 
 
-        public OmrProcessingController(OmrProcessingService omrService, IWebHostEnvironment env, ApplicationDbContext dbContext, RecordDBClass recordTable, WebSoketHandler webSocketHandler,  OmrProcessingControlService controlService)
+        public OmrProcessingController(
+            OmrProcessingService omrService, 
+            IWebHostEnvironment env, 
+            ApplicationDbContext dbContext, 
+            RecordDBClass recordTable, 
+            WebSoketHandler webSocketHandler,  
+            OmrProcessingControlService controlService)
         {
             _omrService = omrService;
             _env = env;
@@ -57,6 +63,7 @@ namespace Version1.Controllers
         {
 
             var sharefolder = Path.Combine("wFileManager/" + folderPath);
+
             // exist path
             folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wFileManager/" + folderPath);
             if (!Directory.Exists(folderPath))
@@ -102,10 +109,10 @@ namespace Version1.Controllers
                 // Make new destination image path in Uploads
                 string newImagePath = Path.Combine(uploadsFolder, fileExtension);
                 // 
-                if (crttb == 1)
-                {
-                    var tableCrt = await _recordTable.TableCreation(newImagePath, templatePath);
-                }
+                //if (crttb == 1)
+                //{
+                //    var tableCrt = await _recordTable.TableCreation(newImagePath, templatePath);
+                //}
                 var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath, sharefolder);
                 results.Add(res);
                 string jsonResult = JsonSerializer.Serialize(res);

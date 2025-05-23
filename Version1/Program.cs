@@ -7,6 +7,7 @@ using Version1.Services;
 using SQCScanner.Services;
 using SQCScanner.websoketManager;
 using System.Net.WebSockets;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,14 +35,12 @@ builder.Services.AddCors(options =>
 });
 
 
-
 // Syncfusion Key Add
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhdcHRVQmVeV0F3Wks=\r\n");
 
 
-
-// Add Authentication with JWT
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    // Add Authentication with JWT
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -55,6 +54,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("aEj7A6mr5yVoDx0wq1jUj0A6xhb/8I+YJ0T+Y8h2sJk="))
         };
     });
+
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
@@ -67,12 +67,51 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowAnyOrigin");
+// Serve wFileManager folder
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(
+//        Path.Combine(Directory.GetCurrentDirectory(), "wFileManager")),
+//    RequestPath = "/wFileManager",
+//      OnPrepareResponse = ctx =>
+//      {
+//          ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*"); 
+//      }
+//});
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wFileManager")),
+    RequestPath = "/wFileManager",
+    OnPrepareResponse = ctx =>
+    {
+        ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+    }
+});
+
+// wwwroot ke liye CORS header add karo
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+    }
+});
+
 app.UseStaticFiles();
+
+// Cross Policy
+app.UseCors("AllowAnyOrigin");
+
+// Http Routing Redirection
 app.UseHttpsRedirection();
+
+// Auth JWT valid / New
 app.UseAuthentication();
 app.UseAuthorization();
 
+
+// web Soket Middleware
 app.UseWebSockets();
 app.Use(async (context, next) =>
 {
