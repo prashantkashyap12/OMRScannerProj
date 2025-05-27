@@ -21,6 +21,9 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.AspNetCore.SignalR;
 using SQCScanner.websoketManager;
 using NLog.Targets;
+using Newtonsoft.Json.Linq;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace Version1.Controllers
 {
@@ -59,12 +62,17 @@ namespace Version1.Controllers
 
         //  Process OMR Sheet  
         [HttpPost("process-omr")]
-        public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp)
+        public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp, string token)
         {
+            // Token handler UserId Extract
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadJwtToken(token);
+            var userId = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "nameid")?.Value;
 
+
+
+            // Exist path
             var sharefolder = Path.Combine("wFileManager/" + folderPath);
-
-            // exist path
             folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wFileManager/" + folderPath);
             if (!Directory.Exists(folderPath))
             {
@@ -94,31 +102,23 @@ namespace Version1.Controllers
 
             var results = new List<OmrResult>();
             var crttb = 1;
-            foreach (var imagePath in imageFiles)
+            foreach (var imagePath  in imageFiles)
             {
-            
-                 // Globle State Api Interfairing.
                  _controlService.WaitIfPaused();
+                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath, sharefolder);
 
-                // Create Uploads folder path on root
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "Uploads");
+                results.Add(res);
 
-                // Make unique file name with scanFile_ prefix
-                string fileExtension = imagePath;
+                string jsonResult = JsonSerializer.Serialize(res);
 
-                // Make new destination image path in Uploads
-                string newImagePath = Path.Combine(uploadsFolder, fileExtension);
-                // 
+                await _webSocketHandler.UserMessageAsync(userId, jsonResult);
+                crttb++;
+
+                // Make table design 
                 //if (crttb == 1)
                 //{
                 //    var tableCrt = await _recordTable.TableCreation(newImagePath, templatePath);
                 //}
-                var res = await _omrService.ProcessOmrSheet(newImagePath, templatePath, sharefolder);
-                results.Add(res);
-                string jsonResult = JsonSerializer.Serialize(res);
-                // 0.11ms - 0.20ms-mx
-                await _webSocketHandler.BroadcastMessageAsync(jsonResult);
-                crttb++;
             }
             return Ok(results);
         }

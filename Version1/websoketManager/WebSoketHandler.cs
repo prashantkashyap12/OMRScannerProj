@@ -4,6 +4,7 @@ using static System.Net.Mime.MediaTypeNames;
 using Syncfusion.EJ2.Notifications;
 using TesseractOCR.Pix;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using Newtonsoft.Json.Linq;
 namespace SQCScanner.websoketManager
 {
     public class WebSoketHandler
@@ -15,24 +16,39 @@ namespace SQCScanner.websoketManager
             _connectionManager = connectionManager;
         }
 
-        // Sabhi connected websoket client ko msg - Broadcast karna
-        // Like - process hui, status update hua, notification aayi
-        public async Task BroadcastMessageAsync(string message)
+        //public async Task BroadcastMessageAsync(string message)
+        //{
+        //    var sockets = _connectionManager.GetAllSockets();
+        //    var bytes = Encoding.UTF8.GetBytes(message);
+        //    foreach (var socket in sockets)
+        //    {
+        //        if (socket.State == WebSocketState.Open)
+        //        {
+        //            await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
+        //        }
+        //    }
+        //}
+
+
+        // Send message to a specific user by userId
+        public async Task UserMessageAsync(string userId, string message)
         {
-            // Sabhi connected WebSocket clients ki list le aata hai.
-            var sockets = _connectionManager.GetAllSockets();
+            var socket = _connectionManager.GetSocketByUserId(userId);
 
-            // Message ko byte array mein convert karta hai(kyunki WebSocket binary/ text data hi bhejta hai
-            var bytes = Encoding.UTF8.GetBytes(message);
-
-            // Sabhi open connections par loop chala ke message bhejta hai
-            foreach (var socket in sockets)
+            if (socket != null && socket.State == WebSocketState.Open)
             {
-                if (socket.State == WebSocketState.Open)
+                var bytes = Encoding.UTF8.GetBytes(message);
+                try
                 {
                     await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
                 }
+                catch
+                {
+                    _connectionManager.RemoveSocket(userId);
+                }
             }
         }
+
+
     }
 }

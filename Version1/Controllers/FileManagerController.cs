@@ -103,7 +103,6 @@ namespace SQCScanner.Controllers
             }
         }
 
-
         [Route("Upload")]
         [HttpPost]
         public IActionResult Upload([FromForm] string path, [FromForm] IList<IFormFile> uploadFiles, [FromForm] string action)
@@ -150,15 +149,6 @@ namespace SQCScanner.Controllers
             }
         }
 
-
-
-
-
-
-
-
-
-
         [Route("Download")]
         [HttpPost]
         public IActionResult Download([FromForm] string downloadInput)
@@ -178,5 +168,6 @@ namespace SQCScanner.Controllers
             };
             return _operation.GetImage(args.Path, args.Id, false, null, null);
         }
+    
     }
 }

@@ -51,12 +51,6 @@ namespace Version1.Services
                 FieldResults = new Dictionary<string, string>()
             };
 
-            // Add File Name
-            var imgServ = Path.GetFileName(imagePath);
-            templatePath = Path.Combine(sharePath, imgServ);
-            var fileNames = templatePath.Replace("\\", "/");
-            result.FieldResults["FileName"] = fileNames;
-
             foreach (var field in template["fields"])
             {
                 double bubbleIntensity = field["bubbleIntensity"]?.Value<double>() ?? 0.3;
@@ -145,6 +139,12 @@ namespace Version1.Services
             }
             result.ProcessedAt = DateTime.UtcNow;
 
+            // Add File Name 
+            var imgServ = Path.GetFileName(imagePath);
+            templatePath = Path.Combine(sharePath, imgServ);
+            var fileNames = templatePath.Replace("\\", "/");
+            result.FieldResults["FileName"] = fileNames;
+            
             return result;
         }
         private List<string> GenerateOptionsFromFieldType(string fieldValue, List<BubbleInfo> bubbles)
@@ -153,7 +153,6 @@ namespace Version1.Services
             {
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
-
                 return Enumerable.Range(0, RowCount).Select(i => i.ToString()).ToList();
             }
 
