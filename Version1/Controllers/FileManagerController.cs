@@ -168,6 +168,5 @@ namespace SQCScanner.Controllers
             };
             return _operation.GetImage(args.Path, args.Id, false, null, null);
         }
-    
     }
 }
