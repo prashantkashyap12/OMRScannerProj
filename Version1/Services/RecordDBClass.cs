@@ -22,7 +22,6 @@ namespace SQCScanner.Services
         {
 
             var fieldNames = new List<string>();
-
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
@@ -30,28 +29,25 @@ namespace SQCScanner.Services
                 string checkTableSql = @"SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = @TableName";
                 var exists = await connection.QueryFirstOrDefaultAsync<int?>(checkTableSql, new { TableName = tableName });
                 bool tableExists = exists.HasValue;
-
+            
                 // Get field names from response
                 var fields = respose.FieldResults.Select(fr => fr.Key).Distinct().ToList();
                 fieldNames.AddRange(fields);
                 if (!tableExists)
                 {
-                    // Build CREATE TABLE SQL query
                     var columnsSql = string.Join(", ", fields.Select(f => $"[{f}] NVARCHAR(MAX)"));
                     string createTableSql = $"CREATE TABLE [{tableName}] (Id INT IDENTITY(1,1) PRIMARY KEY, {"[LiveTime] NVARCHAR(MAX)"},{"[UserName] NVARCHAR(MAX)"}, {columnsSql})";
                     await connection.ExecuteAsync(createTableSql);
-
+            
                 }
                 else
                 {
-                    // Step 3: Get existing columns in table
                     string getColumnsSql = @" SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @TableName";
                     var existingColumns = (await connection.QueryAsync<string>(getColumnsSql, new { TableName = tableName })).Select(c => c.ToLower()).ToHashSet();
                     foreach (var field in fields)
                     {
                         if (!existingColumns.Contains(field.ToLower()))
                         {
-                            // Step 4: Add missing column
                             string alterSql = $"ALTER TABLE [{tableName}] ADD [{field}] NVARCHAR(MAX)";
                             await connection.ExecuteAsync(alterSql);
                         }
@@ -59,9 +55,10 @@ namespace SQCScanner.Services
                 }
                 await connection.CloseAsync();
             }
-
-
             return fieldNames;
+            
+
+            
         }
 
     }
