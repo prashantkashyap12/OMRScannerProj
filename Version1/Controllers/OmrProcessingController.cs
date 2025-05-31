@@ -112,13 +112,13 @@ namespace Version1.Controllers
                 string jsonResult = JsonSerializer.Serialize(res);
 
                 await _webSocketHandler.UserMessageAsync(userId, jsonResult);
-                crttb++;
 
                 // Make table design 
-                //if (crttb == 1)
-                //{
-                //    var tableCrt = await _recordTable.TableCreation(newImagePath, templatePath);
-                //}
+                if (crttb == 1)
+                {
+                    var tableCrt = await _recordTable.TableCreation(res, idTemp);
+                }
+                crttb++;
             }
             return Ok(results);
         }
