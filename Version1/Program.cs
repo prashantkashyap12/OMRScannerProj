@@ -19,6 +19,7 @@ builder.Services.AddScoped<OmrProcessingService>();
 builder.Services.AddScoped<JwtAuth>();
 builder.Services.AddScoped<EncptDcript>();
 builder.Services.AddScoped<RecordDBClass>();
+builder.Services.AddScoped<RecordSave>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
