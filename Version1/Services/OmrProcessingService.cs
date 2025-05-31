@@ -50,7 +50,18 @@ namespace Version1.Services
                 FileName = Path.GetFileName(imagePath),
                 FieldResults = new Dictionary<string, string>()
             };
+            var referenceFields = template["referncefield"]?.ToArray();
+            if (referenceFields != null && referenceFields.Length > 0)
+            {
+                bool allFilled = AreReferenceMarkersFilled(image, template);
+                if (!allFilled)
+                {
+                   
+                    result.FieldResults["Error"] = "Skew markers are not filled or missing. Cannot proceed with OMR processing.";
+                    return result;
+                }
 
+            }
             // Add File Name
             var imgServ = Path.GetFileName(imagePath);
             templatePath = Path.Combine(sharePath, imgServ);
@@ -147,6 +158,31 @@ namespace Version1.Services
 
             return result;
         }
+
+        private bool AreReferenceMarkersFilled(Image<Rgba32> image,JObject template,double bubbleIntensity =0.3)
+        {
+            var referenceFields = template["referncefield"]?.ToArray();
+            if(referenceFields == null || referenceFields.Length == 0)
+                return true;
+            var refMarker=referenceFields[0];
+            var positions = new[] { "topleft", "topright", "bottomLeft", "bottomRight" };
+            foreach (var pos in positions)
+            {
+                var marker = refMarker[pos]?.ToObject<BubbleInfo>();
+                if (marker == null) return false;
+                var rect = new SixLabors.ImageSharp.Rectangle(marker.X,marker.Y,marker.Width,marker.Height); 
+                var region = image.Clone(ctx=>ctx.Crop(rect));
+                if (!IsBubbleFilled(region, bubbleIntensity))
+                { return false; }
+
+
+            }
+
+            return true;
+
+            
+        }
+
         private List<string> GenerateOptionsFromFieldType(string fieldValue, List<BubbleInfo> bubbles)
         {
             if (fieldValue == "Integer")

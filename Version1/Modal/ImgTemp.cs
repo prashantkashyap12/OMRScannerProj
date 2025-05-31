@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SQCScanner.Services
+namespace SQCScanner.Modal
 {
     public class ImgTemp
     {

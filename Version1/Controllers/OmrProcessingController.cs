@@ -52,7 +52,7 @@ namespace Version1.Controllers
         }
 
         //  Process OMR Sheet  
-        [HttpPost("process-omr")]
+        [HttpPost("Scanning-omr")]
         public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp)
         {
 
