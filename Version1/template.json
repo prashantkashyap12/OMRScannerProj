@@ -1,0 +1,77 @@
+{
+    "name": "SQC_2023-24_Template",
+    "fields": [
+        {
+            "fieldName": "AnswerGroup",
+            "fieldType": "Abc",
+            "readingDirection": "Vertically",
+            "bubbleIntensity": 0.15,
+            "bubbles": [
+                {
+                    "x": 313,
+                    "y": 1478,
+                    "width": 83,
+                    "height": 60,
+                    "row": 0,
+                    "col": 0
+                },
+                {
+                    "x": 396,
+                    "y": 1478,
+                    "width": 83,
+                    "height": 60,
+                    "row": 0,
+                    "col": 1
+                },
+                {
+                    "x": 480,
+                    "y": 1478,
+                    "width": 83,
+                    "height": 60,
+                    "row": 0,
+                    "col": 2
+                },
+                {
+                    "x": 564,
+                    "y": 1478,
+                    "width": 83,
+                    "height": 60,
+                    "row": 0,
+                    "col": 3
+                },
+                {
+                    "x": 313,
+                    "y": 1539,
+                    "width": 83,
+                    "height": 60,
+                    "row": 1,
+                    "col": 0
+                },
+                {
+                    "x": 396,
+                    "y": 1539,
+                    "width": 83,
+                    "height": 60,
+                    "row": 1,
+                    "col": 1
+                },
+                {
+                    "x": 480,
+                    "y": 1539,
+                    "width": 83,
+                    "height": 60,
+                    "row": 1,
+                    "col": 2
+                },
+                {
+                    "x": 564,
+                    "y": 1539,
+                    "width": 83,
+                    "height": 60,
+                    "row": 1,
+                    "col": 3
+                }
+            ]
+        }
+    ]
+}
