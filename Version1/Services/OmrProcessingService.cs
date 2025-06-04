@@ -55,8 +55,7 @@ namespace Version1.Services
             {
                 bool allFilled = AreReferenceMarkersFilled(image, template);
                 if (!allFilled)
-                {
-                   
+                { 
                     result.FieldResults["Error"] = "Skew markers are not filled or missing. Cannot proceed with OMR processing.";
                     return result;
                 }
