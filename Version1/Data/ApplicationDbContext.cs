@@ -14,7 +14,6 @@ namespace Version1.Data
         public DbSet<ImgTemp> ImgTemplate { get; set; }
         public DbSet<EmpModel> empModels { get; set; }
 
-        //public DbSet<TempRecord> OmrResult { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

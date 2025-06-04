@@ -1,4 +1,9 @@
 bin/
 obj/
+<<<<<<< HEAD
 bin/
+=======
+wFileManager/
+wwwroot/
+>>>>>>> ef3d707a73cb8d55412ac1db008488a7393d935f
 .vs/

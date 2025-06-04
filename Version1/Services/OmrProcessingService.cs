@@ -155,6 +155,12 @@ namespace Version1.Services
             }
             result.ProcessedAt = DateTime.UtcNow;
 
+            //// Add File Name 
+            //var imgServ = Path.GetFileName(imagePath);
+            //templatePath = Path.Combine(sharePath, imgServ);
+            //var fileNamess = templatePath.Replace("\\", "/");
+            //result.FieldResults["FileName"] = fileNamess;
+
             return result;
         }
 
@@ -188,7 +194,6 @@ namespace Version1.Services
             {
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
-
                 return Enumerable.Range(0, RowCount).Select(i => i.ToString()).ToList();
             }
 

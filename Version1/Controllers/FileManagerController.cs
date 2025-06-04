@@ -103,7 +103,6 @@ namespace SQCScanner.Controllers
             }
         }
 
-
         [Route("Upload")]
         [HttpPost]
         public IActionResult Upload([FromForm] string path, [FromForm] IList<IFormFile> uploadFiles, [FromForm] string action)
@@ -149,15 +148,6 @@ namespace SQCScanner.Controllers
                 return StatusCode(Convert.ToInt32(errorResponse.Code), errorResponse);
             }
         }
-
-
-
-
-
-
-
-
-
 
         [Route("Download")]
         [HttpPost]
