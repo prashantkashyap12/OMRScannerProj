@@ -20,6 +20,8 @@ builder.Services.AddScoped<JwtAuth>();
 builder.Services.AddScoped<EncptDcript>();
 builder.Services.AddScoped<RecordDBClass>();
 builder.Services.AddScoped<RecordSave>();
+builder.Services.AddScoped<table_gen>();
+builder.Services.AddScoped<ImgSave>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -46,9 +48,8 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
 // Add Authentication with JWT
 builder.Services.AddJwtAuthentication();
 
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -81,6 +82,8 @@ app.UseStaticFiles(new StaticFileOptions
     }
 });
 app.UseStaticFiles();
+
+
 
 // Cross Policy
 app.UseCors("AllowAnyOrigin");

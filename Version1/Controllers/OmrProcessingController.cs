@@ -35,18 +35,24 @@ namespace Version1.Controllers
         private readonly OmrProcessingService _omrService;
         private readonly IWebHostEnvironment _env;
         private readonly ApplicationDbContext _dbContext;
-        private readonly RecordDBClass _recordTable;
         private readonly WebSoketHandler _webSocketHandler;
         private readonly OmrProcessingControlService _controlService;
+        private readonly RecordSave _SaveOnly;
+        private readonly table_gen _recordTable;
+        private readonly ImgSave _imgSave;
 
 
         public OmrProcessingController(
-            OmrProcessingService omrService, 
-            IWebHostEnvironment env, 
-            ApplicationDbContext dbContext, 
-            RecordDBClass recordTable, 
-            WebSoketHandler webSocketHandler,  
-            OmrProcessingControlService controlService)
+            OmrProcessingService omrService,
+            IWebHostEnvironment env,
+            ApplicationDbContext dbContext,
+            WebSoketHandler webSocketHandler,
+            OmrProcessingControlService controlService,
+            RecordSave recordSave,
+            table_gen recordTable,
+            ImgSave imgSave
+
+            )
         {
             _omrService = omrService;
             _env = env;
@@ -58,6 +64,8 @@ namespace Version1.Controllers
                 throw new ArgumentNullException(nameof(controlService), "OmrProcessingControlService is not injected properly.");
             }
             _controlService = controlService;
+            _SaveOnly = recordSave;
+            _imgSave = imgSave;
         }
 
         //  Process OMR Sheet  
@@ -68,7 +76,7 @@ namespace Version1.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             var jwtToken = tokenHandler.ReadJwtToken(token);
             var userId = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "nameid")?.Value;
-
+            var userName = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "unique_name")?.Value;
 
 
             // Exist path
@@ -79,6 +87,7 @@ namespace Version1.Controllers
                 return BadRequest("Folder path is invalid.");
             }
             var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
+
 
             // Save template once
             var Targetjson = string.Empty;
@@ -102,23 +111,31 @@ namespace Version1.Controllers
 
             var results = new List<OmrResult>();
             var crttb = 1;
-            foreach (var imagePath  in imageFiles)
+            foreach (var imagePath in imageFiles)
             {
-                 _controlService.WaitIfPaused();
-                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath, sharefolder);
+                // Stop and Continue API Globle 
+                _controlService.WaitIfPaused();
 
+                // Scaning to get data from OMR Sheet
+                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath, sharefolder);
                 results.Add(res);
 
-                string jsonResult = JsonSerializer.Serialize(res);
-
-                await _webSocketHandler.UserMessageAsync(userId, jsonResult);
-
-                // Make table design 
+                // Make table design  - Done
                 if (crttb == 1)
                 {
                     var tableCrt = await _recordTable.TableCreation(res, idTemp);
                 }
                 crttb++;
+
+                // 1. Save_Record into DB - Done
+                var dbRes = await _SaveOnly.RecordSaveVal(res, idTemp, userName);
+
+                // 2. Save_Sacanned Img - Done
+                await _imgSave.ScanedSave(_env.WebRootPath, imagePath, idTemp);
+
+                // 3. WS_Handler - Done
+                string jsonResult = JsonSerializer.Serialize(res); // Object into JSON_STRING
+                await _webSocketHandler.UserMessageAsync(userId, jsonResult);
             }
             return Ok(results);
         }
