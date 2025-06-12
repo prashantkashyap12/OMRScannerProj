@@ -56,6 +56,7 @@ namespace Version1.Services
                 bool allFilled = AreReferenceMarkersFilled(image, template);
                 if (!allFilled)
                 { 
+                    result.Success=false;
                     result.FieldResults["Error"] = "Skew markers are not filled or missing. Cannot proceed with OMR processing.";
                     return result;
                 }
@@ -153,13 +154,8 @@ namespace Version1.Services
 
                 }
             }
+            result.Success = true;
             result.ProcessedAt = DateTime.UtcNow;
-
-            //// Add File Name 
-            //var imgServ = Path.GetFileName(imagePath);
-            //templatePath = Path.Combine(sharePath, imgServ);
-            //var fileNamess = templatePath.Replace("\\", "/");
-            //result.FieldResults["FileName"] = fileNamess;
 
             return result;
         }
