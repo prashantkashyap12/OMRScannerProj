@@ -62,7 +62,7 @@ namespace Version1.Services
                 }
 
             }
-            // Add File Name
+            
             var imgServ = Path.GetFileName(imagePath);
             templatePath = Path.Combine(sharePath, imgServ);
             var fileNames = templatePath.Replace("\\", "/");
@@ -166,7 +166,7 @@ namespace Version1.Services
             if(referenceFields == null || referenceFields.Length == 0)
                 return true;
             var refMarker=referenceFields[0];
-            var positions = new[] { "topleft", "topright", "bottomLeft", "bottomRight" };
+            var positions = new[] { "topLeft", "topRight", "bottomLeft", "bottomRight" };
             foreach (var pos in positions)
             {
                 var marker = refMarker[pos]?.ToObject<BubbleInfo>();
