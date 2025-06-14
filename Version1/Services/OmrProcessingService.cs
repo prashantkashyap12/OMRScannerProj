@@ -1,28 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OpenCvSharp;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
+﻿using OpenCvSharp;
 using Version1.Data;
 using Version1.Modal;
-using TesseractOCR;
-using Tesseract;
-using System;
 using OpenCvSharp.Extensions;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
-using System.Linq;
 using SixLabors.ImageSharp.Processing;
 using Newtonsoft.Json.Linq;
-using System.Drawing.Design;
-using Newtonsoft.Json;
-using Microsoft.Extensions.Options;
-using TesseractOCR.Renderers;
 using SQCScanner.Modal;
 using System.Text.RegularExpressions;
 //using SixLabors.ImageSharp.Drawing;
-using System.Drawing.Text;
-using Microsoft.AspNetCore.Http;
 
 namespace Version1.Services
 {
@@ -36,36 +22,36 @@ namespace Version1.Services
         }
         public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath, string sharePath)
         {
-            // 
-
             using var image = Image.Load<Rgba32>(imagePath);
             var debugImage = image.Clone();
-
             var templateJson = File.ReadAllText(templatePath);
-
             var template = JObject.Parse(templateJson);
-
             var result = new OmrResult
             {
                 FileName = Path.GetFileName(imagePath),
                 FieldResults = new Dictionary<string, string>()
             };
             var referenceFields = template["referncefield"]?.ToArray();
-            if (referenceFields != null && referenceFields.Length > 0)
-            {
-                bool allFilled = AreReferenceMarkersFilled(image, template);
-                if (!allFilled)
-                { 
-                    result.FieldResults["Error"] = "Skew markers are not filled or missing. Cannot proceed with OMR processing.";
-                    return result;
-                }
 
-            }
+
             // Add File Name
             var imgServ = Path.GetFileName(imagePath);
             templatePath = Path.Combine(sharePath, imgServ);
             var fileNames = templatePath.Replace("\\", "/");
             result.FieldResults["FileName"] = fileNames;
+
+
+            // SKU Detactions
+            if (referenceFields != null && referenceFields.Length > 0)
+            {
+                bool allFilled = AreReferenceMarkersFilled(image, template);
+                if (!allFilled)
+                {
+                    result.Success = false;
+                    result.FieldResults["Report"] = "Skew markers are not filled or missing. Cannot proceed with OMR processing.";
+                    return result;
+                }
+            }
 
             foreach (var field in template["fields"])
             {
@@ -80,7 +66,6 @@ namespace Version1.Services
                 {
                     throw new ArgumentException($"Missing 'fieldValue' in field: must be \"Integer\", \"Alphabet\", or \"Custom\"");
                 }
-
                 string fieldname = field["fieldName"]!.ToString();
                 var bubblesArray = field["bubbles"]?.ToObject<List<BubbleInfo>>();
                 bool allowMultiple = field["allowMultiple"]?.Value<bool>() ?? true;
@@ -149,18 +134,10 @@ namespace Version1.Services
                             }
                         }
                     }
-
-
                 }
             }
             result.ProcessedAt = DateTime.UtcNow;
-
-            //// Add File Name 
-            //var imgServ = Path.GetFileName(imagePath);
-            //templatePath = Path.Combine(sharePath, imgServ);
-            //var fileNamess = templatePath.Replace("\\", "/");
-            //result.FieldResults["FileName"] = fileNamess;
-
+            result.Success = true;
             return result;
         }
 
@@ -170,7 +147,7 @@ namespace Version1.Services
             if(referenceFields == null || referenceFields.Length == 0)
                 return true;
             var refMarker=referenceFields[0];
-            var positions = new[] { "topleft", "topright", "bottomLeft", "bottomRight" };
+            var positions = new[] { "topLeft", "topRight", "bottomLeft", "bottomRight" };
             foreach (var pos in positions)
             {
                 var marker = refMarker[pos]?.ToObject<BubbleInfo>();
@@ -178,14 +155,11 @@ namespace Version1.Services
                 var rect = new SixLabors.ImageSharp.Rectangle(marker.X,marker.Y,marker.Width,marker.Height); 
                 var region = image.Clone(ctx=>ctx.Crop(rect));
                 if (!IsBubbleFilled(region, bubbleIntensity))
-                { return false; }
-
-
+                { 
+                    return false; 
+                }
             }
-
             return true;
-
-            
         }
 
         private List<string> GenerateOptionsFromFieldType(string fieldValue, List<BubbleInfo> bubbles)
@@ -196,7 +170,6 @@ namespace Version1.Services
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
                 return Enumerable.Range(0, RowCount).Select(i => i.ToString()).ToList();
             }
-
             if (fieldValue.Equals("Alphabet", StringComparison.OrdinalIgnoreCase))
             {
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();

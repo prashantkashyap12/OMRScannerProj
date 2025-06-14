@@ -69,8 +69,16 @@ namespace Version1.Controllers
         }
 
         //  Process OMR Sheet  
+
+        // Check
+        // Y/N = Save/update data into database.
+
+        // Y/N = ReScan failure Img Folder.
+
+        // Y/N = make web api To get Failure records from db and surve path.
+
         [HttpPost("process-omr")]
-        public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp, string token)
+        public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp, string token, bool IsSaveDb = true, bool failReScan = true)
         {
             // Token handler UserId Extract
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -79,8 +87,18 @@ namespace Version1.Controllers
             var userName = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "unique_name")?.Value;
 
 
+            // Y/N = ReScan failure Img Folder.
+            var sharefolder = "";
+            if (failReScan)
+            {
+                sharefolder = Path.Combine("wFileManager/" + folderPath);
+            }
+            else
+            {
+                sharefolder = Path.Combine("RejectImg/" + folderPath);
+            }
+
             // Exist path
-            var sharefolder = Path.Combine("wFileManager/" + folderPath);
             folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wFileManager/" + folderPath);
             if (!Directory.Exists(folderPath))
             {
@@ -119,22 +137,29 @@ namespace Version1.Controllers
                 // Scaning to get data from OMR Sheet
                 var res = await _omrService.ProcessOmrSheet(imagePath, templatePath, sharefolder);
                 results.Add(res);
-
-                // Make table design  - Done
+                
+                // Make table design  - Done  (Tables Are created perfactly Scan or ReScan k case)
                 if (crttb == 1)
                 {
                     var tableCrt = await _recordTable.TableCreation(res, idTemp);
-                }
-                crttb++;
+                    Console.WriteLine(tableCrt);
+                } crttb++;
 
                 // 1. Save_Record into DB - Done
-                var dbRes = await _SaveOnly.RecordSaveVal(res, idTemp, userName);
+                var dbRes = null as object;
+                if (IsSaveDb)
+                {
+                    dbRes = await _SaveOnly.RecordSaveVal(res, idTemp, userName);
+                }
+                Console.WriteLine(dbRes);
 
-                // 2. Save_Sacanned Img - Done
-                await _imgSave.ScanedSave(_env.WebRootPath, imagePath, idTemp);
+                // 2. Save_Sacanned Img Folder - Done  (success images or failure image are save into saprated folder)
+                var stat = res.Success;
+                var SaveRoot = await _imgSave.ScanedSave(_env.WebRootPath, imagePath, idTemp, stat);
+                Console.WriteLine(SaveRoot);
 
                 // 3. WS_Handler - Done
-                string jsonResult = JsonSerializer.Serialize(res); // Object into JSON_STRING
+                string jsonResult = JsonSerializer.Serialize(dbRes);              // Object into JSON_STRING
                 await _webSocketHandler.UserMessageAsync(userId, jsonResult);
             }
             return Ok(results);

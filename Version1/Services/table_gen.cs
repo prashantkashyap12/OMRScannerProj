@@ -36,13 +36,11 @@ namespace SQCScanner.Services
                     .ToList();
                 fieldNames.AddRange(fields);
 
-
                 if (!tableExists)
                 {
                     var columnsSql = string.Join(", ", fields.Select(f => $"[{f}] NVARCHAR(MAX)"));
-                    string createTableSql = $"CREATE TABLE [{tableName}] (Id INT IDENTITY(1,1) PRIMARY KEY, {"[LiveTime] NVARCHAR(MAX)"},{"[UserName] NVARCHAR(MAX)"}, {columnsSql})";
-                    await connection.ExecuteAsync(createTableSql);
-
+                    string createTableSql = $"CREATE TABLE [{tableName}] (Id INT IDENTITY(1,1) PRIMARY KEY, {"[LiveTime] NVARCHAR(MAX)"},{"[UserName] NVARCHAR(MAX)"}, {columnsSql}, {"[Status] NVARCHAR(MAX)"},{"[Report] NVARCHAR(MAX)"})";
+                    await connection.QueryAsync(createTableSql);
                 }
                 else
                 {

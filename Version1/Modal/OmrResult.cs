@@ -9,6 +9,7 @@ namespace Version1.Modal
         public int Id { get; set; }
         public string FileName { get; set; } = string.Empty;
         public Dictionary<string, string> FieldResults { get; set; } = new();
+        public bool Success { get; set; } = true;
         public DateTime ProcessedAt {get; set; } = DateTime.UtcNow;
     }
 }
