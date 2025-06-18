@@ -85,7 +85,11 @@ namespace Version1.Services
                 string fieldname = field["fieldName"]!.ToString();
                 var bubblesArray = field["bubbles"]?.ToObject<List<BubbleInfo>>();
                 bool allowMultiple = field["allowMultiple"]?.Value<bool>() ?? true;
+                // blank and Multiple bubble  filled than user can give  any character
+                string blankOuputSymbol = field["blankOuputSymbol"]?.ToString() ?? "#";
 
+                string multipleBubbleOutput = field["multipleBubbleOutput"]?.ToString() ?? "*";
+                //end 
                 if (bubblesArray != null)
                 {
                     var bubbleRects = bubblesArray.Select(b => new Rectangle(b.X, b.Y, b.Width, b.Height)).ToList();
@@ -107,7 +111,7 @@ namespace Version1.Services
 
                     if (fieldType == "formfield")
                     {
-                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
+                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple, blankOuputSymbol, multipleBubbleOutput);
                         var combined = string.Join("",
                             answers.OrderBy(kv => int.Parse(kv.Key.Replace("Q", "")))
                                    .Select(kv => kv.Value)
@@ -118,7 +122,7 @@ namespace Version1.Services
 
                     else if (fieldType == "questionfield")
                     {
-                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
+                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple, blankOuputSymbol, multipleBubbleOutput);
 
                         // Check if fieldName is like "q6-q10"
                         if (Regex.IsMatch(fieldname, @"q\d+-q\d+", RegexOptions.IgnoreCase))
@@ -207,7 +211,7 @@ namespace Version1.Services
      List<Rectangle> bubbleRects,
      List<BubbleInfo> bubbleInfos,
      List<string> options,
-     string? readdirection, double bubbleIntensity, bool allowMultiple)
+     string? readdirection, double bubbleIntensity, bool allowMultiple,string blankOuputSymbol, string  multipleBubbleOutput)
         {
             if (string.IsNullOrWhiteSpace(readdirection))
                 throw new ArgumentException("You must provide 'ReadingDirection' in the template. Allowed values: 'Horizontal' or 'Vertical'.");
@@ -260,7 +264,7 @@ namespace Version1.Services
                 if (filledOptions.Count == 0)
                 {
 
-                    output = "#";
+                    output = blankOuputSymbol;
                 }
                 else if (filledOptions.Count == 1)
                 {
@@ -270,7 +274,7 @@ namespace Version1.Services
                 {
                     output = allowMultiple
                         ? string.Join("", filledOptions)
-                        : "*";
+                        : multipleBubbleOutput;
                 }
 
                 result[$"Q{questionIndex + 1}"] = output;
