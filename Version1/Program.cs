@@ -143,11 +143,7 @@ app.Use(async (context, next) =>
 
         // 5. Add socket with userId
         connectionManager.AddSocket(userId, socket);
-
         var buffer = new byte[1024 * 4];
-
-        // Add the WebSocket to the connection manager
-
         try
         {
             while (socket.State == WebSocketState.Open)
@@ -157,7 +153,6 @@ app.Use(async (context, next) =>
                 {
                     break;
                 }
-                // Optional: Handle messages from client if needed
             }
         }
         catch (Exception ex)

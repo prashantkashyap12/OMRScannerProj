@@ -128,8 +128,8 @@ namespace SQCScanner.Controllers
         }
 
         [HttpGet]
-        [Route("Dash_Temp")]
-        public async Task<IActionResult> totalFold()
+        [Route("Dash_ReadyTemp")]
+        public async Task<IActionResult> TotalFold()
         {
             var query = "";
             dynamic result;
@@ -140,5 +140,12 @@ namespace SQCScanner.Controllers
                 return Ok(result[0]);
             }
         }
+
+
+        [HttpGet("Dash_Avrage")]
+        public async Task<IActionResult> 
+
+
+
     }
 }

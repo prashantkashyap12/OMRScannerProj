@@ -69,14 +69,7 @@ namespace Version1.Controllers
         }
 
         //  Process OMR Sheet  
-
-        // Check
-        // Y/N = Save/update data into database.
-
-        // Y/N = ReScan failure Img Folder.
-
-        // Y/N = make web api To get Failure records from db and surve path.
-
+        // 
         [HttpPost("process-omr")]
         public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp, string token,  bool IsSaveDb = true, bool failReScan = true)    // string bubInts, string blank, string duplic
         {
@@ -125,6 +118,7 @@ namespace Version1.Controllers
             {
                 BadRequest("Id is invalid please add Template first");
             }
+
             string templatePath = Path.Combine(_env.WebRootPath, Targetjson);
 
             var results = new List<OmrResult>();
@@ -136,13 +130,11 @@ namespace Version1.Controllers
 
                 // Scaning to get data from OMR Sheet
                 var res = await _omrService.ProcessOmrSheet(imagePath, templatePath);
-                results.Add(res);
                 
                 // Make table design  - Done  (Tables Are created perfactly Scan or ReScan k case)
                 if (crttb == 1)
                 {
                     var tableCrt = await _recordTable.TableCreation(res, idTemp);
-                    Console.WriteLine(tableCrt);
                 } crttb++;
 
 
@@ -160,8 +152,8 @@ namespace Version1.Controllers
                 // 3. WS_Handler - Done                                          //  Object into JSON_STRING
                 string jsonResult = JsonSerializer.Serialize(dbRes);             
                 await _webSocketHandler.UserMessageAsync(userId, jsonResult);
-                Console.WriteLine("");
-                results = dbRes;
+                results.Add(dbRes);
+
             }
             return Ok(results);
         }

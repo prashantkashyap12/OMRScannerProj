@@ -34,23 +34,25 @@ namespace Version1.Services
         {
             _context = context;
         }
-        public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath, string sharePath)
+        public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath)
         {
-            // 
+            //  SONIYA WORK 
 
             using var image = Image.Load<Rgba32>(imagePath);
             var debugImage = image.Clone();
-
             var templateJson = File.ReadAllText(templatePath);
-
             var template = JObject.Parse(templateJson);
-
             var result = new OmrResult
             {
                 FileName = Path.GetFileName(imagePath),
                 FieldResults = new Dictionary<string, string>()
             };
             var referenceFields = template["referncefield"]?.ToArray();
+
+
+
+
+
             if (referenceFields != null && referenceFields.Length > 0)
             {
                 bool allFilled = AreReferenceMarkersFilled(image, template);
@@ -64,9 +66,7 @@ namespace Version1.Services
             }
             
             var imgServ = Path.GetFileName(imagePath);
-            templatePath = Path.Combine(sharePath, imgServ);
-            var fileNames = templatePath.Replace("\\", "/");
-            result.FieldResults["FileName"] = fileNames;
+            result.FieldResults["FileName"] = imgServ;
 
             foreach (var field in template["fields"])
             {
@@ -179,13 +179,8 @@ namespace Version1.Services
                 var region = image.Clone(ctx=>ctx.Crop(rect));
                 if (!IsBubbleFilled(region, bubbleIntensity))
                 { return false; }
-
-
             }
-
             return true;
-
-            
         }
 
         private List<string> GenerateOptionsFromFieldType(string fieldValue, List<BubbleInfo> bubbles)
