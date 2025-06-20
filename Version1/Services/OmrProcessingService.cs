@@ -1,14 +1,28 @@
-﻿using OpenCvSharp;
+﻿using Microsoft.EntityFrameworkCore;
+using OpenCvSharp;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 using Version1.Data;
 using Version1.Modal;
+using TesseractOCR;
+using Tesseract;
+using System;
 using OpenCvSharp.Extensions;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
+using System.Linq;
 using SixLabors.ImageSharp.Processing;
 using Newtonsoft.Json.Linq;
+using System.Drawing.Design;
+using Newtonsoft.Json;
+using Microsoft.Extensions.Options;
+using TesseractOCR.Renderers;
 using SQCScanner.Modal;
 using System.Text.RegularExpressions;
 //using SixLabors.ImageSharp.Drawing;
+using System.Drawing.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace Version1.Services
 {
@@ -22,36 +36,37 @@ namespace Version1.Services
         }
         public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath, string sharePath)
         {
+            // 
+
             using var image = Image.Load<Rgba32>(imagePath);
             var debugImage = image.Clone();
+
             var templateJson = File.ReadAllText(templatePath);
+
             var template = JObject.Parse(templateJson);
+
             var result = new OmrResult
             {
                 FileName = Path.GetFileName(imagePath),
                 FieldResults = new Dictionary<string, string>()
             };
             var referenceFields = template["referncefield"]?.ToArray();
-
-
-            // Add File Name
-            var imgServ = Path.GetFileName(imagePath);
-            templatePath = Path.Combine(sharePath, imgServ);
-            var fileNames = templatePath.Replace("\\", "/");
-            result.FieldResults["FileName"] = fileNames;
-
-
-            // SKU Detactions
             if (referenceFields != null && referenceFields.Length > 0)
             {
                 bool allFilled = AreReferenceMarkersFilled(image, template);
                 if (!allFilled)
-                {
-                    result.Success = false;
-                    result.FieldResults["Report"] = "Skew markers are not filled or missing. Cannot proceed with OMR processing.";
+                { 
+                    result.Success=false;
+                    result.FieldResults["Error"] = "Skew markers are not filled or missing. Cannot proceed with OMR processing.";
                     return result;
                 }
+
             }
+            
+            var imgServ = Path.GetFileName(imagePath);
+            templatePath = Path.Combine(sharePath, imgServ);
+            var fileNames = templatePath.Replace("\\", "/");
+            result.FieldResults["FileName"] = fileNames;
 
             foreach (var field in template["fields"])
             {
@@ -66,10 +81,15 @@ namespace Version1.Services
                 {
                     throw new ArgumentException($"Missing 'fieldValue' in field: must be \"Integer\", \"Alphabet\", or \"Custom\"");
                 }
+
                 string fieldname = field["fieldName"]!.ToString();
                 var bubblesArray = field["bubbles"]?.ToObject<List<BubbleInfo>>();
                 bool allowMultiple = field["allowMultiple"]?.Value<bool>() ?? true;
+                // blank and Multiple bubble  filled than user can give  any character
+                string blankOuputSymbol = field["blankOuputSymbol"]?.ToString() ?? "#";
 
+                string multipleBubbleOutput = field["multipleBubbleOutput"]?.ToString() ?? "*";
+                //end 
                 if (bubblesArray != null)
                 {
                     var bubbleRects = bubblesArray.Select(b => new Rectangle(b.X, b.Y, b.Width, b.Height)).ToList();
@@ -91,7 +111,7 @@ namespace Version1.Services
 
                     if (fieldType == "formfield")
                     {
-                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
+                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple, blankOuputSymbol, multipleBubbleOutput);
                         var combined = string.Join("",
                             answers.OrderBy(kv => int.Parse(kv.Key.Replace("Q", "")))
                                    .Select(kv => kv.Value)
@@ -102,7 +122,7 @@ namespace Version1.Services
 
                     else if (fieldType == "questionfield")
                     {
-                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple);
+                        var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple, blankOuputSymbol, multipleBubbleOutput);
 
                         // Check if fieldName is like "q6-q10"
                         if (Regex.IsMatch(fieldname, @"q\d+-q\d+", RegexOptions.IgnoreCase))
@@ -134,10 +154,13 @@ namespace Version1.Services
                             }
                         }
                     }
+
+
                 }
             }
-            result.ProcessedAt = DateTime.UtcNow;
             result.Success = true;
+            result.ProcessedAt = DateTime.UtcNow;
+
             return result;
         }
 
@@ -155,11 +178,14 @@ namespace Version1.Services
                 var rect = new SixLabors.ImageSharp.Rectangle(marker.X,marker.Y,marker.Width,marker.Height); 
                 var region = image.Clone(ctx=>ctx.Crop(rect));
                 if (!IsBubbleFilled(region, bubbleIntensity))
-                { 
-                    return false; 
-                }
+                { return false; }
+
+
             }
+
             return true;
+
+            
         }
 
         private List<string> GenerateOptionsFromFieldType(string fieldValue, List<BubbleInfo> bubbles)
@@ -170,6 +196,7 @@ namespace Version1.Services
                 int RowCount = bubbles.Select(b => b.Row).Distinct().Count();
                 return Enumerable.Range(0, RowCount).Select(i => i.ToString()).ToList();
             }
+
             if (fieldValue.Equals("Alphabet", StringComparison.OrdinalIgnoreCase))
             {
                 int colCount = bubbles.Select(b => b.Col).Distinct().Count();
@@ -184,7 +211,7 @@ namespace Version1.Services
      List<Rectangle> bubbleRects,
      List<BubbleInfo> bubbleInfos,
      List<string> options,
-     string? readdirection, double bubbleIntensity, bool allowMultiple)
+     string? readdirection, double bubbleIntensity, bool allowMultiple,string blankOuputSymbol, string  multipleBubbleOutput)
         {
             if (string.IsNullOrWhiteSpace(readdirection))
                 throw new ArgumentException("You must provide 'ReadingDirection' in the template. Allowed values: 'Horizontal' or 'Vertical'.");
@@ -237,7 +264,7 @@ namespace Version1.Services
                 if (filledOptions.Count == 0)
                 {
 
-                    output = "#";
+                    output = blankOuputSymbol;
                 }
                 else if (filledOptions.Count == 1)
                 {
@@ -247,7 +274,7 @@ namespace Version1.Services
                 {
                     output = allowMultiple
                         ? string.Join("", filledOptions)
-                        : "*";
+                        : multipleBubbleOutput;
                 }
 
                 result[$"Q{questionIndex + 1}"] = output;
