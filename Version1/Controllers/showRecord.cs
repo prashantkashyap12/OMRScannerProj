@@ -1,7 +1,11 @@
-﻿using Dapper;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json.Linq;
 
 namespace SQCScanner.Controllers
 {
@@ -62,6 +66,79 @@ namespace SQCScanner.Controllers
                 };
             }
             return Ok(res);
+        }
+
+
+        [HttpGet]
+        [Route("LastRec")]
+        public async Task<IActionResult> mainVal(string TempId, string token)
+        {
+            dynamic res;
+            string query = "";
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var jwtToken = tokenHandler.ReadJwtToken(token);
+                var userName = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "unique_name")?.Value;
+                using (var _conn = new SqlConnection(_connectionString))
+                {
+                    var tempTable = "Template_"+TempId;
+                    query = @$"select TOP 100 * from {tempTable} where UserName ='{userName}' ORDER BY Id DESC";
+                    var result = await _conn.QueryAsync(query);
+                    res = new
+                    {
+                        res = result,
+                        state = true
+                    };
+
+                }
+            }
+            catch (Exception ex)
+            {
+                res = new
+                {
+                    message = ex.Message,
+                    state = false
+                };
+            }
+            return Ok(res);
+        }
+
+
+        [HttpGet]
+        [Route("Dash_AllRec")]
+        public async Task<IActionResult> allRecord()
+        {
+            var query = "";
+            dynamic result;
+            using(var _conn = new SqlConnection(_connectionString))
+            {
+                query = $@"SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME LIKE 'Template_%'";
+                result = await _conn.QueryAsync<string>(query);
+                var total = 0; query = null;
+                foreach(var data in result)
+                {
+                    query = $"SELECT COUNT(*) FROM [{data}]";
+                    var count = await _conn.ExecuteScalarAsync<int>(query);
+                    Console.WriteLine(count);
+                    total = total + count;
+                }       
+                return Ok(total);
+            }
+        }
+
+        [HttpGet]
+        [Route("Dash_Temp")]
+        public async Task<IActionResult> totalFold()
+        {
+            var query = "";
+            dynamic result;
+            using (var _conn = new SqlConnection(_connectionString))
+            {
+                query = $@"SELECT COUNT(*) AS FilledCount FROM ImgTemplate WHERE imgPath IS NOT NULL AND imgPath != '' AND JsonPath IS NOT NULL AND JsonPath != '';";
+                result = await _conn.QueryAsync<int>(query);
+                return Ok(result[0]);
+            }
         }
     }
 }

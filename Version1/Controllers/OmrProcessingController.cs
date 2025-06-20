@@ -78,14 +78,14 @@ namespace Version1.Controllers
         // Y/N = make web api To get Failure records from db and surve path.
 
         [HttpPost("process-omr")]
-        public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp, string token, bool IsSaveDb = true, bool failReScan = true)
+        public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp, string token,  bool IsSaveDb = true, bool failReScan = true)    // string bubInts, string blank, string duplic
         {
             // Token handler UserId Extract
             var tokenHandler = new JwtSecurityTokenHandler();
             var jwtToken = tokenHandler.ReadJwtToken(token);
             var userId = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "nameid")?.Value;
             var userName = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "unique_name")?.Value;
-
+            var folderPAth = folderPath;
 
             // Y/N = ReScan failure Img Folder.
             var sharefolder = "";
@@ -135,7 +135,7 @@ namespace Version1.Controllers
                 _controlService.WaitIfPaused();
 
                 // Scaning to get data from OMR Sheet
-                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath, sharefolder);
+                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath);
                 results.Add(res);
                 
                 // Make table design  - Done  (Tables Are created perfactly Scan or ReScan k case)
@@ -145,22 +145,23 @@ namespace Version1.Controllers
                     Console.WriteLine(tableCrt);
                 } crttb++;
 
-                // 1. Save_Record into DB - Done
-                var dbRes = null as object;
+
+                dynamic dbRes = null;
+                // 1. Save_Record into DB - Done              
+                dbRes = await _SaveOnly.RecordSaveVal(res, idTemp, userName, IsSaveDb, folderPAth);
+
                 if (IsSaveDb)
                 {
-                    dbRes = await _SaveOnly.RecordSaveVal(res, idTemp, userName);
+                    // 2. Save_Sacanned Img Folder - Done                        // Success images or failure image are save into saprated folder)
+                    var stat = res.Success;
+                    var SaveRoot = await _imgSave.ScanedSave(_env.WebRootPath, imagePath, idTemp, stat);
                 }
-                Console.WriteLine(dbRes);
 
-                // 2. Save_Sacanned Img Folder - Done  (success images or failure image are save into saprated folder)
-                var stat = res.Success;
-                var SaveRoot = await _imgSave.ScanedSave(_env.WebRootPath, imagePath, idTemp, stat);
-                Console.WriteLine(SaveRoot);
-
-                // 3. WS_Handler - Done
-                string jsonResult = JsonSerializer.Serialize(dbRes);              // Object into JSON_STRING
+                // 3. WS_Handler - Done                                          //  Object into JSON_STRING
+                string jsonResult = JsonSerializer.Serialize(dbRes);             
                 await _webSocketHandler.UserMessageAsync(userId, jsonResult);
+                Console.WriteLine("");
+                results = dbRes;
             }
             return Ok(results);
         }

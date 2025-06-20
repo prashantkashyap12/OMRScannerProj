@@ -9,6 +9,7 @@ namespace SQCScanner.Services
             dynamic res = "";
             try
             {
+
                 var getFile = Path.GetFileName(imgPath);
                 var folderPathMain = "";
                 if (status)
@@ -34,8 +35,8 @@ namespace SQCScanner.Services
                     using (var TempSet = new FileStream(folderPathMain, FileMode.Create, FileAccess.Write))
                     {
                         await ImgTemp.CopyToAsync(TempSet);
-                        // delete root folder 
                     }
+                    
                     res = new
                     {
                         message = "File Save Into TemplateWise FolderName",
@@ -51,6 +52,11 @@ namespace SQCScanner.Services
                         state = false,
                     };
                 }
+                if (File.Exists(imgPath))     // img will be delete as per user desier 
+                {
+                    File.Delete(imgPath);
+                }
+
             }
             catch (Exception ex)
             {
