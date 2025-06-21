@@ -152,7 +152,6 @@ namespace Version1.Controllers
                 // 3. WS_Handler - Done                                          //  Object into JSON_STRING
                 string jsonResult = JsonSerializer.Serialize(dbRes);             
                 await _webSocketHandler.UserMessageAsync(userId, jsonResult);
-                results.Add(dbRes);
 
             }
             return Ok(results);
