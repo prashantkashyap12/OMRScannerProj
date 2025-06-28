@@ -14,8 +14,6 @@ namespace SQCScanner.websoketManager
 
         //naya client connect hota hai, uska WebSocket object is method ke through list mein add kiya.
         // Add or update socket for user.
-
-
         public void AddSocket(string userId, WebSocket socket)
         {
             _userSockets.AddOrUpdate(userId, socket, (key, oldSocket) =>
@@ -38,8 +36,6 @@ namespace SQCScanner.websoketManager
             }
             return null;
         }
-
-        // Remove socket for user
         public void RemoveSocket(string userId)
         {
             if (_userSockets.TryRemove(userId, out var socket))
@@ -51,8 +47,7 @@ namespace SQCScanner.websoketManager
             }
         }
 
-
-        //broadcast list ko provide karta hai. matlab jitne user hai jo connect hai unki list data hai
+        // Broadcast list ko provide karta hai. matlab jitne user hai jo connect hai unki list data hai
         public IEnumerable<WebSocket> GetAllSockets() => _userSockets.Values;
     }
 }

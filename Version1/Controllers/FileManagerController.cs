@@ -102,7 +102,6 @@ namespace SQCScanner.Controllers
                     return BadRequest("Invalid action.");
             }
         }
-
         [Route("Upload")]
         [HttpPost]
         public IActionResult Upload([FromForm] string path, [FromForm] IList<IFormFile> uploadFiles, [FromForm] string action)

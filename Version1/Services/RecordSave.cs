@@ -128,7 +128,7 @@ namespace SQCScanner.Services
 
                         if (isRes.Count >= 1)  // Record Update _ Problem Will be = jab koi record(column ki rows) pahle se add ho gya hai or us record ko mene apne main scan response se hata diya hai wo update k case me hatega ni pahle waha record db se save rahega.
                         {
-                            var updateQuery = $@"UPDATE [{tableName}] SET {string.Join(", ", records.Select(kvp => $"[{kvp.Key}] = '{kvp.Value}'"))} WHERE [FileName] = '{isFileCheck2}'";
+                            var updateQuery = $@"UPDATE [{tableName}] SET {string.Join(", ", records.Select(kvp => $"[{kvp.Key}] = '{kvp.Value}'"))} WHERE [FileName] = '{checkSuss}' OR [FileName] = '{checkfail}'";
                             if (IsSaveDb)
                             {
                                 result = await connection.ExecuteAsync(updateQuery);
@@ -140,8 +140,6 @@ namespace SQCScanner.Services
                                 pathIns = pathIns.Replace("\\", "/");
                                 records.Add("ServePath", folderPath);
                                 records["FileName"] = folderPath;
-                                Console.WriteLine(folderPath);
-
                             }
                             res = new
                             {

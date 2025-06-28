@@ -130,8 +130,7 @@ namespace Version1.Controllers
 
                 // Scaning to get data from OMR Sheet
                 var res = await _omrService.ProcessOmrSheet(imagePath, templatePath);
-                
-                // Make table design  - Done  (Tables Are created perfactly Scan or ReScan k case)
+                results.Add(res);
                 if (crttb == 1)
                 {
                     var tableCrt = await _recordTable.TableCreation(res, idTemp);
@@ -152,7 +151,6 @@ namespace Version1.Controllers
                 // 3. WS_Handler - Done                                          //  Object into JSON_STRING
                 string jsonResult = JsonSerializer.Serialize(dbRes);             
                 await _webSocketHandler.UserMessageAsync(userId, jsonResult);
-
             }
             return Ok(results);
         }

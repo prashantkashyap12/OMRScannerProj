@@ -13,7 +13,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
-// Possible crash point
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbc")));
 builder.Services.AddScoped<OmrProcessingService>();
 builder.Services.AddScoped<JwtAuth>();
@@ -22,11 +21,9 @@ builder.Services.AddScoped<RecordDBClass>();
 builder.Services.AddScoped<RecordSave>();
 builder.Services.AddScoped<table_gen>();
 builder.Services.AddScoped<ImgSave>();
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.AddSingleton<OmrProcessingControlService>();
 builder.Services.AddSingleton<WebSocketConnectionManager>();
 builder.Services.AddSingleton<WebSoketHandler>();
@@ -40,22 +37,18 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 // Syncfusion Key Add
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhdcHRVQmVeV0F3Wks=\r\n");
 
-
 // Add Authentication with JWT
 builder.Services.AddJwtAuthentication();
-
 builder.Services.AddEndpointsApiExplorer();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage(); // ✅ This shows detailed errors in browser
+    app.UseDeveloperExceptionPage(); 
     app.UseSwagger();
     app.UseSwaggerUI();
 }

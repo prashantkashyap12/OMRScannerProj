@@ -12,6 +12,7 @@ using SQCScanner.Modal;
 using SQCScanner.Services;
 using Version1.Data;
 using Version1.Modal;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static OpenCvSharp.XImgProc.CvXImgProc;
 
 namespace SQCScanner.Controllers
@@ -74,11 +75,15 @@ namespace SQCScanner.Controllers
                         await ImgTemp.CopyToAsync(TempSet);
                     }
                     // Save into DB
+                    DateTime Date = DateTime.Now;
+                    string toDay = Date.ToString();
                     var resp = _dbContext.Add(new ImgTemp
                     {
+                        //Date = toDay,
                         FileName = TempName,
                         imgPath = relativeImgPath,
-                        JsonPath = ""
+                        JsonPath = "",
+                        CreateAt = toDay
                     });
                     await _dbContext.SaveChangesAsync();
                     results.Add(resp.Entity);

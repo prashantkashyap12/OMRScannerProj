@@ -36,8 +36,6 @@ namespace Version1.Services
         }
         public async Task<OmrResult> ProcessOmrSheet(string imagePath, string templatePath)
         {
-            //  SONIYA WORK 
-
             using var image = Image.Load<Rgba32>(imagePath);
             var debugImage = image.Clone();
             var templateJson = File.ReadAllText(templatePath);
@@ -50,9 +48,6 @@ namespace Version1.Services
             var referenceFields = template["referncefield"]?.ToArray();
 
 
-
-
-
             if (referenceFields != null && referenceFields.Length > 0)
             {
                 bool allFilled = AreReferenceMarkersFilled(image, template);
@@ -62,7 +57,6 @@ namespace Version1.Services
                     result.FieldResults["Error"] = "Skew markers are not filled or missing. Cannot proceed with OMR processing.";
                     return result;
                 }
-
             }
             
             var imgServ = Path.GetFileName(imagePath);
@@ -85,11 +79,8 @@ namespace Version1.Services
                 string fieldname = field["fieldName"]!.ToString();
                 var bubblesArray = field["bubbles"]?.ToObject<List<BubbleInfo>>();
                 bool allowMultiple = field["allowMultiple"]?.Value<bool>() ?? true;
-                // blank and Multiple bubble  filled than user can give  any character
                 string blankOuputSymbol = field["blankOuputSymbol"]?.ToString() ?? "#";
-
                 string multipleBubbleOutput = field["multipleBubbleOutput"]?.ToString() ?? "*";
-                //end 
                 if (bubblesArray != null)
                 {
                     var bubbleRects = bubblesArray.Select(b => new Rectangle(b.X, b.Y, b.Width, b.Height)).ToList();
@@ -124,7 +115,6 @@ namespace Version1.Services
                     {
                         var answers = ExtractAnswersFromBubbles(image, bubbleRects, bubblesArray, options, readdirection, bubbleIntensity, allowMultiple, blankOuputSymbol, multipleBubbleOutput);
 
-                        // Check if fieldName is like "q6-q10"
                         if (Regex.IsMatch(fieldname, @"q\d+-q\d+", RegexOptions.IgnoreCase))
                         {
                             var match = Regex.Match(fieldname, @"q(\d+)-q(\d+)", RegexOptions.IgnoreCase);
