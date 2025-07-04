@@ -14,6 +14,7 @@ using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbc")));
+
 builder.Services.AddScoped<OmrProcessingService>();
 builder.Services.AddScoped<JwtAuth>();
 builder.Services.AddScoped<EncptDcript>();
@@ -21,12 +22,17 @@ builder.Services.AddScoped<RecordDBClass>();
 builder.Services.AddScoped<RecordSave>();
 builder.Services.AddScoped<table_gen>();
 builder.Services.AddScoped<ImgSave>();
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+
+
+
 builder.Services.AddSingleton<OmrProcessingControlService>();
 builder.Services.AddSingleton<WebSocketConnectionManager>();
 builder.Services.AddSingleton<WebSoketHandler>();
+
+builder.Services.AddControllers();            // Add Base controller.
+builder.Services.AddEndpointsApiExplorer();   // Make meta data for get/post for swagger
+builder.Services.AddSwaggerGen();             // Gen UI Swagger
 
 // Cross Policy
 builder.Services.AddCors(options =>
@@ -42,8 +48,11 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
 
 // Add Authentication with JWT
 builder.Services.AddJwtAuthentication();
-builder.Services.AddEndpointsApiExplorer();
 var app = builder.Build();
+
+// Auth JWT valid / New
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -52,7 +61,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 // Permission Folder
 app.UseStaticFiles(new StaticFileOptions
@@ -66,7 +74,7 @@ app.UseStaticFiles(new StaticFileOptions
     }
 });
 
-// wwwroot ke liye CORS header add karo
+// wwwroot ke liye CORS header
 app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
@@ -77,16 +85,11 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseStaticFiles();
 
 
-
-// Cross Policy
+// Cross sharing - not specifically
 app.UseCors("AllowAnyOrigin");
 
 // Http Routing Redirection
 app.UseHttpsRedirection();
-
-// Auth JWT valid / New
-app.UseAuthentication();
-app.UseAuthorization();
 
 
 // web Soket Middleware
@@ -167,6 +170,7 @@ app.Use(async (context, next) =>
 
 
 app.MapControllers();
+
 try
 {
     app.Run();

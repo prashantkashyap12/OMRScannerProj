@@ -29,7 +29,6 @@ namespace Version1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors("AllowAnyOrigin")]
     public class OmrProcessingController : ControllerBase
     {
         private readonly OmrProcessingService _omrService;
@@ -41,7 +40,6 @@ namespace Version1.Controllers
         private readonly table_gen _recordTable;
         private readonly ImgSave _imgSave;
 
-
         public OmrProcessingController(
             OmrProcessingService omrService,
             IWebHostEnvironment env,
@@ -50,22 +48,20 @@ namespace Version1.Controllers
             OmrProcessingControlService controlService,
             RecordSave recordSave,
             table_gen recordTable,
-            ImgSave imgSave
-
-            )
-        {
+            ImgSave imgSave)
+            {
             _omrService = omrService;
             _env = env;
             _dbContext = dbContext;
             _recordTable = recordTable;
             _webSocketHandler = webSocketHandler;
+            _controlService = controlService;
+            _SaveOnly = recordSave;
+            _imgSave = imgSave;
             if (controlService == null)
             {
                 throw new ArgumentNullException(nameof(controlService), "OmrProcessingControlService is not injected properly.");
             }
-            _controlService = controlService;
-            _SaveOnly = recordSave;
-            _imgSave = imgSave;
         }
 
         //  Process OMR Sheet  
@@ -162,6 +158,7 @@ namespace Version1.Controllers
             _controlService.PauseProcessing();
             return Ok("Processing paused.");
         }
+
 
         [HttpPost("resume-processing")]
         public IActionResult ResumeProcessing()

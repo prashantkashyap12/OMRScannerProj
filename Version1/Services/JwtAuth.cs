@@ -20,11 +20,9 @@ namespace SQCScanner.Services
                     new Claim(ClaimTypes.NameIdentifier, emp.EmpId.ToString()),
                     new Claim(ClaimTypes.Name, emp.EmpName),
                     new Claim(ClaimTypes.Email, emp.EmpEmail),
-                    new Claim("Password", emp.password),
-                    new Claim(ClaimTypes.MobilePhone, emp.contact),
                     new Claim(ClaimTypes.Role, emp.role),
                 }),
-                Expires = DateTime.UtcNow.AddHours(1), // token 1 ghante me expire hoga
+                Expires = DateTime.UtcNow.AddHours(1), 
                 Issuer = "adityaInfotech",
                 Audience = "GTG's IntoTech",
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -32,6 +30,7 @@ namespace SQCScanner.Services
 
             // Token ko create karte hain
              var token = tokenHandler.CreateToken(tokenDescriptor);
+
             // Token ko string me convert karte hain
              return tokenHandler.WriteToken(token);
         }

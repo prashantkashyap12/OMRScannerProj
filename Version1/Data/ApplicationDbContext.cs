@@ -10,13 +10,13 @@ namespace Version1.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options) :base(options) {  }
         public DbSet<ImgTemp> ImgTemplate { get; set; }
         public DbSet<EmpModel> empModels { get; set; }
-
+        public DbSet<userAuthChecked> LoginTeken { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //  modelBuilder.Entity<OmrResult>().HasKey(e => e.Id);
             modelBuilder.Entity<ImgTemp>().HasKey(e => e.Id);
             modelBuilder.Entity<EmpModel>().HasKey(e => e.EmpId);
+            modelBuilder.Entity<userAuthChecked>().HasKey(e => e.id);
         }
     }
 }

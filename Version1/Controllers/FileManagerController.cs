@@ -8,7 +8,6 @@ using Syncfusion.EJ2.FileManager.PhysicalFileProvider;
 namespace SQCScanner.Controllers
 {
     [Route("api/[controller]")]
-    [EnableCors("AllowAnyOrigin")]
     public class FileManagerController : Controller
     {
 
@@ -102,6 +101,7 @@ namespace SQCScanner.Controllers
                     return BadRequest("Invalid action.");
             }
         }
+        
         [Route("Upload")]
         [HttpPost]
         public IActionResult Upload([FromForm] string path, [FromForm] IList<IFormFile> uploadFiles, [FromForm] string action)

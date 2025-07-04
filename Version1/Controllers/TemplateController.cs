@@ -19,7 +19,6 @@ namespace SQCScanner.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors("AllowAnyOrigin")]
     public class TemplateController : ControllerBase
     {
         private readonly IWebHostEnvironment _env;
