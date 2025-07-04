@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
@@ -7,6 +8,7 @@ using Syncfusion.EJ2.FileManager.PhysicalFileProvider;
 
 namespace SQCScanner.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class FileManagerController : Controller
     {

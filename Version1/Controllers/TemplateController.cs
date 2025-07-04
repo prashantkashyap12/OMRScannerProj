@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -17,6 +18,7 @@ using static OpenCvSharp.XImgProc.CvXImgProc;
 
 namespace SQCScanner.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TemplateController : ControllerBase

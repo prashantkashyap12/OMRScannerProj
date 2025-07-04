@@ -27,6 +27,7 @@ using System.Security.Claims;
 
 namespace Version1.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OmrProcessingController : ControllerBase

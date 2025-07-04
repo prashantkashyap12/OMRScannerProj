@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -16,11 +17,12 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SQCScanner.Controllers
 {
+
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class showRecord : ControllerBase
     {
-
         private readonly IConfiguration _configuration;
         private readonly string _connectionString;
         private readonly IHostEnvironment _env;

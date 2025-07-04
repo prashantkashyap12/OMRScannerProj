@@ -11,6 +11,7 @@ using Microsoft.Extensions.FileProviders;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using SixLabors.ImageSharp;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbc")));
@@ -30,7 +31,10 @@ builder.Services.AddSingleton<OmrProcessingControlService>();
 builder.Services.AddSingleton<WebSocketConnectionManager>();
 builder.Services.AddSingleton<WebSoketHandler>();
 
+var configuration = builder.Configuration;
+builder.Services.AddJwtAuthentication(configuration);
 builder.Services.AddControllers();            // Add Base controller.
+
 builder.Services.AddEndpointsApiExplorer();   // Make meta data for get/post for swagger
 builder.Services.AddSwaggerGen();             // Gen UI Swagger
 
@@ -46,13 +50,22 @@ builder.Services.AddCors(options =>
 // Syncfusion Key Add
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhdcHRVQmVeV0F3Wks=\r\n");
 
+
 // Add Authentication with JWT
-builder.Services.AddJwtAuthentication();
 var app = builder.Build();
+
+// Http Routing Redirection
+app.UseHttpsRedirection();
+
+// Cross sharing - not specifically
+app.UseCors("AllowAnyOrigin");
+
 
 // Auth JWT valid / New
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllers();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -85,11 +98,8 @@ app.UseStaticFiles(new StaticFileOptions
 app.UseStaticFiles();
 
 
-// Cross sharing - not specifically
-app.UseCors("AllowAnyOrigin");
 
-// Http Routing Redirection
-app.UseHttpsRedirection();
+
 
 
 // web Soket Middleware
@@ -168,8 +178,15 @@ app.Use(async (context, next) =>
     }
 });
 
-
 app.MapControllers();
+
+//app.Use(async (context, next) =>
+//{
+//    var token = context.Request.Headers["Authorization"].ToString();
+//    Console.WriteLine("Incoming Auth Header: " + token);
+//    await next();
+
+//});
 
 try
 {
