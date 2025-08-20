@@ -26,7 +26,7 @@ namespace SQCScanner.Services
         }
 
         // Save Record into DB 
-        public async Task<Dictionary<string, string>> RecordSaveVal(OmrResult respose, int templateId, string userName, bool IsSaveDb, string folderPath)
+        public async Task<Dictionary<string, string>> RecordSaveVal(OmrResult respose, int templateId, string userName, bool IsSaveDb, string folderPath, string imagePath)
         {
             Dictionary<string, string> records = new Dictionary<string, string>();
             var Query = "";
@@ -44,7 +44,6 @@ namespace SQCScanner.Services
                     var exists = await connection.QueryFirstOrDefaultAsync<int?>(checkTableSql, new { TableName = tableName });
                     bool tableExists = exists.HasValue;
 
-
                     // Insert record into Distnory. 
                     records.Add("LiveTime", DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss tt"));
                     records.Add("UserName", userName.ToString());
@@ -58,7 +57,7 @@ namespace SQCScanner.Services
                     if (respose.Success)
                     {
                         sharePath = "wwwroot/ScannedImg";
-                        records.Add("Report", "N/A");       // true k case me auto add ni aata.
+                        records.Add("Report", "N/A");             // true k case me auto add ni aata.
                         foreach (var kvp in fields2)
                         {
                             if (kvp.Key == "FileName")
@@ -78,6 +77,7 @@ namespace SQCScanner.Services
                     else
                     {
                         sharePath = "wwwroot/RejectImg";
+                        bool injectImg = true;
                         foreach (var filds in fields2)
                         {
                             if(filds.Key== "FileName")
@@ -87,18 +87,28 @@ namespace SQCScanner.Services
                                 pathIns = pathIns.Replace("\\", "/");
                                 records.Add(filds.Key, pathIns);
                                 fileName = pathIns;
+                                injectImg = false;
                             }
                             else
                             {
                                 records.Add(filds.Key, filds.Value);
                             }
+
+                            if (injectImg)
+                            {
+                                string imgName1 = Path.GetFileName(imagePath);
+                                imgName1 = Path.Combine("wFileManager", folderPath, imgName1);
+                                records.Add("FileName", imgName1);
+                            }
                         }
-                        // save error msg 
+
+
+                        // save error msg only on remaing column.
                         Query = @$"select column_name from INFORMATION_SCHEMA.columns where table_name = @TableName";
-                        var col = (await connection.QueryAsync<string>(Query, new {TableName = tableName})).Select(a=>a).ToHashSet();
+                        var col = (await connection.QueryAsync<string>(Query, new { TableName = tableName })).Select(a => a).ToHashSet();
                         foreach (var kvp in col)
                         {
-                            if (kvp=="Id" || kvp== "LiveTime" || kvp == "UserName" || kvp == "Status" || kvp == "FileName" || kvp == "Report" )
+                            if (kvp == "Id" || kvp == "LiveTime" || kvp == "UserName" || kvp == "Status" || kvp == "FileName" || kvp == "Report")
                             {
                                 continue;
                             }
@@ -109,14 +119,16 @@ namespace SQCScanner.Services
                         }
                     }
 
+
+
                     if (tableExists)
                     {
                         // Before save some record we will. (check FileName) 
                         var isFileCheck = respose.FieldResults.Where(x => x.Key == "FileName").ToList();
                         var isFileCheck2 = isFileCheck[0].Value;
                         // var imgReName = Path.GetFileName(isFileCheck2);  // Extract fileName only to save futurely
+                        
                         // Does Record is Exist or Not.
-
                         // here we are just check is successFull Check img done.
                         var RecordExis = "";
                         var checkSuss = "wwwroot/ScannedImg/" + tableName + '/' + imgName;
@@ -157,11 +169,9 @@ namespace SQCScanner.Services
                             }
                             else
                             {
-                                {
-                                    folderPath = Path.Combine("wFileManager/", folderPath, imgName);
-                                    records.Add("ServePath", folderPath);
-                                    records["FileName"] = folderPath;
-                                }
+                                folderPath = Path.Combine("wFileManager/", folderPath, imgName);
+                                // records.Add("ServePath", folderPath);
+                                records["FileName"] = folderPath;
                             }
                             res = new
                             {

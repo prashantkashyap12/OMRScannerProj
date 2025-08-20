@@ -27,7 +27,7 @@ using System.Security.Claims;
 
 namespace Version1.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OmrProcessingController : ControllerBase
@@ -67,9 +67,11 @@ namespace Version1.Controllers
 
         //  Process OMR Sheet  
         // 
+
         [HttpPost("process-omr")]
         public async Task<IActionResult> ProcessOmrSheet(string folderPath, int idTemp, string token,  bool IsSaveDb = true, bool failReScan = true)    // string bubInts, string blank, string duplic
         {
+            dynamic resp;
             // Token handler UserId Extract
             var tokenHandler = new JwtSecurityTokenHandler();
             var jwtToken = tokenHandler.ReadJwtToken(token);
@@ -92,64 +94,98 @@ namespace Version1.Controllers
             folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wFileManager/" + folderPath);
             if (!Directory.Exists(folderPath))
             {
-                return BadRequest("Folder path is invalid.");
-            }
-            var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
-
-
-            // Save template once
-            var Targetjson = string.Empty;
-            var ReturnDetails = _dbContext.ImgTemplate.FirstOrDefault(x => x.Id == idTemp);
-            if (ReturnDetails != null)
-            {
-                if (!string.IsNullOrEmpty(ReturnDetails.JsonPath))
+                resp = new
                 {
-                    Targetjson = ReturnDetails.JsonPath.Replace("\\", "/");
-                }
-                else
-                {
-                    BadRequest("Template not found");
-                }
+                    state = false,
+                    message = "Folder path is invalid"
+                };
             }
             else
             {
-                BadRequest("Id is invalid please add Template first");
-            }
-
-            string templatePath = Path.Combine(_env.WebRootPath, Targetjson);
-
-            var results = new List<OmrResult>();
-            var crttb = 1;
-            foreach (var imagePath in imageFiles)
-            {
-                // Stop and Continue API Globle 
-                _controlService.WaitIfPaused();
-
-                // Scaning to get data from OMR Sheet
-                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath);
-                results.Add(res);
-                if (crttb == 1)
+                var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg") || f.EndsWith(".tif")).ToList();
+                var Targetjson = string.Empty;
+                var ReturnDetails = _dbContext.ImgTemplate.FirstOrDefault(x => x.Id == idTemp);
+                if (ReturnDetails != null)
                 {
-                    var tableCrt = await _recordTable.TableCreation(res, idTemp);
-                } crttb++;
+                    if (!string.IsNullOrEmpty(ReturnDetails.JsonPath))
+                    {
+                        Targetjson = ReturnDetails.JsonPath.Replace("\\", "/");
+                        string templatePath = Path.Combine(_env.WebRootPath, Targetjson);
+                        var results = new List<OmrResult>();
+                        var crttb = 1;
+                        if (imageFiles.Count == 0)
+                        {
+                            resp = new
+                            {
+                                state = false,
+                                message = "Image is not found"
+                            };
+                        }
+                        else
+                        {
+                            foreach (var imagePath in imageFiles)
+                            {
+                                // Stop and Continue API Globle 
+                                _controlService.WaitIfPaused();
 
+                                // Scaning to get data from OMR Sheet
+                                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath);
+                                results.Add(res);
+                                if (crttb == 1)
+                                {
+                                    var tableCrt = await _recordTable.TableCreation(res, idTemp);
+                                }
+                                crttb++;
+                                dynamic dbRes = null;
 
-                dynamic dbRes = null;
-                // 1. Save_Record into DB - Done              
-                dbRes = await _SaveOnly.RecordSaveVal(res, idTemp, userName, IsSaveDb, folderPAth);
+                                // 1. Save_Record into DB         - Done 
+                                dbRes = await _SaveOnly.RecordSaveVal(res, idTemp, userName, IsSaveDb, folderPAth, imagePath);
+                                if (IsSaveDb)
+                                {
+                                    // 2. Save_Sacanned Img Folder - Done
+                                    var stat = res.Success;
+                                    var SaveRoot = await _imgSave.ScanedSave(_env.WebRootPath, imagePath, idTemp, stat);
+                                }
 
-                if (IsSaveDb)
-                {
-                    // 2. Save_Sacanned Img Folder - Done                        // Success images or failure image are save into saprated folder)
-                    var stat = res.Success;
-                    var SaveRoot = await _imgSave.ScanedSave(_env.WebRootPath, imagePath, idTemp, stat);
+                                // 3. WS_Handler                   - Done
+                                string jsonResult = JsonSerializer.Serialize(dbRes);
+                                userId = Convert.ToString(userId);
+                                await _webSocketHandler.UserMessageAsync(userId, jsonResult);
+                            }
+                            resp = new
+                            {
+                                state = true,
+                                record = results
+                            };
+                        }
+                    }
+                    else
+                    {
+                        resp = new
+                        {
+                            state = false,
+                            message = "Template not found"
+                        };
+                    }
                 }
-
-                // 3. WS_Handler - Done                                          //  Object into JSON_STRING
-                string jsonResult = JsonSerializer.Serialize(dbRes);             
-                await _webSocketHandler.UserMessageAsync(userId, jsonResult);
+                else
+                {
+                    resp = new
+                    {
+                        state = false,
+                        message = "Id is invalid please add Template first"
+                    };
+                }
             }
-            return Ok(results);
+            bool currentState = resp.state;
+            if (currentState)
+            {
+                return Ok(resp);
+            }
+            else
+            {
+                return NotFound(resp);
+            }
         }
 
         // Data Push procesing

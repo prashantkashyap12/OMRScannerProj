@@ -39,7 +39,7 @@ namespace SQCScanner.Services
                     
                     res = new
                     {
-                        message = "File Save Into TemplateWise FolderName",
+                        message = "File Save Into TemplateWise n FolderName",
                         state = true,
                     };
                  
@@ -48,7 +48,7 @@ namespace SQCScanner.Services
                 {
                     res = new
                     {
-                        message = "Already File Save Into TemplateWise FolderName.",
+                        message = "Already File Save Into TemplateWise n FolderName.",
                         state = false,
                     };
                 }

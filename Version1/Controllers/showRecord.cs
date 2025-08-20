@@ -12,13 +12,14 @@ using Newtonsoft.Json.Linq;
 using OpenCvSharp;
 using OpenCvSharp.Aruco;
 using Syncfusion.EJ2.Notifications;
+using TesseractOCR.Renderers;
 using Version1.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SQCScanner.Controllers
 {
 
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class showRecord : ControllerBase
@@ -53,7 +54,7 @@ namespace SQCScanner.Controllers
                         res = new
                         {
                             state = true,
-                            massege = "Record Found",
+                            message = "Record Found",
                             data = resw
                         };
                     }
@@ -64,7 +65,7 @@ namespace SQCScanner.Controllers
                         res = new
                         {
                             state = true,
-                            massege = "Record Found",
+                            message = "Record Found",
                             data = resw
                         };
                     }
@@ -75,11 +76,19 @@ namespace SQCScanner.Controllers
                 res = new
                 {
                     state = false,
-                    massege = "Error Occured",
+                    message = "Error Occured",
                     error = ex.Message
                 };
             }
-            return Ok(res);
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         [HttpGet]
@@ -95,15 +104,26 @@ namespace SQCScanner.Controllers
                 var userName = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier || c.Type == "unique_name")?.Value;
                 using (var _conn = new SqlConnection(_connectionString))
                 {
-                    var tempTable = "Template_"+TempId;
-                    query = @$"select TOP 100 * from {tempTable} where UserName ='{userName}' ORDER BY Id DESC";
-                    var result = await _conn.QueryAsync(query);
-                    res = new
+                    var tempTable = "Template_" + TempId;
+                    var query2 = await _conn.ExecuteScalarAsync<int>($@"SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '{tempTable}'");
+                    if (query2 > 0)
                     {
-                        res = result,
-                        state = true
-                    };
-
+                        query = @$"select TOP 100 * from {tempTable} where UserName ='{userName}' ORDER BY Id DESC";
+                        var result = await _conn.QueryAsync(query);
+                        res = new
+                        {
+                            res = result,
+                            state = true
+                        };
+                    }
+                    else
+                    {
+                        res = new
+                        {
+                            message = "No Record Found",
+                            state = true
+                        };
+                    }
                 }
             }
             catch (Exception ex)
@@ -114,7 +134,15 @@ namespace SQCScanner.Controllers
                     state = false
                 };
             }
-            return Ok(res);
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         [HttpGet]
@@ -123,20 +151,98 @@ namespace SQCScanner.Controllers
         {
             var query = "";
             dynamic result;
-            using(var _conn = new SqlConnection(_connectionString))
+            dynamic res;
+            try
             {
-                query = $@"SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME LIKE 'Template_%'";
-                result = await _conn.QueryAsync<string>(query);
-                var total = 0; query = null;
-                foreach(var data in result)
+                using (var _conn = new SqlConnection(_connectionString))
                 {
-                    query = $"SELECT COUNT(*) FROM [{data}]";
-                    var count = await _conn.ExecuteScalarAsync<int>(query);
-                    Console.WriteLine(count);
-                    total = total + count;
-                }       
-                return Ok(total);
+                    query = $@"SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME LIKE 'Template_%'";
+                    result = await _conn.QueryAsync<string>(query);
+                    var total = 0; query = null;
+                    foreach (var data in result)
+                    {
+                        query = $"SELECT COUNT(*) FROM [{data}]";
+                        var count = await _conn.ExecuteScalarAsync<int>(query);
+                        Console.WriteLine(count);
+                        total = total + count;
+                    }
+                    res = new
+                    {
+                        state = true,
+                        Record = total
+                    };
+                }
             }
+            catch (Exception ex)
+            {
+                res = new
+                {
+                    message = ex.Message,
+                    state = false
+                };
+            }
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
+        }
+
+        [HttpGet]
+        [Route("Dash_OptimizedAllRec")]
+        public async Task<IActionResult> OptimizedAllRecords()
+        {
+            dynamic res;
+            try
+            {
+                using (var _conn = new SqlConnection(_connectionString))
+                {
+                    // Get all table names matching "Template_%"
+                    var tableNamesQuery = @"
+                SELECT TABLE_NAME 
+                FROM information_schema.TABLES 
+                WHERE TABLE_NAME LIKE 'Template_%'";
+
+                    var tableNames = await _conn.QueryAsync<string>(tableNamesQuery);
+
+                    if (!tableNames.Any())
+                    {
+                        res = new { state = true, Record = 0 };
+                        return Ok(res);
+                    }
+
+                    // Build UNION ALL count query
+                    var countQueries = tableNames.Select(t =>
+                        $"SELECT COUNT(*) AS Count FROM [{t}] WITH (NOLOCK)"
+                    );
+
+                    var fullQuery = string.Join(" UNION ALL ", countQueries);
+
+                    // Execute the full query and sum the counts
+                    var counts = await _conn.QueryAsync<int>(fullQuery);
+                    int total = counts.Sum();
+
+                    res = new
+                    {
+                        state = true,
+                        Record = total
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                res = new
+                {
+                    message = ex.Message,
+                    state = false
+                };
+            }
+
+            return Ok(res);
         }
 
         [HttpGet]
@@ -145,20 +251,44 @@ namespace SQCScanner.Controllers
         {
             var query = "";
             dynamic result;
-            using (var _conn = new SqlConnection(_connectionString))
+            dynamic res;
+            try
             {
-                //query = $@"SELECT COUNT(*) AS FilledCount FROM ImgTemplate WHERE imgPath IS NOT NULL AND imgPath != '' AND JsonPath IS NOT NULL AND JsonPath != '';";
-                query = $@"SELECT COUNT(*) AS FilledCount FROM ImgTemplate";
-
-                result = await _conn.QueryAsync<int>(query);
-                return Ok(result[0]);
+                using (var _conn = new SqlConnection(_connectionString))
+                {
+                    query = $@"SELECT COUNT(*) AS FilledCount FROM ImgTemplate";
+                    result = await _conn.QueryAsync<int>(query);
+                    res = new
+                    {
+                        state = true,
+                        results = result
+                    };
+                }
+            }
+            catch(Exception ex)
+            {
+                res = new
+                {
+                    state = false,
+                    message = ex.Message
+                };
+            }
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
             }
         }
 
         [HttpGet("Dash_Avrage")]
         public async Task<ActionResult> AvrageScore()
         {
-            object res = null;
+            //object res = null;
+            dynamic res;
             try
             {
                 using (var _conn = new SqlConnection(_connectionString))
@@ -166,10 +296,8 @@ namespace SQCScanner.Controllers
                     await _conn.OpenAsync();
                     var query = @"SELECT TABLE_NAME FROM information_schema.Tables WHERE table_name LIKE 'Template_%'";
                     var tableNames = await _conn.QueryAsync<string>(query);
-
                     int totalSuccess = 0;
                     int totalFail = 0;
-
                     foreach (var table in tableNames)
                     {
                         query = $@"SELECT COUNT(Status) FROM {table} WHERE Status = 'True'";
@@ -204,12 +332,18 @@ namespace SQCScanner.Controllers
                 res = new
                 {
                     state = false,
-                    message = "Error Occurred",
-                    error = ex.Message
+                    message = ex.Message
                 };
             }
-
-            return Ok(res);
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         [HttpGet("6_MonthRec")]
@@ -224,6 +358,7 @@ namespace SQCScanner.Controllers
                     await _conn.OpenAsync();
                     var query = @"SELECT TABLE_NAME FROM information_schema.Tables WHERE table_name LIKE 'Template_%'";
                     var tableNames = await _conn.QueryAsync<string>(query);
+
                     // Last 6 Months
                     var last6Months = new List<int>();
                     DateTime todayDate = DateTime.Now;
@@ -235,11 +370,11 @@ namespace SQCScanner.Controllers
                     
                     // Total Success and Fail
                     var grandRes = new Dictionary<string, int>();
-                    foreach (var month in last6Months)   // All last 6 month
+                    foreach (var month in last6Months)   
                     {
                         var gTot = 0;
                         var fTot = 0;
-                        foreach (var table in tableNames)  // All table records
+                        foreach (var table in tableNames) 
                         {
                             query = $@"SELECT count([LiveTime]) FROM {table}
                             WHERE MONTH(TRY_PARSE([LiveTime] AS datetime USING 'en-GB')) = {month} AND [Status]='True'";
@@ -267,11 +402,18 @@ namespace SQCScanner.Controllers
                 res = new
                 {
                     state = false,
-                    message = "Error Occurred",
-                    error = ex.Message
+                    message = ex.Message
                 };
             }
-            return Ok(res);
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         [HttpGet("monthSplit")]
@@ -411,7 +553,15 @@ namespace SQCScanner.Controllers
                     message = ex.Message
                 };
             }
-            return Ok(res);
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         [HttpDelete("AllRecDel")]
@@ -419,80 +569,100 @@ namespace SQCScanner.Controllers
         {
             dynamic res;
             string querry;
-            using (var _conn = new SqlConnection(_connectionString))
-            {
-                _conn.Open();
-                var Temp = "Template_" + idTemp;
-                var Successfolder = Path.Combine(_env.ContentRootPath+ "/wwwroot" + "/ScannedImg/" + Temp);
-                if (!Directory.Exists(Successfolder))
+            try {
+                using (var _conn = new SqlConnection(_connectionString))
                 {
-                    Directory.CreateDirectory(Successfolder);
-                }
-                var Failurefolder = Path.Combine(_env.ContentRootPath+ "/wwwroot" + "/RejectImg/" + Temp);
-                if (!Directory.Exists(Failurefolder))
-                {
-                    Directory.CreateDirectory(Failurefolder);
-                }
-                var RootfolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wFileManager/" + folderPath);
-                if (!Directory.Exists(RootfolderPath))
-                {
-                    Directory.CreateDirectory(RootfolderPath);
-                }
-                try
-                {
-                    var SuccFiles = Directory.GetFiles(Successfolder, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
-                    var FailFiles = Directory.GetFiles(Failurefolder, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
-                    foreach (var img in SuccFiles)
+                    _conn.Open();
+                    var Temp = "Template_" + idTemp;
+                    var Successfolder = Path.Combine(_env.ContentRootPath + "/wwwroot" + "/ScannedImg/" + Temp);
+                    if (!Directory.Exists(Successfolder))
                     {
-                        if (!System.IO.File.Exists(img))
-                            return NotFound();
-                        var fileName = Path.GetFileName(img);
-                        var desti = Path.Combine(RootfolderPath, fileName);
-                        if (System.IO.File.Exists(desti))
-                        {
-                            System.IO.File.Delete(desti); 
-                        }
-                        System.IO.File.Move(img, desti);
+                        Directory.CreateDirectory(Successfolder);
                     }
-                    foreach (var img in FailFiles)
+                    var Failurefolder = Path.Combine(_env.ContentRootPath + "/wwwroot" + "/RejectImg/" + Temp);
+                    if (!Directory.Exists(Failurefolder))
                     {
-                        if (!System.IO.File.Exists(img))
-                            return NotFound();
-                        var fileName = Path.GetFileName(img);
-                        var desti = Path.Combine(RootfolderPath, fileName);
-                        if (System.IO.File.Exists(desti))
+                        Directory.CreateDirectory(Failurefolder);
+                    }
+                    var RootfolderPath = Path.Combine(Directory.GetCurrentDirectory(), "wFileManager/" + folderPath);
+                    if (!Directory.Exists(RootfolderPath))
+                    {
+                        Directory.CreateDirectory(RootfolderPath);
+                    }
+                    try
+                    {
+                        var SuccFiles = Directory.GetFiles(Successfolder, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
+                        var FailFiles = Directory.GetFiles(Failurefolder, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg")).ToList();
+                        foreach (var img in SuccFiles)
                         {
-                            System.IO.File.Delete(desti);
+                            if (!System.IO.File.Exists(img))
+                                return NotFound();
+                            var fileName = Path.GetFileName(img);
+                            var desti = Path.Combine(RootfolderPath, fileName);
+                            if (System.IO.File.Exists(desti))
+                            {
+                                System.IO.File.Delete(desti);
+                            }
+                            System.IO.File.Move(img, desti);
                         }
-                        System.IO.File.Move(img, desti);
+                        foreach (var img in FailFiles)
+                        {
+                            if (!System.IO.File.Exists(img))
+                                return NotFound();
+                            var fileName = Path.GetFileName(img);
+                            var desti = Path.Combine(RootfolderPath, fileName);
+                            if (System.IO.File.Exists(desti))
+                            {
+                                System.IO.File.Delete(desti);
+                            }
+                            System.IO.File.Move(img, desti);
+                        }
+
+                        querry = $"DELETE {Temp}";
+                        var result = await _conn.ExecuteAsync(querry);
+                        res = new
+                        {
+                            state = true,
+                            message = "All Records Deleted Successfully and moved",
+                            count = result
+                        };
+                    }
+                    catch (DirectoryNotFoundException)
+                    {
+                        res = new
+                        {
+                            state = false,
+                            massage = "Files Not Found"
+                        };
+                    }
+                    catch (Exception ex)
+                    {
+                        res = new
+                        {
+                            state = false,
+                            massage = ex.Message
+                        };
                     }
 
-                    querry = $"DELETE {Temp}";
-                    var result = await _conn.ExecuteAsync(querry);
-                    res = new
-                    {
-                        state = true,
-                        message = "All Records Deleted Successfully and moved",
-                        count = result
-                    };
                 }
-                catch(DirectoryNotFoundException)
-                {
-                    res = new {
-                        state = false,
-                        massage= "Files Not Found"
-                    };
-                }catch(Exception ex)
-                {
-                    res = new
-                    {
-                        state = false,
-                        massage = ex.Message
-                    };
-                }
-
             }
-            return Ok(res);
+            catch(Exception ex)
+            {
+                res = new
+                {
+                    state = false,
+                    message = ex.Message
+                };
+            }
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
     
     }

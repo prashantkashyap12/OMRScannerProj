@@ -9,6 +9,11 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using SQCScanner.Modal;
+using Newtonsoft.Json.Linq;
+using System.Net.Quic;
+using System;
+using System.Globalization;
 
 namespace SQCScanner.Services
 {
@@ -16,7 +21,6 @@ namespace SQCScanner.Services
     {
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-
             var _conn = configuration.GetConnectionString("dbc");
             var jwtSettings = configuration.GetSection("JwtSettings");
             var secretKey = jwtSettings.GetValue<string>("SecretKey");
@@ -40,61 +44,77 @@ namespace SQCScanner.Services
 
                     options.Events = new JwtBearerEvents
                     {
-                        OnAuthenticationFailed = context =>
+                        // Token Time Expired 
+                        OnAuthenticationFailed = async context =>
                         {
-                            Console.WriteLine("Authentication Failed");
-                            return Task.CompletedTask;
+                            if (context.Exception is SecurityTokenExpiredException)
+                            {
+                                var expiredToken = context.Request.Headers["Authorization"].FirstOrDefault()?.Replace("Bearer ", "").Trim();
+                                if (string.IsNullOrWhiteSpace(expiredToken))
+                                {
+                                    context.Response.StatusCode = 401;
+                                    await context.Response.WriteAsync("{\"message\": \"No token provided\"}");
+                                    return;
+                                }
+                                context.Fail("Unauthorized");
+                                return;
+                            }
+                            context.Response.StatusCode = 401;
+                            await context.Response.WriteAsync("{\"message\": \"Authentication failed\"}");
                         },
 
-                        OnTokenValidated = context =>
+                        // Token Time Validate 
+                        OnTokenValidated = async context =>
                         {
-                            var token = context.SecurityToken as JwtSecurityToken;
-                            var tokenString = context.Request.Headers["Authorization"].FirstOrDefault()?.Replace("Bearer ", "");
+                            // If Token Role is will be ONLY admin, moderator, operator then responce  -- DONE
                             dynamic res;
-                            if (string.IsNullOrEmpty(tokenString))
+                            var tokenString = context.Request.Headers["Authorization"].FirstOrDefault()?.Replace("Bearer ", "").Trim();
+                            var validRoles = new[] { "admin", "moderator", "operator" };
+                            var handler = new JwtSecurityTokenHandler();
+                            var jwtToken = handler.ReadJwtToken(tokenString);
+                            var role = jwtToken.Claims.FirstOrDefault(c => c.Type == "role")?.Value;
+                            if (string.IsNullOrEmpty(role) || !validRoles.Contains(role.ToLower()))
                             {
-                                context.Fail("Token missing");
-                                return Task.CompletedTask;
+                                context.Fail("Unauthorized");
                             }
-                            try
+                            else
+                            { 
+                            }
+
+                            // If Token Match from table token then Responce -- DONE
+                            var empId = jwtToken.Claims.FirstOrDefault(c => c.Type == "nameid")?.Value;
+                            var empId2 = Convert.ToInt32(empId);
+                            var expiryTimeUtc1 = jwtToken.ValidFrom.ToLocalTime();
+                            var expiryTimeUtc2 = jwtToken.ValidTo;
+                            var expiryTimeLocal2 = expiryTimeUtc2.ToLocalTime();
+
+                            using (var conn = new SqlConnection(context.HttpContext.RequestServices.GetRequiredService<IConfiguration>().GetConnectionString("dbc")))
                             {
-                                using (var _conn = new SqlConnection(configuration.GetConnectionString("dbc")))
+                                await conn.OpenAsync();
+                                var querry = await conn.QueryFirstOrDefaultAsync<dynamic>($@"select * from LoginTokenRec where EmpId = {empId2}");
+                                var expiry = "";
+                                var Token = "";
+                                foreach (var kvp in querry)
                                 {
-                                    _conn.Open();
-                                    var query = @$"select COUNT(1) from LoginTokenRec where Token = @token";
-                                    var result = _conn.ExecuteScalar<int>(query, new { token = tokenString });
-                                    if (result > 0)
+                                    if (kvp.Key == "Expiry")
                                     {
-                                        Console.WriteLine("Authorized success");
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("Authorized fail");
-                                        context.Fail("Token not found in DB");
+                                        expiry = kvp.Value;
                                     }
                                 }
-                                return res = Task.CompletedTask;
-                            }catch(Exception ex)
-                            {
-                                return res = ex.Message;
-
+                                var expiryDate2 = DateTime.ParseExact(expiry, "dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                                var ctDate2 = DateTime.Now;
+                                if (expiryDate2 > ctDate2) // here we are comparing time because 
+                                {
+                                }
+                                else
+                                {
+                                    context.Fail("Unauthorized");
+                                }
                             }
                         },
-
-                        OnMessageReceived = context =>
-                        {
-                            var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
-                            if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer "))
-                            {
-                                context.Token = authHeader.Substring("Bearer ".Length).Trim();
-                            }
-                            Console.WriteLine(context.Token);
-                            return Task.CompletedTask;
-                        }
                     };
-
                 });
-            return services;
-        }
+            return services;  
+        }                                                                                                                                                                                         
     }
 }

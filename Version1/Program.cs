@@ -25,8 +25,6 @@ builder.Services.AddScoped<table_gen>();
 builder.Services.AddScoped<ImgSave>();
 
 
-
-
 builder.Services.AddSingleton<OmrProcessingControlService>();
 builder.Services.AddSingleton<WebSocketConnectionManager>();
 builder.Services.AddSingleton<WebSoketHandler>();
@@ -67,13 +65,18 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage(); 
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = "swagger"; // Optional, default is "swagger"
+});
 
 // Permission Folder
 app.UseStaticFiles(new StaticFileOptions
@@ -97,11 +100,6 @@ app.UseStaticFiles(new StaticFileOptions
 });
 app.UseStaticFiles();
 
-
-
-
-
-
 // web Soket Middleware
 app.UseWebSockets();
 app.Use(async (context, next) =>
@@ -116,12 +114,12 @@ app.Use(async (context, next) =>
         var token = context.Request.Query["token"].ToString();
         if (string.IsNullOrEmpty(token))
         {
-            context.Response.StatusCode = 400; // Bad request
+            context.Response.StatusCode = 400; 
             await context.Response.WriteAsync("Token missing");
             return;
         }
 
-        // 3. Parse JWT token to get userId
+        // 3. Parse JWT token to get userId 
         string userId = null;
         try
         {
@@ -146,30 +144,57 @@ app.Use(async (context, next) =>
         // 4. Get services
         var connectionManager = context.RequestServices.GetRequiredService<WebSocketConnectionManager>();
         var handlerService = context.RequestServices.GetRequiredService<WebSoketHandler>();
+        connectionManager.RemoveSocket(userId);  // Remove socket before adding new using UserId (f5, newTab etc)
 
         // 5. Add socket with userId
         connectionManager.AddSocket(userId, socket);
-        var buffer = new byte[1024 * 4];
+      
+        // 
+        var buffer = new byte[1024 * 4];    // kb buffer i/c voice msg
+        var cts = new CancellationTokenSource();
+        var appStopping = context.RequestAborted; // Cancels automatically when the client disconnects
+
+        // F5 Refresh, stop internet me case me auto cancel ho jaye.
+        using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cts.Token, appStopping);
         try
         {
-            while (socket.State == WebSocketState.Open)
+            while (socket.State == WebSocketState.Open || socket.State == WebSocketState.CloseReceived)
             {
-                var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                // WebSocket se continuously messages receive ke liye banaya gaya hai
+                var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), linkedCts.Token);
+
+                // agr clinet ne msg close ka diya hai to loop BREAK hoga.
                 if (result.MessageType == WebSocketMessageType.Close)
                 {
                     break;
                 }
             }
         }
+        catch (WebSocketException wsex)
+        {
+            Console.WriteLine($"WebSocket disconnected unexpectedly: {wsex.Message}");
+        }
         catch (Exception ex)
         {
-            Console.WriteLine($"WebSocket error: {ex.Message}");
+            Console.WriteLine($"Unexpected error: {ex.Message}");
         }
         finally
         {
-            // 6. Remove socket on disconnect
+            //Remove Soket
             connectionManager.RemoveSocket(userId);
-            await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", CancellationToken.None);
+
+            if (socket.State != WebSocketState.Closed && socket.State != WebSocketState.Aborted)
+            {
+                try
+                {
+                    //  Yahan cleanup karo: jaise file close, socket close, memory free
+                    await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", CancellationToken.None);
+                }
+                catch (Exception closeEx)
+                {
+                    Console.WriteLine($"Error while closing socket: {closeEx.Message}");
+                }
+            }
         }
     }
     else
@@ -177,16 +202,7 @@ app.Use(async (context, next) =>
         await next();
     }
 });
-
 app.MapControllers();
-
-//app.Use(async (context, next) =>
-//{
-//    var token = context.Request.Headers["Authorization"].ToString();
-//    Console.WriteLine("Incoming Auth Header: " + token);
-//    await next();
-
-//});
 
 try
 {

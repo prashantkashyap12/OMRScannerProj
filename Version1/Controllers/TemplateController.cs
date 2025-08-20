@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using OpenCvSharp;
 using SQCScanner.Modal;
 using SQCScanner.Services;
+using Syncfusion.EJ2.Notifications;
 using Version1.Data;
 using Version1.Modal;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -18,7 +19,7 @@ using static OpenCvSharp.XImgProc.CvXImgProc;
 
 namespace SQCScanner.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TemplateController : ControllerBase
@@ -31,80 +32,122 @@ namespace SQCScanner.Controllers
             _dbContext = dbContext;
         }
 
-        // DONE - -
+        // DONE - - yh 
         [HttpPost]
         [Route("Create_ImeTemp")]
         public async Task<IActionResult> imgRec(IFormFile ImgTemp, string TempName)
         {
             dynamic res;
+            bool exist = true;
             if (ImgTemp == null || ImgTemp.Length == 0)
             {
-                return BadRequest("No file uploaded.");
-            }
-            string extension = Path.GetExtension(ImgTemp.FileName).ToLower();
-            if (extension != ".jpg" && extension != ".jpeg" && extension != ".png")
-            {
-                return BadRequest("Invalid file type. Only .jpg, .jpeg, or .png are allowed.");
-            }
-            try
-            {
-                //// DONE Unique ImgType
-                string fileName = Path.GetFileName(ImgTemp.FileName);
-                var TempNameUnq = _dbContext.ImgTemplate.Select(x => x.FileName).ToList();
-                foreach (var tempUnq in TempNameUnq)
-                {
-                    if (tempUnq == TempName)
-                    {
-                        return BadRequest("FileName is Already Exist");
-                    }
-                }
-                string uploadsFolder = Path.Combine(_env.WebRootPath, "ImageManager");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-                var ImgfileName = Path.GetFileName(ImgTemp.FileName);   
-                string filePath = Path.Combine(uploadsFolder, ImgfileName);
-                string relativeImgPath = Path.Combine("ImageManager", ImgfileName).Replace("\\", "/");
-                var exists = await _dbContext.ImgTemplate.AnyAsync(t => t.FileName == fileName);
-                var results = new List<ImgTemp>();
-                if (!exists)
-                {
-                    // Save into Root
-                    using (var TempSet = new FileStream(filePath, FileMode.Create))
-                    {
-                        await ImgTemp.CopyToAsync(TempSet);
-                    }
-                    // Save into DB
-                    DateTime Date = DateTime.Now;
-                    string toDay = Date.ToString();
-                    var resp = _dbContext.Add(new ImgTemp
-                    {
-                        //Date = toDay,
-                        FileName = TempName,
-                        imgPath = relativeImgPath,
-                        JsonPath = "",
-                        CreateAt = toDay
-                    });
-                    await _dbContext.SaveChangesAsync();
-                    results.Add(resp.Entity);
-                }
+                //return BadRequest("No file uploaded.");
                 res = new
                 {
-                    message = "File Save into Table and Folder",
-                    status = true,
-                    data = results
+                    state = false,
+                    message = "No file uploaded."
                 };
             }
-            catch(Exception ex)
+            else
             {
-                res = new
+                string extension = Path.GetExtension(ImgTemp.FileName).ToLower();
+                if (extension != ".jpg" && extension != ".jpeg" && extension != ".png")
                 {
-                    message = ex.Message,
-                    status = false,
-                };
+                    res = new
+                    {
+                        state = false,
+                        message = "Invalid file type. Only .jpg, .jpeg, or .png are allowed."
+                    };
+                }
+                else
+                {
+                    try
+                    {
+                        string fileName = Path.GetFileName(ImgTemp.FileName);
+                        var TempNameUnq = _dbContext.ImgTemplate.Select(x => x.FileName).ToList();
+                        foreach (var tempUnq in TempNameUnq)
+                        {
+                            if (tempUnq == TempName)
+                            {
+                                exist = false;
+                            }
+                        }
+                        if (exist == true)
+                        {
+                            string uploadsFolder = Path.Combine(_env.WebRootPath, "ImageManager");
+                            if (!Directory.Exists(uploadsFolder))
+                            {
+                                Directory.CreateDirectory(uploadsFolder);
+                            }
+                            var ImgfileName = Path.GetFileName(ImgTemp.FileName);
+                            string filePath = Path.Combine(uploadsFolder, ImgfileName);
+                            string relativeImgPath = Path.Combine("ImageManager", ImgfileName).Replace("\\", "/");
+                            var exists = await _dbContext.ImgTemplate.AnyAsync(t => t.FileName == fileName);
+                            var results = new List<ImgTemp>();
+                            if (!exists)
+                            {
+                                using (var TempSet = new FileStream(filePath, FileMode.Create))
+                                {
+                                    await ImgTemp.CopyToAsync(TempSet);
+                                }
+                                // Save into DB
+                                DateTime Date = DateTime.Now;
+                                string toDay = Date.ToString();
+                                var resp = _dbContext.Add(new ImgTemp
+                                {
+                                    //Date = toDay,
+                                    FileName = TempName,
+                                    imgPath = relativeImgPath,
+                                    JsonPath = "",
+                                    CreateAt = toDay
+                                });
+                                await _dbContext.SaveChangesAsync();
+                                results.Add(resp.Entity);
+                                res = new
+                                {
+                                    message = "File Save into Table and Folder",
+                                    status = true,
+                                    data = results
+                                };
+                            }
+                            else
+                            {
+                                res = new
+                                {
+                                    message = "File Not Exist",
+                                    status = false,
+                                };
+                            }
+                        }
+                        else
+                        {
+                            res = new
+                            {
+                                state = false,
+                                message = "FileName is Already Exist"
+                            };
+                        }
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        res = new
+                        {
+                            message = ex.Message,
+                            status = false,
+                        };
+                    }
+                }
             }
-            return Ok(res);
+            bool currentState = res.status;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         // DONE - -
@@ -147,10 +190,18 @@ namespace SQCScanner.Controllers
                 res = new
                 {
                     state = false,
-                    Message = ex.Message,
+                    message = ex.Message,
                 };
             }
-            return Ok(res);
+            bool currentStatex = res.state;
+            if (currentStatex)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         // DONE - -
@@ -167,7 +218,7 @@ namespace SQCScanner.Controllers
                     res = new
                     {
                         state = false,
-                        Massage = "Record Not Found"
+                        message = "Record Not Found"
                     };
                 }
                 else
@@ -186,7 +237,7 @@ namespace SQCScanner.Controllers
                     res = new
                     {
                         state = true,
-                        Massage = "Record Found",
+                        message = "Record Found",
                         body = results
                     };
                 }
@@ -195,10 +246,18 @@ namespace SQCScanner.Controllers
                 res = new
                 {
                     state = false,
-                    Massage = ex.Message,
+                    message = ex.Message,
                 };
             }
-            return Ok(res);
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         // File will be deleted from DB and File Manager too
@@ -213,36 +272,43 @@ namespace SQCScanner.Controllers
                 var tempRecord = await _dbContext.ImgTemplate.FindAsync(id);
                 if (tempRecord == null)
                 {
-                    return NotFound("Template not found.");
-                }
-                _dbContext.ImgTemplate.Remove(tempRecord);
-                await _dbContext.SaveChangesAsync();
-
-                // Img Del  -- Root folder
-                string ImgFold = Path.Combine(_env.WebRootPath, "ImageManager");
-                var imgTemp = tempRecord.imgPath;
-                string ImgFileName = Path.GetFileName(imgTemp);
-                string ImgFilePath = Path.Combine(ImgFold, ImgFileName);
-                if (System.IO.File.Exists(ImgFilePath))
-                {
-                    System.IO.File.Delete(ImgFilePath);
-                }
-                if (!string.IsNullOrEmpty(tempRecord?.JsonPath))
-                {
-                    string TempFold = Path.Combine(_env.WebRootPath, "TempManager");
-                    var JsonTemp = tempRecord.JsonPath;
-                    string TempFileName = Path.GetFileName(JsonTemp);
-                    string JsonFilePath = Path.Combine(TempFold, TempFileName);
-                    if (System.IO.File.Exists(JsonFilePath))
+                    res = new
                     {
-                        System.IO.File.Delete(JsonFilePath);
-                    }
+                        state = false,
+                        message = "Template not found."
+                    };
                 }
-                res = new
+                else
                 {
-                    message = "Template delete from database and fileManager.",
-                    state = true
-                };
+                    _dbContext.ImgTemplate.Remove(tempRecord);
+                    await _dbContext.SaveChangesAsync();
+
+                    // Img Del  -- Root folder
+                    string ImgFold = Path.Combine(_env.WebRootPath, "ImageManager");
+                    var imgTemp = tempRecord.imgPath;
+                    string ImgFileName = Path.GetFileName(imgTemp);
+                    string ImgFilePath = Path.Combine(ImgFold, ImgFileName);
+                    if (System.IO.File.Exists(ImgFilePath))
+                    {
+                        System.IO.File.Delete(ImgFilePath);
+                    }
+                    if (!string.IsNullOrEmpty(tempRecord?.JsonPath))
+                    {
+                        string TempFold = Path.Combine(_env.WebRootPath, "TempManager");
+                        var JsonTemp = tempRecord.JsonPath;
+                        string TempFileName = Path.GetFileName(JsonTemp);
+                        string JsonFilePath = Path.Combine(TempFold, TempFileName);
+                        if (System.IO.File.Exists(JsonFilePath))
+                        {
+                            System.IO.File.Delete(JsonFilePath);
+                        }
+                    }
+                    res = new
+                    {
+                        message = "Template delete from database and fileManager.",
+                        state = true
+                    };
+                }
             }
             catch(Exception ex)
             {
@@ -252,7 +318,15 @@ namespace SQCScanner.Controllers
                     state = false
                 };
             }
-            return Ok(res);
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
 
         // As per File Name temp Url will be set into db along with save into fileManager
@@ -327,7 +401,15 @@ namespace SQCScanner.Controllers
                     state = false,
                 };
             }
-            return Ok(res);
+            bool currentState = res.state;
+            if (currentState)
+            {
+                return Ok(res);
+            }
+            else
+            {
+                return NotFound(res);
+            }
         }
     }
 }

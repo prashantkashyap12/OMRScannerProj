@@ -12,7 +12,7 @@ namespace SQCScanner.websoketManager
         // har connected client ka WebSocket object is list mein store hoga. yh Blank List Declear.
         private readonly ConcurrentDictionary<string, WebSocket> _userSockets = new();
 
-        //naya client connect hota hai, uska WebSocket object is method ke through list mein add kiya.
+        // naya client connect hota hai, uska WebSocket object is method ke through list mein add kiya.
         // Add or update socket for user.
         public void AddSocket(string userId, WebSocket socket)
         {
@@ -20,22 +20,29 @@ namespace SQCScanner.websoketManager
             {
                 if (oldSocket.State == WebSocketState.Open)
                 {
+                    Console.WriteLine("Replacing old socket for userId: " + userId);
+
                     oldSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Replaced by new connection", CancellationToken.None).Wait();
                 }
+                Console.WriteLine("AddSocket userId: " + userId);
                 _userSockets[userId] = socket;
                 return socket;
             });
         }
 
-        // Get socket for userId
+        // Get socket Id for userId
         public WebSocket GetSocketByUserId(string userId)
         {
             if (_userSockets.TryGetValue(userId, out var socket))
             {
+                Console.WriteLine("found socket for userId: " + userId);
                 return socket;
             }
+            Console.WriteLine("❌ [GetSocket] No socket found for userId: " + userId);
             return null;
         }
+
+        // Remove socket Id for userId
         public void RemoveSocket(string userId)
         {
             if (_userSockets.TryRemove(userId, out var socket))
@@ -49,5 +56,6 @@ namespace SQCScanner.websoketManager
 
         // Broadcast list ko provide karta hai. matlab jitne user hai jo connect hai unki list data hai
         public IEnumerable<WebSocket> GetAllSockets() => _userSockets.Values;
+    
     }
 }

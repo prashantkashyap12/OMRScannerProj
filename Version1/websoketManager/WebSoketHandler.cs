@@ -15,23 +15,52 @@ namespace SQCScanner.websoketManager
             _connectionManager = connectionManager;
         }
 
-        // Send message to a specific user by userId
+        // send Massage based userId sapcefic and // check if socket is open or not
         public async Task UserMessageAsync(string userId, string message)
         {
             var socket = _connectionManager.GetSocketByUserId(userId);
 
-            if (socket != null && socket.State == WebSocketState.Open)
+            if (socket == null)
             {
-                var bytes = Encoding.UTF8.GetBytes(message);
-                try
+                Console.WriteLine($"No socket found for userId: {userId}");
+                return;
+            }
+
+            if (socket.State != WebSocketState.Open)
+            {
+                Console.WriteLine($" Socket for {userId} is not open. State: {socket.State}");
+                return;
+            }
+
+            var bytes = Encoding.UTF8.GetBytes(message);
+            try
+            {
+                Console.WriteLine($" Sending message to {userId}: {message}");
+                await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending to {userId}: {ex.Message}");
+                _connectionManager.RemoveSocket(userId);
+            }
+        }
+
+        // BroadCast Massage 
+        public async Task BroadcastTestAsync(string message)
+        {
+            // to find connected Allsoket
+            foreach (var socket in _connectionManager.GetAllSockets())
+            {
+                // those are ture and open
+                if (socket.State == WebSocketState.Open)
                 {
+                    // Message 
+                    var bytes = Encoding.UTF8.GetBytes(message);
+
                     await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
-                }
-                catch
-                {
-                    _connectionManager.RemoveSocket(userId);
                 }
             }
         }
+
     }
 }

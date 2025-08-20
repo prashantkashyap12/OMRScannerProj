@@ -8,14 +8,12 @@ using Syncfusion.EJ2.FileManager.PhysicalFileProvider;
 
 namespace SQCScanner.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     public class FileManagerController : Controller
     {
 
         private readonly Syncfusion.EJ2.FileManager.PhysicalFileProvider.PhysicalFileProvider _operation;
         private readonly string _root = Environment.CurrentDirectory + "\\wFileManager";
-
         public FileManagerController(IWebHostEnvironment hostingEnvironment)
         {
             _operation = new Syncfusion.EJ2.FileManager.PhysicalFileProvider.PhysicalFileProvider();
@@ -104,8 +102,8 @@ namespace SQCScanner.Controllers
             }
         }
         
-        [Route("Upload")]
         [HttpPost]
+        [Route("Upload")]
         public IActionResult Upload([FromForm] string path, [FromForm] IList<IFormFile> uploadFiles, [FromForm] string action)
         {
             try
@@ -169,5 +167,6 @@ namespace SQCScanner.Controllers
             };
             return _operation.GetImage(args.Path, args.Id, false, null, null);
         }
+    
     }
 }
