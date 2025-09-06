@@ -57,7 +57,7 @@ namespace SQCScanner.Services
                     if (respose.Success)
                     {
                         sharePath = "wwwroot/ScannedImg";
-                        records.Add("Report", "N/A");             // true k case me auto add ni aata.
+                        records.Add("Report", "Image is Scanned Successfully");             // true k case me auto add ni aata.
                         foreach (var kvp in fields2)
                         {
                             if (kvp.Key == "FileName")
@@ -70,7 +70,7 @@ namespace SQCScanner.Services
                             }
                             else
                             {
-                                records.Add(kvp.Key, kvp.Value);
+                                records.Add(kvp.Key, kvp.Value); 
                             }
                         }
                     }
@@ -114,7 +114,7 @@ namespace SQCScanner.Services
                             }
                             else
                             {
-                                records.Add(kvp, "error");
+                               // records.Add(kvp, "error");
                             }
                         }
                     }
@@ -123,11 +123,6 @@ namespace SQCScanner.Services
 
                     if (tableExists)
                     {
-                        // Before save some record we will. (check FileName) 
-                        var isFileCheck = respose.FieldResults.Where(x => x.Key == "FileName").ToList();
-                        var isFileCheck2 = isFileCheck[0].Value;
-                        // var imgReName = Path.GetFileName(isFileCheck2);  // Extract fileName only to save futurely
-                        
                         // Does Record is Exist or Not.
                         // here we are just check is successFull Check img done.
                         var RecordExis = "";
@@ -140,6 +135,10 @@ namespace SQCScanner.Services
 
                         if (isRes.Count >= 1)  // Record Update _ Problem Will be = jab koi record(column ki rows) pahle se add ho gya hai or us record ko mene apne main scan response se hata diya hai wo update k case me hatega ni pahle waha record db se save rahega.
                         {
+                            // Before save some record we will. (check FileName) 
+                            var isFileCheck = respose.FieldResults.Where(x => x.Key == "FileName").ToList();
+                            var isFileCheck2 = isFileCheck[0].Value;
+
                             var updateQuery = $@"UPDATE [{tableName}] SET {string.Join(", ", records.Select(kvp => $"[{kvp.Key}] = '{kvp.Value}'"))} WHERE [FileName] = '{checkSuss}' OR [FileName] = '{checkfail}'";
                             if (IsSaveDb)
                             {
@@ -169,8 +168,9 @@ namespace SQCScanner.Services
                             }
                             else
                             {
-                                folderPath = Path.Combine("wFileManager/", folderPath, imgName);
-                                // records.Add("ServePath", folderPath);
+                                string imgName1 = Path.GetFileName(imagePath);
+                                folderPath = Path.Combine("wFileManager/", folderPath, imgName1);
+                                records.Add("ServePath", folderPath);
                                 records["FileName"] = folderPath;
                             }
                             res = new

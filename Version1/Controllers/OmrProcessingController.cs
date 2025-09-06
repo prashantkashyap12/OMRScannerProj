@@ -13,6 +13,7 @@ using Vintasoft.Imaging.Codecs.ImageFiles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using SQCScanner.Services;
+
 using System.Net.WebSockets;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Data.SqlClient;
@@ -24,6 +25,13 @@ using NLog.Targets;
 using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using OpenCvSharp;
+using Vintasoft.Imaging;
+
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Metadata.Profiles.Exif;
+
 
 namespace Version1.Controllers
 {
@@ -105,6 +113,8 @@ namespace Version1.Controllers
                 var imageFiles = Directory.GetFiles(folderPath, "*.*").Where(f => f.EndsWith(".jpg") || f.EndsWith(".png") || f.EndsWith(".jpeg") || f.EndsWith(".tif")).ToList();
                 var Targetjson = string.Empty;
                 var ReturnDetails = _dbContext.ImgTemplate.FirstOrDefault(x => x.Id == idTemp);
+                string imageUrl = ReturnDetails.imgPath;
+                imageUrl = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imageUrl);
                 if (ReturnDetails != null)
                 {
                     if (!string.IsNullOrEmpty(ReturnDetails.JsonPath))
@@ -129,7 +139,7 @@ namespace Version1.Controllers
                                 _controlService.WaitIfPaused();
 
                                 // Scaning to get data from OMR Sheet
-                                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath);
+                                var res = await _omrService.ProcessOmrSheet(imagePath, templatePath, imageUrl);
                                 results.Add(res);
                                 if (crttb == 1)
                                 {
@@ -149,7 +159,7 @@ namespace Version1.Controllers
 
                                 // 3. WS_Handler                   - Done
                                 string jsonResult = JsonSerializer.Serialize(dbRes);
-                                userId = Convert.ToString(userId);
+                                 userId = Convert.ToString(userId);
                                 await _webSocketHandler.UserMessageAsync(userId, jsonResult);
                             }
                             resp = new

@@ -24,7 +24,7 @@
     <PackageReference Include="OpenCvSharp4" Version="4.10.0.20241108" />
     <PackageReference Include="OpenCvSharp4.Extensions" Version="4.10.0.20241108" />
     <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.10.0.20241108" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.0" />
     <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="29.2.4" />
     <PackageReference Include="System.Drawing.Common" Version="9.0.4" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
